@@ -11,7 +11,7 @@ import {
 
 const Forms = () => {
   return (
-    <Box display="flex" justifyContent='center'>
+    <Box display="flex" justifyContent='center' height='100vh' border='1px solid red'>
       <FormControl
         isRequired
         w="30%"

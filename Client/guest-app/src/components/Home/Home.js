@@ -4,7 +4,7 @@ import Logo from '../../assets/logo-1.png';
 
 const Home = () => {
   return (
-    <Box>
+    <Box height='100vh' border='1px solid green'>
       <Flex
         flexDirection="column"
         justifyContent="center"
