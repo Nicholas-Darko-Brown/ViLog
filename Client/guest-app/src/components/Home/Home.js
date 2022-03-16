@@ -1,5 +1,5 @@
 import React from 'react';
-import { Box, Flex, Spacer, Image, Text, Button } from '@chakra-ui/react';
+import { Box, Flex, Spacer, Image, Text, } from '@chakra-ui/react';
 import Logo from '../../assets/logo-1.png';
 
 const Home = () => {
@@ -10,7 +10,7 @@ const Home = () => {
         justifyContent="center"
         alignItems="center"
         gap="2rem"
-        mt="2rem"
+        // mt="2rem"
       >
         <Box p="4" display="flex" alignItems="center">
           <Image src={Logo} alt="logo" />
@@ -20,20 +20,20 @@ const Home = () => {
         </Box>
         <Spacer />
         <Box p="4">
-          <Text textTransform="uppercase" fontSize="2em">
+          <Text textTransform="uppercase" fontSize="2em" letterSpacing='2px' fontWeight='bold'>
             Welcome...
           </Text>
         </Box>
         <Spacer />
-        <Box p="4">
+        {/* <Box p="4">
           <Button p="8" colorScheme="orange" size="lg">
             Click to start
           </Button>
-        </Box>
+        </Box> */}
       </Flex>
-      <Box>
+      {/* <Box>
           <Image src='https://www.pngmart.com/files/10/Qr-Code-PNG-HD.png' alt='qrcode' maxW='10%' />
-      </Box>
+      </Box> */}
     </Box>
   );
 };
