@@ -7,3 +7,8 @@ span.carousel-control-prev-icon {
   background-color: #e77449;
   border-radius: 5px;
 }
+
+div.carousel-indicators {
+    background-color: #e77449;
+    opacity: 0.8;
+}

@@ -9,7 +9,7 @@ import SignedIn from '../SignedIn/SignedIn';
 const BootstrapCarousel = () => {
   return (
     <div>
-      <Carousel style={{height: '100vh'}}>
+      <Carousel style={{height: '100vh'}} interval={null}>
         <Carousel.Item>
           {/* <img
             className="d-block w-100"
