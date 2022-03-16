@@ -4,7 +4,7 @@ import Logo from '../../assets/logo-1.png';
 
 const Home = () => {
   return (
-    <Box height='100vh' border='1px solid green'>
+    <Box height='100vh'>
       <Flex
         flexDirection="column"
         justifyContent="center"
@@ -32,7 +32,7 @@ const Home = () => {
         </Box>
       </Flex>
       <Box>
-          <Image src='https://www.pngmart.com/files/10/Qr-Code-PNG-HD.png' alt='qrcode' maxW='10%' ml='2rem' mt='2rem'/>
+          <Image src='https://www.pngmart.com/files/10/Qr-Code-PNG-HD.png' alt='qrcode' maxW='10%' />
       </Box>
     </Box>
   );

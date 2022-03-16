@@ -3,25 +3,13 @@ import {
   ChakraProvider,
   Box
 } from '@chakra-ui/react';
-import Home from './components/Home/Home';
-import Forms from './components/Forms/Forms'
-import Host from './components/Host/Host'
-import SignedIn from './components/SignedIn/SignedIn'
+import BootsrapCarousel from './components/Carousel.js/BootstrapCarousel';
 
-function App() {
+const App = () => {
   return (
     <ChakraProvider>
-      <Box fontSize="xl">
-        <Home />
-      </Box>
       <Box>
-        <Forms />
-      </Box>
-      <Box>
-        <Host />
-      </Box>
-      <Box>
-        <SignedIn />
+        <BootsrapCarousel />
       </Box>
     </ChakraProvider>
   );

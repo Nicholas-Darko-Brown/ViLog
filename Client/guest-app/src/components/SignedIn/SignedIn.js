@@ -7,7 +7,6 @@ const SignedIn = () => {
   return (
     <Box
       height="100vh"
-      border="1px solid blue"
       display="flex"
       alignItems="center"
       justifyContent="center"
@@ -18,7 +17,6 @@ const SignedIn = () => {
         display="flex"
         alignItems="center"
         gap="2rem"
-        border="1px solid blue"
       >
         <Image src={Done} alt="done" />
         <Text fontSize="1.2em" fontWeight="bold">
@@ -30,13 +28,12 @@ const SignedIn = () => {
         flexDirection="column"
         alignItems="center"
         justifyContent="center"
-        border="1px solid blue"
         gap="2rem"
       >
         <Text fontSize="1.1em" fontWeight="normal" fontStyle="italic">
           Contacting your Host...
         </Text>
-        <Image src={User} alt="done" border="1px solid red" w="5rem" />
+        <Image src={User} alt="done" w="5rem" />
       </Box>
       <Box >
         <Button colorScheme="red" size="lg">
