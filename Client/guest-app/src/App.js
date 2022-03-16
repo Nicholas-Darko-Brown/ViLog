@@ -1,19 +1,15 @@
 import React from 'react';
 import {
   ChakraProvider,
-  Box,
-  Grid,
-  theme,
+  Box
 } from '@chakra-ui/react';
-import { ColorModeSwitcher } from './ColorModeSwitcher';
+import BootsrapCarousel from './components/Carousel.js/BootstrapCarousel';
 
-function App() {
+const App = () => {
   return (
-    <ChakraProvider theme={theme}>
-      <Box textAlign="center" fontSize="xl">
-        <Grid minH="100vh" p={2}>
-          <ColorModeSwitcher justifySelf="flex-end" border='1px solid red' />
-        </Grid>
+    <ChakraProvider>
+      <Box>
+        <BootsrapCarousel />
       </Box>
     </ChakraProvider>
   );
