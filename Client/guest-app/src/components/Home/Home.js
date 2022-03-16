@@ -11,6 +11,7 @@ import {
 } from '@chakra-ui/react';
 import Logo from '../../assets/logo-1.png';
 import { MdDashboard } from 'react-icons/md';
+import { FiLogOut } from 'react-icons/fi'
 
 const Home = () => {
   return (
@@ -35,14 +36,22 @@ const Home = () => {
               ViLog
             </Text>
           </Box>
-          <Box>
+          <Box display='flex' gap='1rem'>
             <Button
               rightIcon={<MdDashboard />}
-              colorScheme="orange"
+              colorScheme="gray"
               variant="outline"
               fontWeight="bold"
             >
               Dashboard
+            </Button>
+            <Button
+              rightIcon={<FiLogOut />}
+              colorScheme="orange"
+              variant="solid"
+              fontWeight="bold"
+            >
+              Logout
             </Button>
           </Box>
         </Box>

@@ -53,8 +53,8 @@ const Forms = () => {
         </FormLabel> */}
         <Input type="email" id="email" mt={5} placeholder="Email" />
         <Select isRequired placeholder="Select your position" mt={5} >
-          <option value="option1">I am a Visitor</option>
-          <option value="option2">I am a Contractor</option>
+          <option value="option1">Visitor</option>
+          <option value="option2">Contractor</option>
         </Select>
         <Select isRequired placeholder="Who are you visiting?" mt={5} >
           <option value="option1">Kofi Kankam</option>
