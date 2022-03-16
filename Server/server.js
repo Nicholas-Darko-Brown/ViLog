@@ -1,31 +1,23 @@
 const express = require("express");
 const cors = require("cors");
 const bodyParser = require("body-parser");
+const db = require("./config/database_connection");
+const sql_keywords = require("./config/sql_keywords");
+const tables = require("./config/tables");
 const app = express();
-const mysql = require("mysql");
+
 
 app.use(cors());
 app.use(bodyParser.json());
 
-//database connection
-const db = mysql.createConnection({
-    host: 'localhost',
-    user: 'root',
-    password: 'andreews',
-    database: 'vilog_db'
-});
 
 app.get("/", (req, res) => {
-    const sqlInsert = "INSERT INTO vilog_db.hosts (Full_Name, Email, Position, Phone_number) VALUES ('Ben','ben@gmail.com','Guitarist','024345569')";
-    db.query(sqlInsert, (err, result)=>{
-        res.send("hello");
-    });
-});
+    const sqlInsert = `${sql_keywords.insertInto} ${tables.hosts.name} 
+        (${tables.hosts.colums.fullName}, ${tables.hosts.colums.email}, ${tables.hosts.colums.position}, ${tables.hosts.colums.phoneNumber}) 
+        ${sql_keywords.values} ('Ben','ben@gmail.com','Guitarist','024345569')`;
 
-app.get("/insert", (req, res) => {
-    const sqlInsert = "INSERT INTO vilog_db.hosts (Full_Name, Email, Position, Phone_number) VALUES ('Benoit','benoit@gmail.com','Guitarist','02434439')";
     db.query(sqlInsert, (err, result)=>{
-        res.send("helloin");
+        res.status(201).send("hello");
     });
 });
 
