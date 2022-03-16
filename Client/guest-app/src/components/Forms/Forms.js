@@ -35,7 +35,7 @@ const Forms = () => {
           Tell us about yourself
         </Text>
         <FormLabel htmlFor="name">Name</FormLabel>
-        <Input type="text" id="name" placeholder="First name" />
+        <Input type="text" id="name" placeholder="Name" />
         <FormLabel htmlFor="company" mt={3}>
           Company
         </FormLabel>
@@ -48,7 +48,7 @@ const Forms = () => {
           Email
         </FormLabel>
         <Input type="email" id="email" placeholder="Email" />
-        <Select isRequired placeholder="Select an option" mt={7} >
+        <Select isRequired placeholder="Select your position" mt={7} >
           <option value="option1">I am a Visitor</option>
           <option value="option2">I am a Contractor</option>
         </Select>

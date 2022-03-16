@@ -32,7 +32,7 @@ const Home = () => {
         </Box>
       </Flex>
       <Box>
-          <Image src='https://www.pngmart.com/files/10/Qr-Code-PNG-HD.png' alt='qrcode' maxW='10%' ml='2rem' mt='3rem'/>
+          <Image src='https://www.pngmart.com/files/10/Qr-Code-PNG-HD.png' alt='qrcode' maxW='10%' ml='2rem' mt='2rem'/>
       </Box>
     </Box>
   );

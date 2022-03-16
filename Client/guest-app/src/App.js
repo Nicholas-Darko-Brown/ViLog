@@ -6,6 +6,7 @@ import {
 import Home from './components/Home/Home';
 import Forms from './components/Forms/Forms'
 import Host from './components/Host/Host'
+import SignedIn from './components/SignedIn/SignedIn'
 
 function App() {
   return (
@@ -18,6 +19,9 @@ function App() {
       </Box>
       <Box>
         <Host />
+      </Box>
+      <Box>
+        <SignedIn />
       </Box>
     </ChakraProvider>
   );
