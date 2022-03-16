@@ -10,7 +10,7 @@ import {
 import Axios from 'axios'
 
 const Forms = () => {
-  const url = "http://localhost:3000/"
+  const url = ""
   const [data, setData] = useState({
     name: "",
     company: "",
@@ -19,6 +19,8 @@ const Forms = () => {
     position: "",
     host: ""
   })
+  console.log(data)
+  
 
   const handleChange = e => {
     const newData = {...data}
@@ -28,23 +30,17 @@ const Forms = () => {
   }
 
   const handleSubmit = e => {
+    console.log("submitted")
     e.preventDefault()
-    Axios.post(url, {
-      name: data.name,
-      company: data.company,
-      tel: data.tel,
-      email: data.email,
-      position: data.position,
-      host: data.host
-    })
-    .then(res => {
-      console.log(res.data)
-    })
+    console.log(data)
+    
+    // Axios.post(url,data)
   }
 
   return (
     <Box display="flex" justifyContent='center' height='100%'>
       <FormControl
+        
         isRequired
         w="30%"
         p={5}
@@ -81,7 +77,7 @@ const Forms = () => {
           <option value="yvonne smith">Yvonne Smith</option>
         </Select>
 
-        <Button onSubmit={(e) => handleSubmit(e)} colorScheme="orange" variant="solid" mt={9}>
+        <Button onClick={(e) => handleSubmit(e)} type="submit" colorScheme="orange" variant="solid" mt={9}>
           Submit
         </Button>
       </FormControl>
