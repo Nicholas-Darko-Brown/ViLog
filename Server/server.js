@@ -20,7 +20,7 @@ db.connect((err) => {
 });
 
 const visitorsTable = tables.visitors.name;
-const {select, insertInto, values} = sql_keywords;
+const {select, insertInto, values, from} = sql_keywords;
 const {fullNameCol, companyCol, phoneNumberCol, emailCol, hostCol, positionCol} = tables.visitors.colums;
 
 
