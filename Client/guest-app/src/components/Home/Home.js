@@ -29,27 +29,24 @@ const Home = () => {
 
   return (
     <Box height="100vh">
-      <Flex
-        flexDirection="column"
-        // justifyContent="center"
-        alignItems="center"
-        gap="2rem"
-        // mt="2rem"
-      >
+      <Flex flexDirection="column" alignItems="center" gap="2rem">
         <Box
           p="0 1rem"
           w="70%"
           display="flex"
           justifyContent="space-between"
           alignItems="center"
+          border="1px solid red"
         >
-          <Box display="flex" alignItems="center">
+          <Box display="flex" alignItems="center" border="1px solid yellow">
             <Image src={Logo} alt="logo" />
             <Text fontSize="2em" fontWeight="extrabold">
               ViLog
             </Text>
           </Box>
-          <Box display="flex" gap="1rem">
+
+          {/* Parent container */}
+          <Box display="flex" gap="1rem" border="1px solid green">
             <Button
               rightIcon={<MdDashboard />}
               colorScheme="gray"
@@ -61,57 +58,45 @@ const Home = () => {
             >
               Dashboard
             </Button>
-            {/* <Button
+
+            {/* Logout Button */}
+            <Button
+              onClick={onOpen}
               rightIcon={<FiLogOut />}
               colorScheme="orange"
-              variant="solid"
-              fontWeight="bold"
-              onClick={() => {
-                navigate("/logout")
-              }}
             >
               Logout
-            </Button> */}
-            <>
-              <Button onClick={onOpen} rightIcon={<FiLogOut />} colorScheme="orange">Logout</Button>
+            </Button>
+            {/* Logout popup */}
+            <Modal isOpen={isOpen} onClose={onClose} isCentered>
+              <ModalOverlay />
+              <ModalContent>
+                <ModalHeader>Are you sure?</ModalHeader>
+                <ModalCloseButton />
+                <ModalBody>
+                  <Text>
+                    When the modal opens, focus is sent into the modal and set
+                    to the first tabbable element. If there are no tabbled
+                    elements, focus is set on ModalContent.
+                  </Text>
+                </ModalBody>
 
-              <Modal isOpen={isOpen} onClose={onClose} isCentered>
-                <ModalOverlay />
-                <ModalContent>
-                  <ModalHeader>Are you sure?</ModalHeader>
-                  <ModalCloseButton />
-                  <ModalBody>
-                    <Text>
-                      When the modal opens, focus is sent into the modal and set
-                      to the first tabbable element. If there are no tabbled
-                      elements, focus is set on ModalContent.
-                    </Text>
-                  </ModalBody>
-
-                  <ModalFooter>
-                    <Button colorScheme="blue" mr={3} onClick={onClose}>
-                      Close
-                    </Button>
-                    <Button variant="ghost">Confirm</Button>
-                  </ModalFooter>
-                </ModalContent>
-              </Modal>
-            </>
+                <ModalFooter>
+                  <Button colorScheme="blue" mr={3} onClick={onClose}>
+                    Close
+                  </Button>
+                  <Button variant="ghost">Confirm</Button>
+                </ModalFooter>
+              </ModalContent>
+            </Modal>
           </Box>
         </Box>
+
         <Spacer />
         <Center h="300px">
           <Heading size="4xl">Welcome...</Heading>
         </Center>
-        {/* <Box p="4">
-          <Button p="8" colorScheme="orange" size="lg">
-            Click to start
-          </Button>
-        </Box> */}
       </Flex>
-      {/* <Box>
-          <Image src='https://www.pngmart.com/files/10/Qr-Code-PNG-HD.png' alt='qrcode' maxW='10%' />
-      </Box> */}
     </Box>
   );
 };
