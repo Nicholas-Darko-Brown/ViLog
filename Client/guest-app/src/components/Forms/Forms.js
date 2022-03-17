@@ -10,7 +10,7 @@ import {
 import Axios from 'axios'
 
 const Forms = () => {
-  const url = ""
+  const url = "http://localhost:3000/"
   const [data, setData] = useState({
     name: "",
     company: "",
@@ -34,7 +34,7 @@ const Forms = () => {
     e.preventDefault()
     console.log(data)
     
-    // Axios.post(url,data)
+    Axios.post(url,data)
   }
 
   return (
