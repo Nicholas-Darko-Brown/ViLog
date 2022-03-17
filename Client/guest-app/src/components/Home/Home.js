@@ -13,7 +13,11 @@ import Logo from '../../assets/logo-1.png';
 import { MdDashboard } from 'react-icons/md';
 import { FiLogOut } from 'react-icons/fi'
 
+import { useNavigate } from 'react-router-dom'
+
 const Home = () => {
+  let navigate = useNavigate()
+
   return (
     <Box height="100vh">
       <Flex
@@ -42,6 +46,9 @@ const Home = () => {
               colorScheme="gray"
               variant="outline"
               fontWeight="bold"
+              onClick={() => {
+                navigate("/dashboard")
+              }}
             >
               Dashboard
             </Button>
@@ -50,6 +57,9 @@ const Home = () => {
               colorScheme="orange"
               variant="solid"
               fontWeight="bold"
+              onClick={() => {
+                navigate("/logout")
+              }}
             >
               Logout
             </Button>
