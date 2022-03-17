@@ -7,16 +7,25 @@ import {
   Text,
   Button,
   Center,
-  Heading
+  Heading,
+  useDisclosure,
+  Modal,
+  ModalOverlay,
+  ModalContent,
+  ModalHeader,
+  ModalFooter,
+  ModalBody,
+  ModalCloseButton,
 } from '@chakra-ui/react';
 import Logo from '../../assets/logo-1.png';
 import { MdDashboard } from 'react-icons/md';
-import { FiLogOut } from 'react-icons/fi'
+import { FiLogOut } from 'react-icons/fi';
 
-import { useNavigate } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom';
 
 const Home = () => {
-  let navigate = useNavigate()
+  let navigate = useNavigate();
+  const { isOpen, onOpen, onClose } = useDisclosure();
 
   return (
     <Box height="100vh">
@@ -40,19 +49,19 @@ const Home = () => {
               ViLog
             </Text>
           </Box>
-          <Box display='flex' gap='1rem'>
+          <Box display="flex" gap="1rem">
             <Button
               rightIcon={<MdDashboard />}
               colorScheme="gray"
               variant="outline"
               fontWeight="bold"
               onClick={() => {
-                navigate("/dashboard")
+                navigate('/dashboard');
               }}
             >
               Dashboard
             </Button>
-            <Button
+            {/* <Button
               rightIcon={<FiLogOut />}
               colorScheme="orange"
               variant="solid"
@@ -62,12 +71,37 @@ const Home = () => {
               }}
             >
               Logout
-            </Button>
+            </Button> */}
+            <>
+              <Button onClick={onOpen} rightIcon={<FiLogOut />} colorScheme="orange">Logout</Button>
+
+              <Modal isOpen={isOpen} onClose={onClose} isCentered>
+                <ModalOverlay />
+                <ModalContent>
+                  <ModalHeader>Are you sure?</ModalHeader>
+                  <ModalCloseButton />
+                  <ModalBody>
+                    <Text>
+                      When the modal opens, focus is sent into the modal and set
+                      to the first tabbable element. If there are no tabbled
+                      elements, focus is set on ModalContent.
+                    </Text>
+                  </ModalBody>
+
+                  <ModalFooter>
+                    <Button colorScheme="blue" mr={3} onClick={onClose}>
+                      Close
+                    </Button>
+                    <Button variant="ghost">Confirm</Button>
+                  </ModalFooter>
+                </ModalContent>
+              </Modal>
+            </>
           </Box>
         </Box>
         <Spacer />
         <Center h="300px">
-        <Heading size='4xl'>Welcome...</Heading>
+          <Heading size="4xl">Welcome...</Heading>
         </Center>
         {/* <Box p="4">
           <Button p="8" colorScheme="orange" size="lg">
