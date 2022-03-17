@@ -7,8 +7,9 @@ const tables = require("./config/tables");
 const app = express();
 
 
-app.use(cors());
+//app.use(cors());
 app.use(bodyParser.json());
+app.use(express.json())
 
 
 app.get("/", (req, res) => {
