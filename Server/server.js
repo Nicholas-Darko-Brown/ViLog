@@ -19,9 +19,11 @@ db.connect((err) => {
     }
 });
 
-const visitorsTable = tables.visitors.name;
+const visitorsTable = tables.visitors.name; 
 const employeesTable = tables.employees.name;
+// These variables store their corresponding values as sql keywords
 const {select, insertInto, values, from} = sql_keywords;
+// These variables store their corresponding values as column names in the visitors table
 const {fullNameCol, companyCol, phoneNumberCol, emailCol, hostCol, positionCol} = tables.visitors.colums;
 
 app.get("/", (req, res) => {
