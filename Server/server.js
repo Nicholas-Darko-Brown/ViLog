@@ -20,9 +20,22 @@ db.connect((err) => {
 });
 
 const visitorsTable = tables.visitors.name;
+const employeesTable = tables.employees.name;
 const {select, insertInto, values, from} = sql_keywords;
 const {fullNameCol, companyCol, phoneNumberCol, emailCol, hostCol, positionCol} = tables.visitors.colums;
 
+app.get("/", (req, res) => {
+    const {fullNameCol} = tables.employees.colums;
+    const selectEmployeesQuery = `${select} ${fullNameCol} ${from} ${employeesTable}`;
+    db.query(selectEmployeesQuery, (err, rows, fields) =>{
+        if(err){
+            console.log(err);
+        }else{
+            console.log(rows);
+            res.status(200).send(rows);
+        }
+    });
+})
 
 app.post("/", (req, res) => {
     const {name, company, tel, email, position, host} = req.body;
