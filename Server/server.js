@@ -11,6 +11,14 @@ const app = express();
 app.use(bodyParser.json());
 app.use(express.json())
 
+db.connect((err) => {
+    if(err){
+        console.log(`Database connection failed.\n Error: ${JSON.stringify(err)}`);
+    }else{
+        console.log("Database connection succeded");
+    }
+});
+
 const visitorsTable = tables.visitors.name;
 const {select, insertInto, values} = sql_keywords;
 const {fullNameCol, companyCol, phoneNumberCol, emailCol, hostCol, positionCol} = tables.visitors.colums;
@@ -25,7 +33,7 @@ app.post("/", (req, res) => {
             console.log(err);
         }else{
             console.log("visitor added.");
-            res.status(201).send();
+            res.status(201).send(result);
         }
     });
 });
