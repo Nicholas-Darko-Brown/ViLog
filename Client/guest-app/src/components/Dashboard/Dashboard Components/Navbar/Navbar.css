@@ -12,7 +12,7 @@ img {
     width: 100%;
     height: 50px;
     background-color: white;
-    border: 1px solid red;
+    border-bottom: 1px solid black;
     position: sticky;
     top: 0;
     z-index: 999;
@@ -24,16 +24,16 @@ img {
     justify-content: space-between;
     align-items: center;
     padding: 0px 20px;
-    border: 1px solid green;
+    /* border: 1px solid green; */
 }
 
 .navbar_left {
-    border: 1px solid blue;
+    /* border: 1px solid blue; */
     cursor: pointer;
 }
 
 .navbar_right {
-    border: 1px solid orange;
+    /* border: 1px solid orange; */
     display: flex;
     align-items: center;
     gap: 15px;
