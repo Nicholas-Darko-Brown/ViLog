@@ -13,12 +13,14 @@ app.use(bodyParser.json());
 app.use(express.json())
 
 //testing database connection
-db.getConnection((err) => {
+db.getConnection((err, connection) => {
     if(err){
         console.log(`Database connection failed.\n Error: ${JSON.stringify(err)}`);
     }else{
         console.log("Database connection succeded");
     }
+    if(connection) connection.release();
+    return;
 });
 
 const visitorsTable = tables.visitors.name; 
