@@ -12,7 +12,8 @@ app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
 app.use(express.json())
 
-db.connect((err) => {
+//testing database connection
+db.getConnection((err) => {
     if(err){
         console.log(`Database connection failed.\n Error: ${JSON.stringify(err)}`);
     }else{
