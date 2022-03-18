@@ -10,7 +10,14 @@ const port = process.env.PORT || 3000;
 //app.use(cors());
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
-app.use(express.json())
+app.use(express.json());
+
+// added these line of codes in case of server error
+app.use((err, req, res, text) => {
+    console.log(err.stack);
+    res.type('text/plain');
+    res.status(500).send('Internal server error 500');
+});
 
 //testing database connection
 db.getConnection((err, connection) => {
