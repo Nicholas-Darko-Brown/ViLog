@@ -1,6 +1,6 @@
 import React from 'react'
 import './Sidebar.css'
-import { Home,BarChart, TrendingUp, MoreHoriz, AccountCircle, People, Save, Share, ExitToApp } from '@material-ui/icons';
+import { Home,BarChart, TrendingUp, AccountCircle, People, Save, Share, ExitToApp, VerifiedUser } from '@material-ui/icons';
 
 const Sidebar = () => {
   return (
@@ -36,8 +36,8 @@ const Sidebar = () => {
                         Hosts
                     </li>
                     <li className="sidebar_list_item">
-                        <MoreHoriz className='sidebar_icon'/>
-                        More
+                        <VerifiedUser className='sidebar_icon'/>
+                        Admin
                     </li>
                 </ul>
             </div>
