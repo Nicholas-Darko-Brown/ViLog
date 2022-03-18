@@ -1,4 +1,4 @@
-import './SmallWidget'
+import './SmallWidget.css'
 
 const SmallWidget = () => {
   return (
