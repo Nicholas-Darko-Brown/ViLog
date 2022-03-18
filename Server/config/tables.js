@@ -1,11 +1,23 @@
 const tables = {
-    hosts: {
-        name: "vilog_db.hosts", 
+    employees: {
+        name: "vilog_db.employees", 
         colums: {
-            fullName: "Full_Name",
-            email: "Email",
-            position: "Position",
-            phoneNumber: "Phone_number"
+            fullNameCol: "Full_Name",
+            emailCol: "Email",
+            positionCol: "Position",
+            phoneNumberCol: "Phone_number"
+        }
+    },
+
+    visitors: {
+        name: "vilog_db.visitors",
+        colums: {
+            fullNameCol: "Full_name",
+            companyCol: "Company",
+            phoneNumberCol: "Phone_Number",
+            emailCol: "Email",
+            hostCol: "Host",
+            positionCol: "Position"
         }
     }
 };
