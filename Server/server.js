@@ -28,8 +28,8 @@ const {fullNameCol, companyCol, phoneNumberCol, emailCol, hostCol, positionCol} 
 
 app.get("/", (req, res) => {
     const {fullNameCol} = tables.employees.colums;
-    const selectEmployeesQuery = `${select} ${fullNameCol} ${from} ${employeesTable}`;
-    db.query(selectEmployeesQuery, (err, rows, fields) =>{
+    const selectEmployeesNameQuery = `${select} ${fullNameCol} ${from} ${employeesTable}`;
+    db.query(selectEmployeesNameQuery, (err, rows, fields) =>{
         if(err){
             console.log(err);
         }else{
