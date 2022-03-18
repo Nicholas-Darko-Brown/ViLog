@@ -36,9 +36,8 @@ const Home = () => {
           display="flex"
           justifyContent="space-between"
           alignItems="center"
-          border="1px solid red"
         >
-          <Box display="flex" alignItems="center" border="1px solid yellow">
+          <Box display="flex" alignItems="center" >
             <Image src={Logo} alt="logo" />
             <Text fontSize="2em" fontWeight="extrabold">
               ViLog
@@ -46,7 +45,7 @@ const Home = () => {
           </Box>
 
           {/* Parent container */}
-          <Box display="flex" gap="1rem" border="1px solid green">
+          <Box display="flex" gap="1rem" >
             <Button
               rightIcon={<MdDashboard />}
               colorScheme="gray"

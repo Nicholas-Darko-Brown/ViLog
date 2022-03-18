@@ -10,9 +10,13 @@ import {
 } from '@chakra-ui/react';
 import { BiHide, BiShow } from 'react-icons/bi';
 
+import { useNavigate } from 'react-router-dom';
+
 const Dashboard = () => {
   const [show, setShow] = useState(false);
   const handleClick = () => setShow(!show);
+
+  let navigate = useNavigate()
 
   return (
     <Center h="100vh" bg='blackAlpha.400'>
@@ -46,7 +50,9 @@ const Dashboard = () => {
           </InputRightElement>
         </InputGroup>
         <Center>
-          <Button bg="#e77449" color='white' size="md">
+          <Button bg="#e77449" color='white' size="md" onClick={() => {
+            navigate('/dashboardPage')
+          }}>
             Submit
           </Button>
         </Center>
