@@ -1,0 +1,13 @@
+.host_container {
+    flex: 4;
+}
+
+.host_wrapper {
+    display: flex;
+    border: 1px solid sienna;
+}
+
+.host_content {
+    border: 1px solid green;
+    flex: 4;
+}

@@ -3,7 +3,7 @@ import Chart from '../../Dashboard Components/Chart/Chart'
 import './Home.css'
 import { userData } from '../../../../DummyData'
 import SmallWidget from '../../Dashboard Components/Small Widget/SmallWidget'
-import LargeWidget from '../../Dashboard Components/LargeWidget/LargeWidget'
+import LargeWidget from '../../Dashboard Components/Large Widget/LargeWidget'
 
 const Home = () => {
   return (

@@ -9,6 +9,7 @@ import Dashboard from './components/Dashboard/Dashboard';
 import Logout from './components/Logout/Logout';
 import Error from './components/ErrorPage/Error';
 import DashboardPage from './components/Dashboard/DashboardPage';
+import Host from './components/Dashboard/Dashboard Pages/Host/Host';
 
 const App = () => {
   return (
@@ -21,6 +22,7 @@ const App = () => {
           <Route path='/logout' element={<Logout />}></Route>
           <Route path='*' element={<Error />}></Route>
           <Route path='/dashboardPage' element={<DashboardPage />}></Route>
+          <Route path='/host' element={<Host />}></Route>
         </Routes>
       </Router>
         

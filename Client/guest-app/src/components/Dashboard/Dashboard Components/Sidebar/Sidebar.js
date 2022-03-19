@@ -2,14 +2,21 @@ import React from 'react'
 import './Sidebar.css'
 import { Home,BarChart, TrendingUp, AccountCircle, People, Save, Share, ExitToApp, VerifiedUser } from '@material-ui/icons';
 
+import { useNavigate } from 'react-router-dom';
+
 const Sidebar = () => {
+    let navigate = useNavigate()
+
+
   return (
     <div className='sidebar_container'>
         <div className='sidebar_wrapper'>
             <div className="sidebar_menu">
                 <h3 className="sidebar_title">Dashboard</h3>
                 <ul className="sidebar_list">
-                    <li className="sidebar_list_item active">
+                    <li className="sidebar_list_item active" onClick={() => {
+                        navigate('/dashboardPage')
+                    }}>
                         <Home className='sidebar_icon'/>
                         Home
                     </li>
@@ -31,7 +38,9 @@ const Sidebar = () => {
                         <People className='sidebar_icon'/>
                         Visitors
                     </li>
-                    <li className="sidebar_list_item">
+                    <li className="sidebar_list_item" onClick={() => {
+                        navigate('/host')
+                    }}>
                         <AccountCircle className='sidebar_icon'/>
                         Hosts
                     </li>
