@@ -7,9 +7,10 @@ import BootsrapCarousel from './components/Carousel.js/BootstrapCarousel';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import Dashboard from './components/Dashboard/Dashboard';
 import Logout from './components/Logout/Logout';
-import Error from './components/ErrorPage/Error';
+// import Error from './components/ErrorPage/Error';
 import DashboardPage from './components/Dashboard/DashboardPage';
 import Host from './components/Dashboard/Dashboard Pages/Host/Host';
+import Edit from './components/Dashboard/Dashboard Pages/Edit/Edit';
 
 const App = () => {
   return (
@@ -20,9 +21,10 @@ const App = () => {
           <Route path='/' element={<BootsrapCarousel />}></Route>
           <Route path='/dashboard' element={<Dashboard />}></Route>
           <Route path='/logout' element={<Logout />}></Route>
-          <Route path='*' element={<Error />}></Route>
+          {/* <Route path='*' element={<Error />}></Route> */}
           <Route path='/dashboardPage' element={<DashboardPage />}></Route>
           <Route path='/host' element={<Host />}></Route>
+          <Route path='/edit/:editId' element={<Edit />}></Route>
         </Routes>
       </Router>
         

@@ -8,6 +8,40 @@
 }
 
 .host_content {
-    border: 1px solid green;
     flex: 4;
+    margin: 10px;
+    box-shadow: 0px 6px 7px 0px rgba(0,0,0,0.5);
+    -webkit-box-shadow: 0px 6px 7px 0px rgba(0,0,0,0.5);
+    -moz-box-shadow: 0px 6px 7px 0px rgba(0,0,0,0.5);
+    border-radius: 15px;
+    padding: 10px;
+}
+
+.host_action_container {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    margin: 5px 0;
+}
+
+.host_edit {
+    border: none;
+    border-radius: 7px;
+    background-color: #3bb077;
+    color: white;
+    height: 30px;
+    font-size: 16px;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    font-weight: 600;
+}
+
+.host_delete {
+    color: red;
+    cursor: pointer;
+}
+
+.host_delete:hover {
+    scale: 2;
 }

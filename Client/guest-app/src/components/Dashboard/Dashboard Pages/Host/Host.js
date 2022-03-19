@@ -1,10 +1,25 @@
+import { useState } from 'react'
 import './Host.css';
 import Navbar from '../../Dashboard Components/Navbar/Navbar';
 import Sidebar from '../../Dashboard Components/Sidebar/Sidebar';
 
 import { DataGrid } from '@material-ui/data-grid';
+import { DeleteOutline } from '@material-ui/icons';
+
+import { hostRows } from '../../../../DummyData';
+// import { Link } from 'react-router-dom';
+
+import { useNavigate } from 'react-router-dom';
 
 const Host = () => {
+  let navigate = useNavigate()
+
+  const [data, setData] = useState(hostRows)
+
+  const handleDelete = (id) => {
+    setData(data.filter(item => item.id !== id))
+  }
+
   const columns = [
     { field: 'id', headerName: 'ID', width: 100 },
     { field: 'name', headerName: 'Visitor', width: 130 },
@@ -21,76 +36,40 @@ const Host = () => {
       width: 150,
     },
     {
-        field: 'sign_in',
-        headerName: 'Sign In',
-        sortable: true,
-        width: 150,
-      },
-      {
-        field: 'sign_out',
-        headerName: 'Sign Out',
-        sortable: true,
-        width: 150,
-      },
-      {
-        field: 'status',
-        headerName: 'Status',
-        sortable: false,
-        width: 130,
-      },
-  ];
-
-  const rows = [
-    {
-      id: 1,
-      name: 'Jon Snow',
-      email: 'jonsnow@gmail.com',
-      company: 'Eagles Consult',
-      host: 'Kevin Keagan',
-      sign_in: 'Feb 24, 22 | 09:05',
-      sign_out: 'Feb 24, 22 | 10:45',
-      status: 'checked in'
+      field: 'sign_in',
+      headerName: 'Sign In',
+      sortable: true,
+      width: 150,
     },
     {
-        id: 2,
-        name: 'Jon Snow',
-        email: 'jonsnow@gmail.com',
-        company: 'Eagles Consult',
-        host: 'Kevin Keagan',
-        sign_in: 'Feb 24, 22 | 09:05',
-        sign_out: 'Feb 24, 22 | 10:45',
-        status: 'checked in'
+      field: 'sign_out',
+      headerName: 'Sign Out',
+      sortable: true,
+      width: 150,
+    },
+    {
+      field: 'status',
+      headerName: 'Status',
+      sortable: false,
+      width: 130,
+    },
+    {
+      field: 'action',
+      headerName: 'Action',
+      width: 150,
+      renderCell: params => {
+        return (
+          <div className="host_action_container">
+            {/* <Link to={"/edit/"+params.row.id}> */}
+              <button className="host_edit" onClick={() => {
+                navigate('/edit/'+params.row.id)
+              }}>Edit</button>
+            {/* </Link> */}
+            <DeleteOutline className="host_delete" onClick={() => handleDelete(params.row.id)} />
+          </div>
+        );
       },
-      {
-        id: 3,
-        name: 'Jon Snow',
-        email: 'jonsnow@gmail.com',
-        company: 'Eagles Consult',
-        host: 'Kevin Keagan',
-        sign_in: 'Feb 24, 22 | 09:05',
-        sign_out: 'Feb 24, 22 | 10:45',
-        status: 'checked out'
-      },
-      {
-        id: 4,
-        name: 'Jon Snow',
-        email: 'jonsnow@gmail.com',
-        company: 'Eagles Consult',
-        host: 'Kevin Keagan',
-        sign_in: 'Feb 24, 22 | 09:05',
-        sign_out: 'Feb 24, 22 | 10:45',
-        status: 'checked in'
-      },
-      {
-        id: 5,
-        name: 'Jon Snow',
-        email: 'jonsnow@gmail.com',
-        company: 'Eagles Consult',
-        host: 'Kevin Keagan',
-        sign_in: 'Feb 24, 22 | 09:05',
-        sign_out: 'Feb 24, 22 | 10:45',
-        status: 'checked out'
-      },
+    },
   ];
 
   return (
@@ -100,11 +79,12 @@ const Host = () => {
         <Sidebar />
         <div className="host_content">
           <DataGrid
-            rows={rows}
+            rows={data}
             columns={columns}
-            pageSize={5}
-            // rowsPerPageOptions={[5]}
+            pageSize={10}
+            // rowsPerPageOptions={[7]}
             checkboxSelection
+            disableSelectionOnClick
           />
         </div>
       </div>
