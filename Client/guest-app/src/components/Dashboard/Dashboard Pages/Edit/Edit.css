@@ -10,13 +10,22 @@
 .edit_content {
     flex: 4;
     padding: 20px;
-    border: 1px solid red;
+    margin: 10px 20px;
+    border-radius: 15px;
+    box-shadow: 0px 6px 7px 0px rgba(0,0,0,0.5);
+    -webkit-box-shadow: 0px 6px 7px 0px rgba(0,0,0,0.5);
+    -moz-box-shadow: 0px 6px 7px 0px rgba(0,0,0,0.5);
 }
 
 .edit_content_title_container {
     display: flex;
     align-items: center;
     justify-content: space-between;
+}
+
+.edit_content_title {
+    font-size: 22px;
+    font-weight: 600;
 }
 
 .edit_add_btn {
@@ -30,7 +39,7 @@
 }
 
 .edit_add_btn:hover {
-    opacity: 0.8;
+    opacity: 0.6;
 }
 
 .edit_widget_container {
@@ -41,6 +50,7 @@
 .edit_display {
     flex: 1;
     padding: 20px;
+    border-radius: 10px;
     box-shadow: 0px 6px 7px 0px rgba(0,0,0,0.5);
     -webkit-box-shadow: 0px 6px 7px 0px rgba(0,0,0,0.5);
     -moz-box-shadow: 0px 6px 7px 0px rgba(0,0,0,0.5);
@@ -53,6 +63,7 @@
     -webkit-box-shadow: 0px 6px 7px 0px rgba(0,0,0,0.5);
     -moz-box-shadow: 0px 6px 7px 0px rgba(0,0,0,0.5);
     margin-left: 20px;
+    border-radius: 10px;
 }
 
 .edit_display_top {
@@ -79,4 +90,29 @@
 
 .edit_display_position {
     font-weight: 300;
+}
+
+.edit_display_bottom {
+    margin-top: 20px;
+}
+
+.edit_display_title {
+    font-size: 14px;
+    font-weight: 600;
+    color: rgb(175, 170, 170);
+}
+
+.edit_display_info {
+    display: flex;
+    align-items: center;
+    margin: 20px 0px;
+    color: #444444;
+}
+
+.edit_display_icon {
+    font-size: 16px !important;
+}
+
+.edit_display_info_title {
+    margin-left: 10px;
 }
