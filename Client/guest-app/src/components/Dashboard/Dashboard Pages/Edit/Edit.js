@@ -3,8 +3,15 @@ import Sidebar from '../../Dashboard Components/Sidebar/Sidebar';
 import './Edit.css';
 import User from '../../../../assets/user.png';
 import { Add, CalendarToday, LocationSearching, MailOutline, PermIdentity, PhoneAndroid, Publish, SystemUpdateAlt } from '@material-ui/icons';
+import { useNavigate } from 'react-router-dom'
 
 const Edit = () => {
+  let navigate = useNavigate()
+
+  const handleUpdate = e => {
+    e.preventDefault()
+  }
+
   return (
     <div className="edit_container">
       <Navbar />
@@ -13,7 +20,9 @@ const Edit = () => {
         <div className="edit_content">
           <div className="edit_content_title_container">
             <span className="edit_content_title">Edit User</span>
-            <button className="edit_add_btn">Create  <Add /> </button>
+            <button className="edit_add_btn" onClick={() => {
+              navigate('/newUser')
+            }}>Create  <Add /> </button>
           </div>
           <div className="edit_widget_container">
             <div className="edit_display">
@@ -85,7 +94,7 @@ const Edit = () => {
                     </label>
                     <input type="file" name="file" id="file" style={{display: "none"}} />
                   </div>
-                  <button className="edit_update_btn">Update <SystemUpdateAlt /> </button>
+                  <button className="edit_update_btn" onClick={(e) => handleUpdate(e)}>Update <SystemUpdateAlt /> </button>
                 </div>
               </form>
             </div>

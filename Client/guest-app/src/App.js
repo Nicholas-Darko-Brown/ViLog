@@ -11,6 +11,7 @@ import Logout from './components/Logout/Logout';
 import DashboardPage from './components/Dashboard/DashboardPage';
 import Host from './components/Dashboard/Dashboard Pages/Host/Host';
 import Edit from './components/Dashboard/Dashboard Pages/Edit/Edit';
+import NewUser from './components/Dashboard/Dashboard Pages/New User/NewUser';
 
 const App = () => {
   return (
@@ -25,6 +26,7 @@ const App = () => {
           <Route path='/dashboardPage' element={<DashboardPage />}></Route>
           <Route path='/host' element={<Host />}></Route>
           <Route path='/edit/:editId' element={<Edit />}></Route>
+          <Route path='/newUser' element={<NewUser />}></Route>
         </Routes>
       </Router>
         
