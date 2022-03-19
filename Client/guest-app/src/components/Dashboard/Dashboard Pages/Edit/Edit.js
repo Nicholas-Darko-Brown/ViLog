@@ -2,7 +2,7 @@ import Navbar from '../../Dashboard Components/Navbar/Navbar';
 import Sidebar from '../../Dashboard Components/Sidebar/Sidebar';
 import './Edit.css';
 import User from '../../../../assets/user.png';
-import { CalendarToday, LocationSearching, MailOutline, PermIdentity, PhoneAndroid } from '@material-ui/icons';
+import { Add, CalendarToday, LocationSearching, MailOutline, PermIdentity, PhoneAndroid, Publish, SystemUpdateAlt } from '@material-ui/icons';
 
 const Edit = () => {
   return (
@@ -13,7 +13,7 @@ const Edit = () => {
         <div className="edit_content">
           <div className="edit_content_title_container">
             <span className="edit_content_title">Edit User</span>
-            <button className="edit_add_btn">Create</button>
+            <button className="edit_add_btn">Create  <Add /> </button>
           </div>
           <div className="edit_widget_container">
             <div className="edit_display">
@@ -51,7 +51,44 @@ const Edit = () => {
                 </div>
               </div>
             </div>
-            <div className="edit_update"></div>
+            <div className="edit_update">
+              <span className="edit_update_title">Edit</span>
+              <form action="" className="edit_update_form">
+                <div className="edit_update_left">
+                  <div className="edit_update_item">
+                    <label htmlFor="">Username</label>
+                    <input type="text" name="" id="" placeholder='annabeck99' className='edit_update_input'/>
+                  </div>
+                  <div className="edit_update_item">
+                    <label htmlFor="">Full Name</label>
+                    <input type="text" name="" id="" placeholder='Anna Becker' className='edit_update_input'/>
+                  </div>
+                  <div className="edit_update_item">
+                    <label htmlFor="">Email</label>
+                    <input type="email" name="" id="" placeholder='annabeck99@gmail.com' className='edit_update_input'/>
+                  </div>
+                  <div className="edit_update_item">
+                    <label htmlFor="">Phone</label>
+                    <input type="tel" name="" id="" placeholder='+1 234 567 89' className='edit_update_input'/>
+                  </div>
+                  <div className="edit_update_item">
+                    <label htmlFor="">Address</label>
+                    <input type="text" name="" id="" placeholder='New York | USA' className='edit_update_input'/>
+                  </div>
+                </div>
+
+                <div className="edit_update_right">
+                  <div className="edit_update_upload">
+                    <img src={User} alt="" className='edit_update_img'/>
+                    <label htmlFor="file">
+                      <Publish />
+                    </label>
+                    <input type="file" name="file" id="file" style={{display: "none"}} />
+                  </div>
+                  <button className="edit_update_btn">Update <SystemUpdateAlt /> </button>
+                </div>
+              </form>
+            </div>
           </div>
         </div>
       </div>
