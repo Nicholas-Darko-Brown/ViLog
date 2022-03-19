@@ -5,6 +5,7 @@ const dotenv = require("dotenv");
 const db = require("./config/database_connection");
 const sql_keywords = require("./config/sql_keywords");
 const tables = require("./config/tables");
+
 dotenv.config({path:'../.env'});
 const app = express();
 const port = process.env.PORT || 5000;
