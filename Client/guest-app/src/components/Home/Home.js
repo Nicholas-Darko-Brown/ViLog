@@ -22,6 +22,7 @@ import { MdDashboard } from 'react-icons/md';
 import { FiLogOut } from 'react-icons/fi';
 
 import { useNavigate } from 'react-router-dom';
+import FastLogin from '../FastLogin/FastLogin';
 
 const Home = () => {
   let navigate = useNavigate();
@@ -95,6 +96,8 @@ const Home = () => {
         <Center h="300px">
           <Heading size="4xl">Welcome...</Heading>
         </Center>
+
+        <FastLogin width='150px'/>
       </Flex>
     </Box>
   );
