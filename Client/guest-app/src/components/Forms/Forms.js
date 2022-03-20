@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import {
   FormControl,
   Input,
@@ -10,6 +10,9 @@ import {
 import Axios from 'axios'
 
 const Forms = () => {
+  const [employee, setEmployee] = useState([])
+
+
   const url = "http://localhost:3000/"
   const [data, setData] = useState({
     name: "",
@@ -37,6 +40,16 @@ const Forms = () => {
     Axios.post(url,data)
   }
 
+  const fetchEmployees = async () => {
+    const { data } = await Axios.get("/employeeName");
+    setEmployee(data);
+  }
+  
+  useEffect(() => {
+    fetchEmployees()
+  }, []);
+  
+ 
   return (
     <Box display="flex" justifyContent='center' height='100%'>
       <FormControl
@@ -73,8 +86,11 @@ const Forms = () => {
           <option value="contractor">Contractor</option>
         </Select>
         <Select onChange={(e) => handleChange(e)} value={data.host} isRequired id="host" placeholder="Who are you visiting?" mt={5} >
-          <option value="kofi kankam">Kofi Kankam</option>
-          <option value="yvonne smith">Yvonne Smith</option>
+          { employee? employee.map((name) => {
+            return <option value={name.Full_Name}>{name.Full_Name}</option>
+          }) : <option value="yvonne smith">Yvonne Smith</option> }
+          
+          {/*  */}
         </Select>
 
         <Button onClick={(e) => handleSubmit(e)} type="submit" colorScheme="orange" variant="solid" mt={9}>
