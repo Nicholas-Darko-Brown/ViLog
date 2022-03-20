@@ -44,8 +44,10 @@ const Sidebar = () => {
                         <AccountCircle className='sidebar_icon'/>
                         Hosts
                     </li>
-                    <li className="sidebar_list_item">
-                        <VerifiedUser className='sidebar_icon'/>
+                    <li className="sidebar_list_item" onClick={() => {
+                        navigate('/admin')
+                    }}>
+                        <VerifiedUser className='sidebar_icon' />
                         Admin
                     </li>
                 </ul>
