@@ -78,6 +78,7 @@ const Host = () => {
       <div className="host_wrapper">
         <Sidebar />
         <div className="host_content">
+        <span className='host_content_title'>Host Visitor Records</span>
           <DataGrid
             rows={data}
             columns={columns}

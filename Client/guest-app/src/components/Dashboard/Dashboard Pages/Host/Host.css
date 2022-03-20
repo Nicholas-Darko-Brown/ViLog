@@ -4,17 +4,22 @@
 
 .host_wrapper {
     display: flex;
-    border: 1px solid sienna;
 }
 
 .host_content {
     flex: 4;
-    margin: 10px;
-    box-shadow: 0px 6px 7px 0px rgba(0,0,0,0.5);
+    margin: 10px 10px 40px 10px ;
+    /* box-shadow: 0px 6px 7px 0px rgba(0,0,0,0.5);
     -webkit-box-shadow: 0px 6px 7px 0px rgba(0,0,0,0.5);
-    -moz-box-shadow: 0px 6px 7px 0px rgba(0,0,0,0.5);
+    -moz-box-shadow: 0px 6px 7px 0px rgba(0,0,0,0.5); */
     border-radius: 15px;
     padding: 10px;
+}
+
+.host_content_title {
+    font-size: 22px;
+    font-weight: 600;
+    margin-bottom: 5px;
 }
 
 .host_action_container {
@@ -48,5 +53,5 @@
 }
 
 .host_delete:hover {
-    scale: 2;
+    transform: scale(1.5);
 }
