@@ -1,0 +1,11 @@
+.admin_container {
+    flex: 4;
+}
+
+.admin_sidebar {
+    display: flex;
+}
+
+.admin_content {
+    flex: 4;
+}
