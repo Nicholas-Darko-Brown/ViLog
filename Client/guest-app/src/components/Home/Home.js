@@ -30,7 +30,7 @@ const Home = () => {
 
   return (
     <Box height="100vh">
-      <Flex flexDirection="column" alignItems="center" gap="2rem">
+      <Flex flexDirection="column" alignItems="center" gap="1.2rem">
         <Box
           p="0 1rem"
           w="70%"
@@ -97,8 +97,9 @@ const Home = () => {
           <Heading size="4xl">Welcome...</Heading>
         </Center>
 
-        <FastLogin width='150px'/>
+        
       </Flex>
+      <FastLogin />
     </Box>
   );
 };

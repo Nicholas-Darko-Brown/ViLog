@@ -1,11 +1,11 @@
-import React from 'react'
+import './FastLogin.css'
 import { QRCode } from "react-qrcode-logo";
 
 const FastLogin = () => {
   return (
-    <div>
-        <h1>Testing qr code</h1>
-        <QRCode value="https://github.com/Nicholas-Darko-Brown" size={100}/>
+    <div className='qrcode_container'>
+        <span className='qrcode_title'>Fast Check In</span>
+        <QRCode value="https://github.com/Nicholas-Darko-Brown" size={110} />
     </div>
   )
 }
