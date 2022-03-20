@@ -1,9 +1,10 @@
 const mysql = require("mysql");
 
-const db = mysql.createConnection({
-    host: 'localhost',
+const db = mysql.createPool({
+    connectionLimit: 10,
+    host: '34.121.5.11',
     user: 'root',
-    password: 'andreews',
+    password: '1234',
     database: 'vilog_db'
 });
 

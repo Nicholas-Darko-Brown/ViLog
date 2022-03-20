@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {
   FormControl,
   Input,
@@ -7,14 +7,42 @@ import {
   Text,
   Box,
 } from '@chakra-ui/react';
+import Axios from 'axios'
 
 const Forms = () => {
+  const url = "http://localhost:3000/"
+  const [data, setData] = useState({
+    name: "",
+    company: "",
+    tel: "",
+    email: "",
+    position: "",
+    host: ""
+  })
+  console.log(data)
+  
+
+  const handleChange = e => {
+    const newData = {...data}
+    newData[e.target.id] = e.target.value
+    setData(newData)
+    console.log(newData)
+  }
+
+  const handleSubmit = e => {
+    console.log("submitted")
+    e.preventDefault()
+    console.log(data)
+    
+    Axios.post(url,data)
+  }
+
   return (
     <Box display="flex" justifyContent='center' height='100%'>
       <FormControl
+        
         isRequired
         w="30%"
-        // border="2px solid orange.100"
         p={5}
         m={5}
         display="flex"
@@ -23,11 +51,7 @@ const Forms = () => {
         borderRadius="1rem"
         boxShadow="2xl"
         bg="orange.120"
-        // maxHeight='100%'
       >
-      {/* <Box display="flex" justifyContent='center'>
-      <Image src={User} alt="done" border="1px solid red" w="5rem" textAlign='center' />
-      </Box> */}
         <Text
           fontSize="1.2em"
           fontWeight="extrabold"
@@ -38,29 +62,22 @@ const Forms = () => {
         >
           Tell us about yourself
         </Text>
-        {/* <FormLabel htmlFor="name">Name</FormLabel> */}
-        <Input type="text" id="name" placeholder="Name" />
-        {/* <FormLabel htmlFor="company" mt={3}>
-          Company
-        </FormLabel> */}
-        <Input type="text" id="company" mt={5} placeholder="Company" />
-        {/* <FormLabel htmlFor="tel" mt={3}>
-          Phone
-        </FormLabel> */}
-        <Input type="tel" id="tel" mt={5} placeholder="Phone" />
-        {/* <FormLabel htmlFor="email" mt={3}>
-          Email
-        </FormLabel> */}
-        <Input type="email" id="email" mt={5} placeholder="Email" />
-        <Select isRequired placeholder="Select your position" mt={5} >
-          <option value="option1">I am a Visitor</option>
-          <option value="option2">I am a Contractor</option>
+
+        <Input onChange={(e) => handleChange(e)} value={data.name} type="text" id="name" placeholder="Name" />
+        <Input onChange={(e) => handleChange(e)} value={data.company} type="text" id="company" mt={5} placeholder="Company" />
+        <Input onChange={(e) => handleChange(e)} value={data.tel} type="tel" id="tel" mt={5} placeholder="Phone" />
+        <Input onChange={(e) => handleChange(e)} value={data.email} type="email" id="email" mt={5} placeholder="Email" />
+
+        <Select onChange={(e) => handleChange(e)} value={data.position} isRequired id="position" placeholder="Select your position" mt={5} >
+          <option value="visitor">Visitor</option>
+          <option value="contractor">Contractor</option>
         </Select>
-        <Select isRequired placeholder="Who are you visiting?" mt={5} >
-          <option value="option1">Kofi Kankam</option>
-          <option value="option2">Yvonne Smith</option>
+        <Select onChange={(e) => handleChange(e)} value={data.host} isRequired id="host" placeholder="Who are you visiting?" mt={5} >
+          <option value="kofi kankam">Kofi Kankam</option>
+          <option value="yvonne smith">Yvonne Smith</option>
         </Select>
-        <Button colorScheme="orange" variant="solid" mt={9}>
+
+        <Button onClick={(e) => handleSubmit(e)} type="submit" colorScheme="orange" variant="solid" mt={9}>
           Submit
         </Button>
       </FormControl>
