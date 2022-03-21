@@ -96,6 +96,11 @@ app.get("/edit/:id", (req, res) =>{
     });
 });
 
+app.put("/edit/:id", (req, res) =>{
+    const {id} = req.params;
+    console.log(id);
+});
+
 //route for adding visitors
 app.post("/", (req, res) => {
     const {name, company, tel, email, position, host} = req.body;
