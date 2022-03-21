@@ -81,6 +81,7 @@ app.get("/adminPage", (req, res) =>{
     });
 });
 
+//route for get the visitor data in the edit page
 app.get("/edit/:id", (req, res) =>{
     const {id} = req.params;
     const selectVisitor = `${select} ${fullNameCol}, ${positionCol}, ${emailCol}, ${phoneNumberCol} ${from} ${visitorsTable} ${where} ${idCol} = ${id}`;
