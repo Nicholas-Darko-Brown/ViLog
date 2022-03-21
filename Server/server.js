@@ -95,7 +95,7 @@ app.get("/edit/:id", (req, res) =>{
     });
 });
 
-app.get("/dashboardPage", (req, res) =>{
+app.get("/dashboardPage/graph", (req, res) =>{
     const selectQuery = `${select} ${month}, COUNT(${idCol}) as Visit from ${visitorsTable} ${group} ${by} ${month}`;
     db.query(selectQuery, (err, rows) => {
         if(err){
