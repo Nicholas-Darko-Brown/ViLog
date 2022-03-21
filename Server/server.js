@@ -54,7 +54,7 @@ app.get("/employeeName", (req, res) => {
     });
 });
 
-//route for retrieving the list of visitors in the host page
+//route for retrieving the visitors logs in the host page
 app.get("/host", (req, res) => {
     const selectVisitorListQuery = `${select} ${id}, ${fullNameCol}, ${emailCol}, ${companyCol}, ${hostCol}, ${signIn}, ${signOut} ${from} ${visitorsTable}`;
     db.query(selectVisitorListQuery, (err, rows) =>{
@@ -67,7 +67,7 @@ app.get("/host", (req, res) => {
     });
 });
 
-//route for retrieving the list of visitors in the admin page
+//route for retrieving the visitors logs in the admin page
 app.get("/adminPage", (req, res) =>{
     const selectVisitorListQuery = `${select} ${idCol}, ${fullNameCol}, ${emailCol}, ${companyCol}, ${hostCol}, ${signIn}, ${signOut} ${from} ${visitorsTable}`;
     const y = db.query(selectVisitorListQuery, (err, rows) =>{
