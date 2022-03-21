@@ -20,7 +20,8 @@ const tables = {
             hostCol: "Host",
             positionCol: "Position",
             signIn: "Time_In",
-            signOut: "Time_Out"
+            signOut: "Time_Out",
+            month: "Months"
         }
     }
 };

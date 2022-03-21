@@ -5,7 +5,10 @@ const sql_keywords = {
     from: "FROM",
     where: "WHERE",
     update: "UPDATE",
-    set: "SET"
+    set: "SET",
+    as: "AS",
+    group: "GROUP",
+    by: "BY"
 }
 
 module.exports = sql_keywords;

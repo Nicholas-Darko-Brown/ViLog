@@ -36,9 +36,9 @@ db.getConnection((err, connection) => {
 const visitorsTable = tables.visitors.name; 
 const employeesTable = tables.employees.name;
 // These variables store their corresponding values as sql keywords
-const {select, insertInto, values, from, where, update, set} = sql_keywords;
+const {select, insertInto, values, from, where, update, set, as, group, by} = sql_keywords;
 // These variables store their corresponding values as column names in the visitors table
-const {idCol, fullNameCol, companyCol, phoneNumberCol, emailCol, hostCol, positionCol, signIn, signOut} = tables.visitors.colums;
+const {idCol, fullNameCol, companyCol, phoneNumberCol, emailCol, hostCol, positionCol, signIn, signOut, month} = tables.visitors.colums;
 
 //route for rendering employees name in the select option of the form
 app.get("/employeeName", (req, res) => {
@@ -96,7 +96,15 @@ app.get("/edit/:id", (req, res) =>{
 });
 
 app.get("/dashboardPage", (req, res) =>{
-    
+    const selectQuery = `${select} ${month}, COUNT(${idCol}) as Visit from ${visitorsTable} ${group} ${by} ${month}`;
+    db.query(selectQuery, (err, rows) => {
+        if(err){
+            console.log(err);
+        }else{
+            console.log(rows);
+            res.status(200).send(rows);
+        }
+    });
 });
 
 app.put("/edit/:id", (req, res) =>{
