@@ -69,8 +69,8 @@ app.get("/host", (req, res) => {
 
 //route for retrieving the list of visitors in the admin page
 app.get("/adminPage", (req, res) =>{
-    const selectVisitorListQuery = `${select} ${id}, ${fullNameCol}, ${emailCol}, ${companyCol}, ${hostCol}, ${signIn}, ${signOut} ${from} ${visitorsTable}`;
-    db.query(selectVisitorListQuery, (err, rows) =>{
+    const selectVisitorListQuery = `${select} ${idCol}, ${fullNameCol}, ${emailCol}, ${companyCol}, ${hostCol}, ${signIn}, ${signOut} ${from} ${visitorsTable}`;
+    const y = db.query(selectVisitorListQuery, (err, rows) =>{
         if(err){
             console.log(err);
         }else{
