@@ -82,7 +82,15 @@ app.get("/adminPage/visitorsLog", (req, res) =>{
 });
 
 app.get("/adminPage/employeeList", (req, res) =>{
-    
+    const selectEmployeesQuery = `${select} * ${from} ${employeesTable}`;
+    db.query(selectEmployeesQuery, (err, rows) =>{
+        if(err){
+            console.log(err);
+        }else{
+            console.log(rows);
+            res.status(200).send(rows);
+        }
+    });
 });
 
 //route for get the visitor data in the edit page
