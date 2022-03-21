@@ -142,3 +142,63 @@ export const userData = [
       status: 'checked out',
     },
   ];
+
+
+  export const columnRows = [
+    {
+      id: 1,
+      name: 'Salami Suleiman',
+      email: 'salami89@gmail.com',
+      phone: '0234566789',
+      position: 'Head of Training'
+    },
+    {
+      id: 2,
+      name: 'Salami Suleiman',
+      email: 'salami89@gmail.com',
+      phone: '0234566789',
+      position: 'Head of Training'
+    },
+    {
+      id: 3,
+      name: 'Salami Suleiman',
+      email: 'salami89@gmail.com',
+      phone: '0234566789',
+      position: 'Head of Training'
+    },
+    {
+      id: 4,
+      name: 'Salami Suleiman',
+      email: 'salami89@gmail.com',
+      phone: '0234566789',
+      position: 'Head of Training'
+    },
+    {
+      id: 5,
+      name: 'Salami Suleiman',
+      email: 'salami89@gmail.com',
+      phone: '0234566789',
+      position: 'Head of Training'
+    },
+    {
+      id: 6,
+      name: 'Salami Suleiman',
+      email: 'salami89@gmail.com',
+      phone: '0234566789',
+      position: 'Head of Training'
+    },
+    {
+      id: 7,
+      name: 'Salami Suleiman',
+      email: 'salami89@gmail.com',
+      phone: '0234566789',
+      position: 'Head of Training'
+    },
+    {
+      id: 8,
+      name: 'Salami Suleiman',
+      email: 'salami89@gmail.com',
+      phone: '0234566789',
+      position: 'Head of Training'
+    },
+  ]

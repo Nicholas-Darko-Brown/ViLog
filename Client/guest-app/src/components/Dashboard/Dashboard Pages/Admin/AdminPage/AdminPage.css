@@ -22,6 +22,16 @@
     margin-bottom: 5px;
 }
 
+.employee_content_title {
+    font-size: 22px;
+    font-weight: 600;
+}
+
+.visitor_records {
+    border: 1px solid red;
+    margin-bottom: 50px;
+}
+
 .admin_action_container {
     display: flex;
     align-items: center;

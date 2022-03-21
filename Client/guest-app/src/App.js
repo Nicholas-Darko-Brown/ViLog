@@ -14,6 +14,7 @@ import Edit from './components/Dashboard/Dashboard Pages/Edit/Edit';
 import NewUser from './components/Dashboard/Dashboard Pages/New User/NewUser';
 import Admin from './components/Dashboard/Dashboard Pages/Admin/Admin';
 import AdminPage from './components/Dashboard/Dashboard Pages/Admin/AdminPage/AdminPage';
+import EmployeeEdit from './components/Dashboard/Dashboard Pages/Edit/EmployeeEdit/EmployeeEdit';
 
 const App = () => {
   return (
@@ -32,6 +33,7 @@ const App = () => {
 
           <Route path='/admin' element={<Admin />}></Route>
           <Route path='/adminPage' element={<AdminPage />}></Route>
+          <Route path='/employeeEdit/:employeeEdit' element={<EmployeeEdit />}></Route>
         </Routes>
       </Router>
         
