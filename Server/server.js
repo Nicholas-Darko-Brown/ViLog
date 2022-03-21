@@ -57,8 +57,8 @@ app.get("/employeeName", (req, res) => {
 
 //route for retrieving the list of visitors in the host page
 app.get("/host", (req, res) => {
-    const selectVisitorList = `${select} ${id}, ${fullNameCol}, ${emailCol}, ${companyCol}, ${hostCol}, ${signIn}, ${signOut} ${from} ${visitorsTable}`;
-    db.query(selectVisitorList, (err, rows) =>{
+    const selectVisitorListQuery = `${select} ${id}, ${fullNameCol}, ${emailCol}, ${companyCol}, ${hostCol}, ${signIn}, ${signOut} ${from} ${visitorsTable}`;
+    db.query(selectVisitorListQuery, (err, rows) =>{
         if(err){
             console.log(err);
         }else{
@@ -70,8 +70,8 @@ app.get("/host", (req, res) => {
 
 //route for retrieving the list of visitors in the admin page
 app.get("/adminPage", (req, res) =>{
-    const selectVisitorList = `${select} ${id}, ${fullNameCol}, ${emailCol}, ${companyCol}, ${hostCol}, ${signIn}, ${signOut} ${from} ${visitorsTable}`;
-    db.query(selectVisitorList, (err, rows) =>{
+    const selectVisitorListQuery = `${select} ${id}, ${fullNameCol}, ${emailCol}, ${companyCol}, ${hostCol}, ${signIn}, ${signOut} ${from} ${visitorsTable}`;
+    db.query(selectVisitorListQuery, (err, rows) =>{
         if(err){
             console.log(err);
         }else{
@@ -84,8 +84,8 @@ app.get("/adminPage", (req, res) =>{
 //route for get the visitor data in the edit page
 app.get("/edit/:id", (req, res) =>{
     const {id} = req.params;
-    const selectVisitor = `${select} ${fullNameCol}, ${positionCol}, ${emailCol}, ${phoneNumberCol} ${from} ${visitorsTable} ${where} ${idCol} = ${id}`;
-    db.query(selectVisitor, (err, rows) =>{
+    const selectVisitorQuery = `${select} ${fullNameCol}, ${positionCol}, ${emailCol}, ${phoneNumberCol} ${from} ${visitorsTable} ${where} ${idCol} = ${id}`;
+    db.query(selectVisitorQuery, (err, rows) =>{
         if(err){
             console.log(err);
         }else{
@@ -98,7 +98,7 @@ app.get("/edit/:id", (req, res) =>{
 
 app.put("/edit/:id", (req, res) =>{
     const {id} = req.params;
-    console.log(id);
+    const updateVisitorQuery = ``;
 });
 
 //route for adding visitors
