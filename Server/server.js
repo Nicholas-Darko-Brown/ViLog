@@ -42,11 +42,13 @@ db.getConnection((err, connection) => {
 
 const visitorsTable = tables.visitors.name; 
 const employeesTable = tables.employees.name;
+const administratorsTable = tables.administrators.name;
 // These variables store their corresponding values as sql keywords
 const {select, insertInto, values, from, where, update, set, as, group, by, and} = sql_keywords;
 // These variables store their corresponding values as column names in the visitors table
 const {idCol, fullNameCol, companyCol, phoneNumberCol, emailCol, hostCol, positionCol, signIn, signOut, month} = tables.visitors.colums;
 const {idCol1, fullNameCol1, emailCol1, positionCol1, phoneNumberCol1} = tables.employees.colums;
+const {emailCol2, passwordCol2} = tables.administrators.colums;
 
 //route for rendering employees name in the select option of the form
 app.get("/employeeName", (req, res) => {
@@ -154,6 +156,27 @@ app.post("/", (req, res) => {
 app.post("/dashboard", (req, res) =>{
     const {userEmail, password} = req.body;
     const selectQuery = `${select} * ${from} ${employeesTable} ${where} ${emailCol} = ? ${and} ${password} = ?`;
+    if(userEmail && password){
+        db.query(selectQuery, [userEmail, password], (err, result, fields) =>{
+            if(err) throw err;
+            if(result.length > 0){
+                req.session.loggedIn = true;
+                req.session.useremail = userEmail;
+                res.status(200).send("Logged in");
+            }else{
+                res.send("Incorrect user email or password");
+            }
+            res.end();
+        });
+    }else{
+        res.send("Please enter your username and password");
+    }
+});
+
+//route for administrators authentication
+app.post("/admin", (req, res) =>{
+    const {userEmail, password} = req.body;
+    const selectQuery = `${select} * ${from} ${administratorsTable} ${where} ${emailCol2} = ? ${and} ${passwordCol2} = ?`;
     if(userEmail && password){
         db.query(selectQuery, [userEmail, password], (err, result, fields) =>{
             if(err) throw err;

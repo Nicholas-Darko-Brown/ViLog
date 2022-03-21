@@ -25,6 +25,14 @@ const tables = {
             signOut: "Time_Out",
             month: "Months"
         }
+    },
+
+    administrators: {
+        name: "vilog_db.administrators",
+        colums: {
+            emailCol2: "Email",
+            passwordCol2: "Password"
+        }
     }
 };
 
