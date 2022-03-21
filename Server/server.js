@@ -45,7 +45,7 @@ const {idCol, fullNameCol, companyCol, phoneNumberCol, emailCol, hostCol, positi
 app.get("/employeeName", (req, res) => {
     const {fullNameCol} = tables.employees.colums;
     const selectEmployeesNameQuery = `${select} ${fullNameCol} ${from} ${employeesTable}`;
-    db.query(selectEmployeesNameQuery, (err, rows, fields) =>{
+    db.query(selectEmployeesNameQuery, (err, rows) =>{
         if(err){
             console.log(err);
         }else{
@@ -58,7 +58,7 @@ app.get("/employeeName", (req, res) => {
 //route for retrieving the list of visitors in the host page
 app.get("/host", (req, res) => {
     const selectVisitorList = `${select} ${id}, ${fullNameCol}, ${emailCol}, ${companyCol}, ${hostCol}, ${signIn}, ${signOut} ${from} ${visitorsTable}`;
-    db.query(selectVisitorList, (err, rows, fields) =>{
+    db.query(selectVisitorList, (err, rows) =>{
         if(err){
             console.log(err);
         }else{
@@ -71,7 +71,7 @@ app.get("/host", (req, res) => {
 //route for retrieving the lost of visitors in the admin page
 app.get("/adminPage", (req, res) =>{
     const selectVisitorList = `${select} ${id}, ${fullNameCol}, ${emailCol}, ${companyCol}, ${hostCol}, ${signIn}, ${signOut} ${from} ${visitorsTable}`;
-    db.query(selectVisitorList, (err, rows, fields) =>{
+    db.query(selectVisitorList, (err, rows) =>{
         if(err){
             console.log(err);
         }else{
@@ -84,7 +84,10 @@ app.get("/adminPage", (req, res) =>{
 app.get("/edit/:id", (req, res) =>{
     const {id} = req.params;
     const selectVisitor = `${select} ${fullNameCol}, ${positionCol}, ${emailCol}, ${phoneNumberCol} ${from} ${visitorsTable} ${where} ${idCol} = ${id}`;
-    
+    db.query(selectVisitor, (err, rows, fields) =>{
+
+    });
+
 });
 
 //route for adding visitors
