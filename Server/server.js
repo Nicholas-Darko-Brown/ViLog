@@ -5,6 +5,7 @@ const dotenv = require("dotenv");
 const db = require("./config/database_connection");
 const sql_keywords = require("./config/sql_keywords");
 const tables = require("./config/tables");
+const path = require("path");
 
 dotenv.config({path:'../.env'});
 const app = express();
@@ -57,7 +58,7 @@ app.get("/employeeName", (req, res) => {
 
 //route for retrieving the visitors log in the host page
 app.get("/host", (req, res) => {
-    const selectVisitorListQuery = `${select} ${id}, ${fullNameCol}, ${emailCol}, ${companyCol}, ${hostCol}, ${signIn}, ${signOut} ${from} ${visitorsTable}`;
+    const selectVisitorListQuery = `${select} ${idCol}, ${fullNameCol}, ${emailCol}, ${companyCol}, ${hostCol}, ${signIn}, ${signOut} ${from} ${visitorsTable}`;
     db.query(selectVisitorListQuery, (err, rows) =>{
         if(err){
             console.log(err);
@@ -94,7 +95,7 @@ app.get("/adminPage/employeeList", (req, res) =>{
     });
 });
 
-//route for get the visitor data in the edit page
+//route for getting the visitor data in the edit page
 app.get("/edit/:id", (req, res) =>{
     const {id} = req.params;
     const selectVisitorQuery = `${select} ${fullNameCol}, ${positionCol}, ${emailCol}, ${phoneNumberCol} ${from} ${visitorsTable} ${where} ${idCol} = ${id}`;
@@ -142,6 +143,8 @@ app.post("/", (req, res) => {
         }
     });
 });
+
+
 
 app.listen(port, () => {
     console.log(`Server listening on port ${port}`);
