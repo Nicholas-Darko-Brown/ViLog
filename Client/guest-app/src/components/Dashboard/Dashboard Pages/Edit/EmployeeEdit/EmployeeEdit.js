@@ -23,7 +23,7 @@ const EmployeeEdit = () => {
             <button
               className="edit_add_btn"
               onClick={() => {
-                navigate('/newUser');
+                navigate('/newEmployeeUser');
               }}
             >
               Create <Add />{' '}
