@@ -2,10 +2,11 @@ const tables = {
     employees: {
         name: "vilog_db.employees", 
         colums: {
-            fullNameCol: "Full_Name",
-            emailCol: "Email",
-            positionCol: "Position",
-            phoneNumberCol: "Phone_number"
+            idCol1: "Id",
+            fullNameCol1: "Full_Name",
+            emailCol1: "Email",
+            positionCol1: "Position",
+            phoneNumberCol1: "Phone_number"
         }
     },
 

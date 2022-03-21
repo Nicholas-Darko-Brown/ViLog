@@ -39,6 +39,7 @@ const employeesTable = tables.employees.name;
 const {select, insertInto, values, from, where, update, set, as, group, by} = sql_keywords;
 // These variables store their corresponding values as column names in the visitors table
 const {idCol, fullNameCol, companyCol, phoneNumberCol, emailCol, hostCol, positionCol, signIn, signOut, month} = tables.visitors.colums;
+const {idCol1, fullNameCol1, emailCol1, positionCol1, phoneNumberCol1} = tables.employees.colums;
 
 //route for rendering employees name in the select option of the form
 app.get("/employeeName", (req, res) => {
@@ -78,6 +79,10 @@ app.get("/adminPage/visitorsLog", (req, res) =>{
             res.status(200).send(rows);
         }
     });
+});
+
+app.get("/adminPage/employeeList", (req, res) =>{
+    
 });
 
 //route for get the visitor data in the edit page
