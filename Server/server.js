@@ -95,6 +95,7 @@ app.get("/edit/:id", (req, res) =>{
     });
 });
 
+// route for the graph
 app.get("/dashboardPage/graph", (req, res) =>{
     const selectQuery = `${select} ${month}, COUNT(${idCol}) as Visit from ${visitorsTable} ${group} ${by} ${month}`;
     db.query(selectQuery, (err, rows) => {
@@ -107,6 +108,7 @@ app.get("/dashboardPage/graph", (req, res) =>{
     });
 });
 
+// route for editting the visitor
 app.put("/edit/:id", (req, res) =>{
     const {id} = req.params;
     const updateVisitorQuery = ``;
