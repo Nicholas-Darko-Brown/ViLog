@@ -3,7 +3,9 @@ const sql_keywords = {
     insertInto: "INSERT INTO",
     values: "VALUES",
     from: "FROM",
-    where: "WHERE"
+    where: "WHERE",
+    update: "UPDATE",
+    set: "SET"
 }
 
 module.exports = sql_keywords;
