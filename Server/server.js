@@ -160,8 +160,7 @@ app.post("/dashboard", (req, res) =>{
             if(result.length > 0){
                 req.session.loggedIn = true;
                 req.session.useremail = userEmail;
-
-                res.redirect("/dashboardPage");
+                res.status(200).send("Logged in");
             }else{
                 res.send("Incorrect user email or password");
             }
