@@ -81,6 +81,7 @@ app.get("/adminPage/visitorsLog", (req, res) =>{
     });
 });
 
+//route for retrieving the employees data in the admin page
 app.get("/adminPage/employeeList", (req, res) =>{
     const selectEmployeesQuery = `${select} * ${from} ${employeesTable}`;
     db.query(selectEmployeesQuery, (err, rows) =>{
