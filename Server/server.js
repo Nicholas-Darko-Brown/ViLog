@@ -38,7 +38,7 @@ const employeesTable = tables.employees.name;
 // These variables store their corresponding values as sql keywords
 const {select, insertInto, values, from} = sql_keywords;
 // These variables store their corresponding values as column names in the visitors table
-const {fullNameCol, companyCol, phoneNumberCol, emailCol, hostCol, positionCol} = tables.visitors.colums;
+const {id, fullNameCol, companyCol, phoneNumberCol, emailCol, hostCol, positionCol, signIn, signOut} = tables.visitors.colums;
 
 //route for rendering employees name in the select option of the form
 app.get("/employeeName", (req, res) => {
@@ -52,6 +52,22 @@ app.get("/employeeName", (req, res) => {
             res.status(200).send(rows);
         }
     });
+});
+
+app.get("/host", (req, res) => {
+    const selectVisitorList = `${select} ${id}, ${fullNameCol}, ${emailCol}, ${companyCol}, ${hostCol}, ${signIn}, ${signOut} ${from} ${visitorsTable}`;
+    db.query(selectVisitorList, (err, rows, fields) =>{
+        if(err){
+            console.log(err);
+        }else{
+            console.log(rows);
+            res.status(200).send(rows);
+        }
+    });
+});
+
+app.get("/adminPage", (req, res) =>{
+
 });
 
 //route for adding visitors
