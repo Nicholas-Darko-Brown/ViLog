@@ -5,6 +5,7 @@ const dotenv = require("dotenv");
 const db = require("./config/database_connection");
 const sql_keywords = require("./config/sql_keywords");
 const tables = require("./config/tables");
+const { where } = require("./config/sql_keywords");
 
 dotenv.config({path:'../.env'});
 const app = express();
@@ -38,7 +39,7 @@ const employeesTable = tables.employees.name;
 // These variables store their corresponding values as sql keywords
 const {select, insertInto, values, from} = sql_keywords;
 // These variables store their corresponding values as column names in the visitors table
-const {id, fullNameCol, companyCol, phoneNumberCol, emailCol, hostCol, positionCol, signIn, signOut} = tables.visitors.colums;
+const {idCol, fullNameCol, companyCol, phoneNumberCol, emailCol, hostCol, positionCol, signIn, signOut} = tables.visitors.colums;
 
 //route for rendering employees name in the select option of the form
 app.get("/employeeName", (req, res) => {
@@ -78,6 +79,12 @@ app.get("/adminPage", (req, res) =>{
             res.status(200).send(rows);
         }
     });
+});
+
+app.get("/edit/:id", (req, res) =>{
+    const {id} = req.params;
+    const selectVisitor = `${select} ${fullNameCol}, ${positionCol}, ${emailCol}, ${phoneNumberCol} ${from} ${visitorsTable} ${where} ${idCol} = ${id}`;
+    
 });
 
 //route for adding visitors

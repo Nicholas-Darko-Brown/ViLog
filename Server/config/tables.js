@@ -12,7 +12,7 @@ const tables = {
     visitors: {
         name: "vilog_db.visitors",
         colums: {
-            id: "Id",
+            idCol: "Id",
             fullNameCol: "Full_name",
             companyCol: "Company",
             phoneNumberCol: "Phone_Number",
