@@ -68,7 +68,7 @@ app.get("/host", (req, res) => {
     });
 });
 
-//route for retrieving the lost of visitors in the admin page
+//route for retrieving the list of visitors in the admin page
 app.get("/adminPage", (req, res) =>{
     const selectVisitorList = `${select} ${id}, ${fullNameCol}, ${emailCol}, ${companyCol}, ${hostCol}, ${signIn}, ${signOut} ${from} ${visitorsTable}`;
     db.query(selectVisitorList, (err, rows) =>{
