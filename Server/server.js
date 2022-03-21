@@ -40,7 +40,7 @@ const {select, insertInto, values, from} = sql_keywords;
 // These variables store their corresponding values as column names in the visitors table
 const {fullNameCol, companyCol, phoneNumberCol, emailCol, hostCol, positionCol} = tables.visitors.colums;
 
-app.get("/", (req, res) => {
+app.get("/employeeName", (req, res) => {
     const {fullNameCol} = tables.employees.colums;
     const selectEmployeesNameQuery = `${select} ${fullNameCol} ${from} ${employeesTable}`;
     db.query(selectEmployeesNameQuery, (err, rows, fields) =>{
