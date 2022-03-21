@@ -84,10 +84,15 @@ app.get("/adminPage", (req, res) =>{
 app.get("/edit/:id", (req, res) =>{
     const {id} = req.params;
     const selectVisitor = `${select} ${fullNameCol}, ${positionCol}, ${emailCol}, ${phoneNumberCol} ${from} ${visitorsTable} ${where} ${idCol} = ${id}`;
-    db.query(selectVisitor, (err, rows, fields) =>{
-
+    db.query(selectVisitor, (err, rows) =>{
+        if(err){
+            console.log(err);
+        }else{
+            const visitorData = rows[0];
+            console.log(visitorData);
+            res.status(200).send(visitorData);
+        }
     });
-
 });
 
 //route for adding visitors
