@@ -6,6 +6,7 @@ const db = require("./config/database_connection");
 const sql_keywords = require("./config/sql_keywords");
 const tables = require("./config/tables");
 const path = require("path");
+const session = require("express-session");
 
 dotenv.config({path:'../.env'});
 const app = express();
@@ -15,6 +16,11 @@ app.use(cors());
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
 app.use(express.json());
+app.use(session({
+	secret: 'secret',
+	resave: true,
+	saveUninitialized: true
+}));
 
 // added these line of codes in case of server error
 app.use((err, req, res, text) => {
@@ -144,13 +150,22 @@ app.post("/", (req, res) => {
     });
 });
 
+//route for Employee's authentication
 app.post("/dashboard", (req, res) =>{
     const {userEmail, password} = req.body;
     const selectQuery = `${select} * ${from} ${employeesTable} ${where} ${emailCol} = ? ${and} ${password} = ?`;
     if(userEmail && password){
         db.query(selectQuery, [userEmail, password], (err, result, fields) =>{
             if(err) throw err;
-            if(res)
+            if(result.length > 0){
+                req.session.loggedIn = true;
+                req.session.useremail = userEmail;
+
+                res.redirect("/dashboardPage");
+            }else{
+                res.send("Incorrect user email or password");
+            }
+            res.end();
         });
     }else{
         res.send("Please enter your username and password");
