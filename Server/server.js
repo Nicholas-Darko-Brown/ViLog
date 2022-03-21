@@ -40,7 +40,8 @@ const {select, insertInto, values, from} = sql_keywords;
 // These variables store their corresponding values as column names in the visitors table
 const {fullNameCol, companyCol, phoneNumberCol, emailCol, hostCol, positionCol} = tables.visitors.colums;
 
-app.get("/", (req, res) => {
+//route for rendering employees name in the select option of the form
+app.get("/employeeName", (req, res) => {
     const {fullNameCol} = tables.employees.colums;
     const selectEmployeesNameQuery = `${select} ${fullNameCol} ${from} ${employeesTable}`;
     db.query(selectEmployeesNameQuery, (err, rows, fields) =>{
@@ -51,8 +52,9 @@ app.get("/", (req, res) => {
             res.status(200).send(rows);
         }
     });
-})
+});
 
+//route for adding visitors
 app.post("/", (req, res) => {
     const {name, company, tel, email, position, host} = req.body;
     const insertVisitorQuery = `${insertInto} ${visitorsTable} (${fullNameCol}, ${companyCol}, ${phoneNumberCol}, ${emailCol}, ${hostCol}, ${positionCol}) ${values} (?,?,?,?,?,?)`;
