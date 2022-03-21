@@ -67,7 +67,15 @@ app.get("/host", (req, res) => {
 });
 
 app.get("/adminPage", (req, res) =>{
-
+    const selectVisitorList = `${select} ${id}, ${fullNameCol}, ${emailCol}, ${companyCol}, ${hostCol}, ${signIn}, ${signOut} ${from} ${visitorsTable}`;
+    db.query(selectVisitorList, (err, rows, fields) =>{
+        if(err){
+            console.log(err);
+        }else{
+            console.log(rows);
+            res.status(200).send(rows);
+        }
+    });
 });
 
 //route for adding visitors
