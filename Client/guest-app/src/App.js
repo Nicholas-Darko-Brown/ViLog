@@ -15,6 +15,7 @@ import NewUser from './components/Dashboard/Dashboard Pages/New User/NewUser';
 import Admin from './components/Dashboard/Dashboard Pages/Admin/Admin';
 import AdminPage from './components/Dashboard/Dashboard Pages/Admin/AdminPage/AdminPage';
 import EmployeeEdit from './components/Dashboard/Dashboard Pages/Edit/EmployeeEdit/EmployeeEdit';
+import NewEmployeeUser from './components/Dashboard/Dashboard Pages/New User/NewEmployeeUser/NewEmployeeUser'
 
 const App = () => {
   return (
@@ -34,6 +35,7 @@ const App = () => {
           <Route path='/admin' element={<Admin />}></Route>
           <Route path='/adminPage' element={<AdminPage />}></Route>
           <Route path='/employeeEdit/:employeeEdit' element={<EmployeeEdit />}></Route>
+          <Route path='/newEmployeeUser' element={<NewEmployeeUser />}></Route>
         </Routes>
       </Router>
         
