@@ -6,7 +6,8 @@ const tables = {
             fullNameCol1: "Full_Name",
             emailCol1: "Email",
             positionCol1: "Position",
-            phoneNumberCol1: "Phone_number"
+            phoneNumberCol1: "Phone_number",
+            passwordCol1: "Password"
         }
     },
 

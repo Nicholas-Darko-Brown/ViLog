@@ -8,7 +8,8 @@ const sql_keywords = {
     set: "SET",
     as: "AS",
     group: "GROUP",
-    by: "BY"
+    by: "BY",
+    and: "AND"
 }
 
 module.exports = sql_keywords;

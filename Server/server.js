@@ -37,7 +37,7 @@ db.getConnection((err, connection) => {
 const visitorsTable = tables.visitors.name; 
 const employeesTable = tables.employees.name;
 // These variables store their corresponding values as sql keywords
-const {select, insertInto, values, from, where, update, set, as, group, by} = sql_keywords;
+const {select, insertInto, values, from, where, update, set, as, group, by, and} = sql_keywords;
 // These variables store their corresponding values as column names in the visitors table
 const {idCol, fullNameCol, companyCol, phoneNumberCol, emailCol, hostCol, positionCol, signIn, signOut, month} = tables.visitors.colums;
 const {idCol1, fullNameCol1, emailCol1, positionCol1, phoneNumberCol1} = tables.employees.colums;
@@ -112,7 +112,7 @@ app.get("/edit/:id", (req, res) =>{
 
 // route for the graph
 app.get("/dashboardPage/graph", (req, res) =>{
-    const selectQuery = `${select} ${month}, COUNT(${idCol}) as Visit from ${visitorsTable} ${group} ${by} ${month}`;
+    const selectQuery = `${select} ${month}, COUNT(${idCol}) ${as} Visit ${from} ${visitorsTable} ${group} ${by} ${month}`;
     db.query(selectQuery, (err, rows) => {
         if(err){
             console.log(err);
@@ -144,7 +144,18 @@ app.post("/", (req, res) => {
     });
 });
 
-
+app.post("/dashboard", (req, res) =>{
+    const {userEmail, password} = req.body;
+    const selectQuery = `${select} * ${from} ${employeesTable} ${where} ${emailCol} = ? ${and} ${password} = ?`;
+    if(userEmail && password){
+        db.query(selectQuery, [userEmail, password], (err, result, fields) =>{
+            if(err) throw err;
+            if(res)
+        });
+    }else{
+        res.send("Please enter your username and password");
+    }
+});
 
 app.listen(port, () => {
     console.log(`Server listening on port ${port}`);
