@@ -95,6 +95,10 @@ app.get("/edit/:id", (req, res) =>{
     });
 });
 
+app.get("/dashboardPage", (req, res) =>{
+    
+});
+
 app.put("/edit/:id", (req, res) =>{
     const {id} = req.params;
     const updateVisitorQuery = ``;
