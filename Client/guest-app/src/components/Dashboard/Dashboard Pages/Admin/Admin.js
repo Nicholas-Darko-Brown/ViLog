@@ -7,16 +7,83 @@ import {
   Input,
   InputGroup,
   InputRightElement,
+  useToast
 } from '@chakra-ui/react';
 import { BiHide, BiShow } from 'react-icons/bi';
 
 import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
 
 const Admin = () => {
   const [show, setShow] = useState(false);
   const handleClick = () => setShow(!show);
 
+  const [state, setState] = useState({
+    email: '',
+    password: '',
+  })
+
+  const toast = useToast()
+
   let navigate = useNavigate()
+
+  const handleInputChange = (e) => {
+    const value = e.target.value;
+
+    setState({
+      ...state, [e.target.name] : value
+    })
+    
+  }
+
+  const userEmail = state.email;
+  const password = state.password;
+
+  const handleLogin = async () => {
+    if(!userEmail || !password){
+      toast({
+        title: 'Fill all fields',
+        status: 'warning',
+        duration: 1000,
+        isClosable: true,
+        position: 'top'
+      })
+      return
+    }
+
+    // navigate('/adminPage')
+
+    try {
+      const { data } = await axios.post("/admin", {userEmail, password}, {headers: {
+        'Content-type': 'application/json'
+      }})
+      console.log(data);
+
+      if(data === "Logged in"){
+        toast({
+          title: 'Login successful',
+          status: 'success',
+          duration: 3000,
+          isClosable: true,
+          position: 'top'
+        })
+        navigate("/adminPage")
+      }
+    } catch(err) {
+      toast({
+        title: 'Failed login',
+        description: err.message ,
+        status: 'error',
+        duration: 3000,
+        isClosable: true,
+        position: 'top'
+      });
+    }
+  }
+
+
+  console.log(userEmail)
+  console.log(password)
 
   return (
     <Center h="100vh" bg='blackAlpha.400'>
@@ -31,14 +98,17 @@ const Admin = () => {
         p={7}
       >
         <Heading size="lg">Login</Heading>
-        <Input id="email" type="email" placeholder="Enter your email" mt={4}/>
+        <Input id="email" type="email" name="email" placeholder="Enter your email" mt={4} onChange={handleInputChange}/>
         <InputGroup size="md">
           <Input
+            name="password"
             pr="3rem"
             type={show ? 'text' : 'password'}
             placeholder="Enter password"
             mt={4}
             mb={8}
+            
+            onChange={handleInputChange}
           />
           <InputRightElement
             width="3rem"
@@ -50,9 +120,7 @@ const Admin = () => {
           </InputRightElement>
         </InputGroup>
         <Center>
-          <Button bg="#e77449" color='white' size="md" onClick={() => {
-            navigate('/adminPage')
-          }}>
+          <Button bg="#e77449" color='white' size="md" onClick={handleLogin}>
             Submit
           </Button>
         </Center>

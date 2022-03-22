@@ -125,8 +125,8 @@ const AdminPage = () => {
           <DataGrid
             rows={data}
             columns={visitorColumns}
-            pageSize={10}
-            // rowsPerPageOptions={[7]}
+            pageSize={5}
+            rowsPerPageOptions={[5]}
             checkboxSelection
             disableSelectionOnClick
             className='visitor_records'
