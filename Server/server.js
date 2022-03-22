@@ -79,7 +79,7 @@ app.get("/host", (req, res) => {
 
 //route for retrieving the visitors log in the admin page
 app.get("/adminPage/visitorsLog", (req, res) =>{
-    const selectVisitorListQuery = `${select} ${idCol}, ${fullNameCol}, ${emailCol}, ${companyCol}, ${hostCol}, ${signIn}, ${signOut} ${from} ${visitorsTable}`;
+    const selectVisitorListQuery = `${select} ${idCol}, ${fullNameCol}, ${emailCol}, ${phoneNumberCol}, ${companyCol}, ${positionCol}, ${hostCol}, ${signIn}, ${signOut} ${from} ${visitorsTable}`;
     const y = db.query(selectVisitorListQuery, (err, rows) =>{
         if(err){
             console.log(err);
