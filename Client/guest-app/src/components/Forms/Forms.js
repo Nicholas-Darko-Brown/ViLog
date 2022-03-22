@@ -16,6 +16,9 @@ const Forms = () => {
   const [employee, setEmployee] = useState([]);
   const [selectedDate, setSelectedDate] = useState(null);
 
+  const timestamp = new Date(Date.now()).toISOString();
+  console.log(timestamp)
+
   const url = 'http://localhost:3000/';
   const [data, setData] = useState({
     name: '',
@@ -24,6 +27,7 @@ const Forms = () => {
     email: '',
     position: '',
     host: '',
+    // timestamp: ''
   });
   console.log(data);
 
@@ -38,7 +42,9 @@ const Forms = () => {
   const handleSubmit = e => {
     console.log('submitted');
     e.preventDefault();
-    console.log(data);
+    // console.log(data);
+    const newData = Object.assign(data, {timestamp: timestamp})
+    console.log(newData)
 
     Axios.post(url, data);
   };
@@ -51,6 +57,8 @@ const Forms = () => {
   useEffect(() => {
     fetchEmployees();
   }, []);
+
+  console.log(Date.now)
 
   return (
     <Box display="flex" justifyContent="center" height="100%">
@@ -149,6 +157,8 @@ const Forms = () => {
           showTimeSelect
           placeholderText="Please, select your check in time"
           className='date_picker'
+          id='timestamp'
+          // value={data.timestamp}
         />
 
         <Button
