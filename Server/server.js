@@ -45,7 +45,7 @@ const employeesTable = tables.employees.name;
 const administratorsTable = tables.administrators.name;
 // These variables store their corresponding values as sql keywords
 const {select, insertInto, values, from, where, update, set, as, group, by, and, union} = sql_keywords;
-// These variables store their corresponding values as column names in the visitors table
+// These variables store their corresponding values as column names in the tables
 const {idCol, fullNameCol, companyCol, phoneNumberCol, emailCol, hostCol, positionCol, signIn, signOut, month} = tables.visitors.colums;
 const {idCol1, fullNameCol1, emailCol1, positionCol1, phoneNumberCol1, passwordCol1} = tables.employees.colums;
 const {emailCol2, passwordCol2} = tables.administrators.colums;
