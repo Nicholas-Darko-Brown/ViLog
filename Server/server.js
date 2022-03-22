@@ -155,7 +155,7 @@ app.post("/", (req, res) => {
 //route for Employee's authentication
 app.post("/dashboard", (req, res) =>{
     const {userEmail, password} = req.body;
-    const selectQuery = `${select} * ${from} ${employeesTable} ${where} ${emailCol} = ? ${and} ${password} = ?`;
+    const selectQuery = `${select} ${emailCol1}, ${passwordCol1} ${from} ${employeesTable} ${where} ${emailCol1} = ? ${and} ${passwordCol1} = ?`;
     if(userEmail && password){
         db.query(selectQuery, [userEmail, password], (err, result, fields) =>{
             if(err) throw err;
