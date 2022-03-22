@@ -47,13 +47,13 @@ const administratorsTable = tables.administrators.name;
 const {select, insertInto, values, from, where, update, set, as, group, by, and} = sql_keywords;
 // These variables store their corresponding values as column names in the visitors table
 const {idCol, fullNameCol, companyCol, phoneNumberCol, emailCol, hostCol, positionCol, signIn, signOut, month} = tables.visitors.colums;
-const {idCol1, fullNameCol1, emailCol1, positionCol1, phoneNumberCol1} = tables.employees.colums;
+const {idCol1, fullNameCol1, emailCol1, positionCol1, phoneNumberCol1, passwordCol1} = tables.employees.colums;
 const {emailCol2, passwordCol2} = tables.administrators.colums;
 
 //route for rendering employees name in the select option of the form
 app.get("/employeeName", (req, res) => {
     const {fullNameCol} = tables.employees.colums;
-    const selectEmployeesNameQuery = `${select} ${fullNameCol} ${from} ${employeesTable}`;
+    const selectEmployeesNameQuery = `${select} ${fullNameCol1} ${from} ${employeesTable}`;
     db.query(selectEmployeesNameQuery, (err, rows) =>{
         if(err){
             console.log(err);
@@ -155,11 +155,15 @@ app.post("/", (req, res) => {
 //route for Employee's authentication
 app.post("/dashboard", (req, res) =>{
     const {userEmail, password} = req.body;
-    const selectQuery = `${select} ${emailCol1}, ${passwordCol1} ${from} ${employeesTable} ${where} ${emailCol1} = ? ${and} ${passwordCol1} = ?`;
+    const selectQueryArray = [
+        `${select} ${emailCol1}, ${passwordCol1} ${from} ${employeesTable} ${where} ${emailCol1} = ? ${and} ${passwordCol1} = ?`,
+        `${select} * ${from} ${administratorsTable} ${where} ${emailCol2} = ? ${and} ${passwordCol2} = ?`
+    ];
+
     if(userEmail && password){
-        db.query(selectQuery, [userEmail, password], (err, result, fields) =>{
+        db.query(selectQueryArray.join(";"), [userEmail, password], (err, result, fields) =>{
             if(err) throw err;
-            if(result.length > 0){
+            if(result.length > 0 && result){
                 req.session.loggedIn = true;
                 req.session.useremail = userEmail;
                 res.status(200).send("Logged in");
@@ -185,7 +189,7 @@ app.post("/admin", (req, res) =>{
                 req.session.useremail = userEmail;
                 res.status(200).send("Logged in");
             }else{
-                res.send("Incorrect user email or password");
+                throw new Error("Invalid username and password");
             }
             res.end();
         });
