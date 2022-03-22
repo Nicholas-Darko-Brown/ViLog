@@ -139,10 +139,11 @@ app.put("/edit/:id", (req, res) =>{
 
 //route for adding visitors
 app.post("/", (req, res) => {
-    const {name, company, tel, email, position, host} = req.body;
-    const insertVisitorQuery = `${insertInto} ${visitorsTable} (${fullNameCol}, ${companyCol}, ${phoneNumberCol}, ${emailCol}, ${hostCol}, ${positionCol}) ${values} (?,?,?,?,?,?)`;
+    const {name, company, tel, email, position, host, timestamp} = req.body;
+    const timeIn = new Date(timestamp);
+    const insertVisitorQuery = `${insertInto} ${visitorsTable} (${fullNameCol}, ${companyCol}, ${phoneNumberCol}, ${emailCol}, ${hostCol}, ${positionCol}, ${signIn}) ${values} (?,?,?,?,?,?,?)`;
 
-    db.query(insertVisitorQuery, [name, company, tel, email, host, position], (err, result) =>{
+    db.query(insertVisitorQuery, [name, company, tel, email, host, position, timeIn.toLocaleTimeString()], (err, result) =>{
         if(err){
             console.log(err);
         }else{
