@@ -29,7 +29,7 @@ app.use((err, req, res, text) => {
     res.status(500).send('Internal server error 500');
 });
 
-//testing database connection
+//checking database connection
 db.getConnection((err, connection) => {
     if(err){
         console.log(`Database connection failed.\n Error: ${JSON.stringify(err)}`);
