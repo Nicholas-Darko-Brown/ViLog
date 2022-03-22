@@ -29,7 +29,7 @@ app.use((err, req, res, text) => {
     res.status(500).send('Internal server error 500');
 });
 
-//testing database connection
+//checking database connection
 db.getConnection((err, connection) => {
     if(err){
         console.log(`Database connection failed.\n Error: ${JSON.stringify(err)}`);
@@ -44,8 +44,8 @@ const visitorsTable = tables.visitors.name;
 const employeesTable = tables.employees.name;
 const administratorsTable = tables.administrators.name;
 // These variables store their corresponding values as sql keywords
-const {select, insertInto, values, from, where, update, set, as, group, by, and} = sql_keywords;
-// These variables store their corresponding values as column names in the visitors table
+const {select, insertInto, values, from, where, update, set, as, group, by, and, union} = sql_keywords;
+// These variables store their corresponding values as column names in the tables
 const {idCol, fullNameCol, companyCol, phoneNumberCol, emailCol, hostCol, positionCol, signIn, signOut, month} = tables.visitors.colums;
 const {idCol1, fullNameCol1, emailCol1, positionCol1, phoneNumberCol1, passwordCol1} = tables.employees.colums;
 const {emailCol2, passwordCol2} = tables.administrators.colums;
@@ -79,7 +79,7 @@ app.get("/host", (req, res) => {
 
 //route for retrieving the visitors log in the admin page
 app.get("/adminPage/visitorsLog", (req, res) =>{
-    const selectVisitorListQuery = `${select} ${idCol}, ${fullNameCol}, ${emailCol}, ${companyCol}, ${hostCol}, ${signIn}, ${signOut} ${from} ${visitorsTable}`;
+    const selectVisitorListQuery = `${select} ${idCol}, ${fullNameCol}, ${emailCol}, ${phoneNumberCol}, ${companyCol}, ${positionCol}, ${hostCol}, ${signIn}, ${signOut} ${from} ${visitorsTable}`;
     const y = db.query(selectVisitorListQuery, (err, rows) =>{
         if(err){
             console.log(err);
@@ -139,10 +139,11 @@ app.put("/edit/:id", (req, res) =>{
 
 //route for adding visitors
 app.post("/", (req, res) => {
-    const {name, company, tel, email, position, host} = req.body;
-    const insertVisitorQuery = `${insertInto} ${visitorsTable} (${fullNameCol}, ${companyCol}, ${phoneNumberCol}, ${emailCol}, ${hostCol}, ${positionCol}) ${values} (?,?,?,?,?,?)`;
+    const {name, company, tel, email, position, host, timestamp} = req.body;
+    const timeIn = new Date(timestamp);
+    const insertVisitorQuery = `${insertInto} ${visitorsTable} (${fullNameCol}, ${companyCol}, ${phoneNumberCol}, ${emailCol}, ${hostCol}, ${positionCol}, ${signIn}) ${values} (?,?,?,?,?,?,?)`;
 
-    db.query(insertVisitorQuery, [name, company, tel, email, host, position], (err, result) =>{
+    db.query(insertVisitorQuery, [name, company, tel, email, host, position, timeIn.toLocaleTimeString()], (err, result) =>{
         if(err){
             console.log(err);
         }else{
@@ -155,20 +156,18 @@ app.post("/", (req, res) => {
 //route for Employee's authentication
 app.post("/dashboard", (req, res) =>{
     const {userEmail, password} = req.body;
-    const selectQueryArray = [
-        `${select} ${emailCol1}, ${passwordCol1} ${from} ${employeesTable} ${where} ${emailCol1} = ? ${and} ${passwordCol1} = ?`,
-        `${select} * ${from} ${administratorsTable} ${where} ${emailCol2} = ? ${and} ${passwordCol2} = ?`
-    ];
+    const selectQuery = `${select} ${emailCol2}, ${passwordCol2} ${from} ${administratorsTable} ${where} ${emailCol2} = ? ${and} ${passwordCol2} = ?
+            ${union} ${select} ${emailCol1}, ${passwordCol1} ${from} ${employeesTable} ${where} ${emailCol1} = ? ${and} ${passwordCol1} = ?`;
 
     if(userEmail && password){
-        db.query(selectQueryArray.join(";"), [userEmail, password], (err, result, fields) =>{
+        db.query(selectQuery, [userEmail, password], (err, result, fields) =>{
             if(err) throw err;
             if(result.length > 0 && result){
                 req.session.loggedIn = true;
                 req.session.useremail = userEmail;
                 res.status(200).send("Logged in");
             }else{
-                res.send("Incorrect user email or password");
+                throw new Error("Invalid username and password");
             }
             res.end();
         });
