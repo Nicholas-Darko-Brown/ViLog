@@ -216,8 +216,18 @@ app.post("/adminPage/addEmployee", (req, res) => {
     });
 });
 
+//route for updating an employee's details
 app.put("/adminPage/updateEmployee", (req, res) => {
-    const {id, name, email, tel, position, password}
+    const {id, name, email, tel, position, password} = req.body;
+    const updateEmployeeQuery = `${update} ${employeesTable} ${set} ${fullNameCol1} = ?, ${emailCol1} = ?, ${phoneNumberCol1} = ?, ${positionCol1} = ?, ${passwordCol1} = ? ${where} ${idCol1} = ?`;
+    db.query(updateEmployeeQuery, [name, email, tel, position, password, id], (err, result)=>{
+        if(err){
+            console.log(err);
+        }else{
+            console.log("Employee updated.");
+            res.status(200).send(result);
+        }
+    });
 });
 
 app.listen(port, () => {
