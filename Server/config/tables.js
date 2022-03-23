@@ -23,7 +23,9 @@ const tables = {
             positionCol: "Position",
             signIn: "Time_In",
             signOut: "Time_Out",
-            month: "Months"
+            day: "Day",
+            month: "Months",
+            year: "Year"
         }
     },
 
