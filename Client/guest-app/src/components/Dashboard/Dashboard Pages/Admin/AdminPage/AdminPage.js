@@ -154,7 +154,6 @@ const AdminPage = () => {
       Email: visitor.Email,
       Phone_Number: visitor.Phone_Number,
       Position: visitor.Position,
-      Status: visitor.Status
     }
     setVisitorEditFormData(formValues)
   }

@@ -48,6 +48,7 @@ const Forms = () => {
     e.preventDefault();
     console.log(data);
     const newData = Object.assign(data, {timestamp: timestamp}, {status: 'checked in'})
+    setData(newData)
     console.log(newData)
 
     Axios.post(url, data);
