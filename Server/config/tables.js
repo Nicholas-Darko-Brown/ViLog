@@ -25,7 +25,8 @@ const tables = {
             signOut: "Time_Out",
             day: "Day",
             month: "Months",
-            year: "Year"
+            year: "Year",
+            status: "Status"
         }
     },
 

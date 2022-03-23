@@ -47,7 +47,7 @@ const administratorsTable = tables.administrators.name;
 // These variables store their corresponding values as sql keywords
 const {select, insertInto, values, from, where, update, set, as, group, by, and, union} = sql_keywords;
 // These variables store their corresponding values as column names in the tables
-const {idCol, fullNameCol, companyCol, phoneNumberCol, emailCol, hostCol, positionCol, signIn, signOut, day, month, year} = tables.visitors.colums;
+const {idCol, fullNameCol, companyCol, phoneNumberCol, emailCol, hostCol, positionCol, signIn, signOut, day, month, year, status} = tables.visitors.colums;
 const {idCol1, fullNameCol1, emailCol1, positionCol1, phoneNumberCol1, passwordCol1} = tables.employees.colums;
 const {emailCol2, passwordCol2} = tables.administrators.colums;
 
@@ -145,9 +145,10 @@ app.post("/", (req, res) => {
     const DAY = moment(timestamp,"YYYY/MM/DD").date();
     const MONTH = moment(timestamp,"YYYY/MM/DD").format("MMMM");
     const YEAR = moment(timestamp,"YYYY/MM/DD").format("YYYY");
-    const insertVisitorQuery = `${insertInto} ${visitorsTable} (${fullNameCol}, ${companyCol}, ${phoneNumberCol}, ${emailCol}, ${hostCol}, ${positionCol}, ${signIn}, ${day}, ${month}, ${year}) ${values} (?,?,?,?,?,?,?,?,?,?)`;
+    const Status = "checked in";
+    const insertVisitorQuery = `${insertInto} ${visitorsTable} (${fullNameCol}, ${companyCol}, ${phoneNumberCol}, ${emailCol}, ${hostCol}, ${positionCol}, ${signIn}, ${day}, ${month}, ${year}, ${status}) ${values} (?,?,?,?,?,?,?,?,?,?,?)`;
 
-    db.query(insertVisitorQuery, [name, company, tel, email, host, position, timeIn.toLocaleTimeString(), DAY, MONTH, YEAR], (err, result) =>{
+    db.query(insertVisitorQuery, [name, company, tel, email, host, position, timeIn.toLocaleTimeString(), DAY, MONTH, YEAR, Status], (err, result) =>{
         if(err){
             console.log(err);
         }else{
