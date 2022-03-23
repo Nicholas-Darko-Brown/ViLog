@@ -216,6 +216,10 @@ app.post("/adminPage/addEmployee", (req, res) => {
     });
 });
 
+app.put("/adminPage/updateEmployee", (req, res) => {
+    const {id, name, email, tel, position, password}
+});
+
 app.listen(port, () => {
     console.log(`Server listening on port ${port}`);
 });
