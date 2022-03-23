@@ -204,7 +204,16 @@ app.post("/admin", (req, res) =>{
 
 // route for adding an employee
 app.post("/adminPage/addEmployee", (req, res) => {
-    
+    const {name, email, tel, position, password} = req.body;
+    const insertEmployeeQuery = `${insertInto} ${employeesTable} (${fullNameCol1}, ${emailCol1}, ${phoneNumberCol1}, ${positionCol1}, ${passwordCol1}) ${values} (?,?,?,?,?)`;
+    db.query(insertEmployeeQuery, [name, email, tel, position, password], (err, result)=>{
+        if(err){
+            console.log(err);
+        }else{
+            console.log("Employee added.");
+            res.status(201).send(result);
+        }
+    });
 });
 
 app.listen(port, () => {
