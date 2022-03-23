@@ -132,12 +132,6 @@ app.get("/dashboardPage/graph", (req, res) =>{
     });
 });
 
-// route for editting the visitor
-app.put("/edit/:id", (req, res) =>{
-    const {id} = req.params;
-    const updateVisitorQuery = ``;
-});
-
 //route for adding visitors
 app.post("/", (req, res) => {
     const {name, company, tel, email, position, host, timestamp} = req.body;
@@ -230,6 +224,12 @@ app.put("/adminPage/updateEmployee", (req, res) => {
     });
 });
 
+// route for editting the visitor
+app.put("/updateVisit", (req, res) =>{
+    const {id} = req.params;
+    const updateVisitorQuery = ``;
+});
+
 //route for deleting an employee
 app.delete("/adminPage/deleteEmployee", (req, res)=>{
     const {id} = req.body;
@@ -240,6 +240,20 @@ app.delete("/adminPage/deleteEmployee", (req, res)=>{
         }else{
             console.log("Employee deleted");
             res.status(200).send(result)
+        }
+    });
+});
+
+//route for deleting
+app.delete("/deleteVisit", (req, res) =>{
+    const {id} = req.body;
+    const deleteVisitQuery = `${DELETE} ${from} ${visitorsTable} ${where} ${idCol} = ?`;
+    db.query(deleteVisitQuery, [id], (err, result)=>{
+        if(err){
+            console.log(err);
+        }else{
+            console.log("Visitor deleted");
+            res.status(200).send(result);
         }
     });
 });
