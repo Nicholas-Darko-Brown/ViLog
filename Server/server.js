@@ -45,7 +45,7 @@ const visitorsTable = tables.visitors.name;
 const employeesTable = tables.employees.name;
 const administratorsTable = tables.administrators.name;
 // These variables store their corresponding values as sql keywords
-const {select, insertInto, values, from, where, update, set, as, group, by, and, union} = sql_keywords;
+const {select, insertInto, values, from, where, update, set, as, group, by, and, union, DELETE} = sql_keywords;
 // These variables store their corresponding values as column names in the tables
 const {idCol, fullNameCol, companyCol, phoneNumberCol, emailCol, hostCol, positionCol, signIn, signOut, day, month, year, status} = tables.visitors.colums;
 const {idCol1, fullNameCol1, emailCol1, positionCol1, phoneNumberCol1, passwordCol1} = tables.employees.colums;
@@ -226,6 +226,20 @@ app.put("/adminPage/updateEmployee", (req, res) => {
         }else{
             console.log("Employee updated.");
             res.status(200).send(result);
+        }
+    });
+});
+
+//route for deleting an employee
+app.delete("/adminPage/deleteEmployee", (req, res)=>{
+    const {id} = req.body;
+    const deleteEmployeeQuery = `${DELETE} ${from} ${employeesTable} ${where} ${idCol1} = ?`;
+    db.query(deleteEmployeeQuery, [id], (err, result) => {
+        if(err){
+            console.log(err);
+        }else{
+            console.log("Employee deleted");
+            res.status(200).send(result)
         }
     });
 });

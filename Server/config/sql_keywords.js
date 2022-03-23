@@ -10,7 +10,8 @@ const sql_keywords = {
     group: "GROUP",
     by: "BY",
     and: "AND",
-    union: "UNION"
+    union: "UNION",
+    DELETE: "DELETE"
 }
 
 module.exports = sql_keywords;
