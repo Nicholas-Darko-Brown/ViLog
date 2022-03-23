@@ -46,6 +46,10 @@
       font-size: 22px;
       font-weight: 600;
   }
+
+  .employee_table {
+      margin-top: 50px;
+  }
   
   form {
     display: flex;
@@ -58,5 +62,43 @@
   }
   
   form * {
-    font-size: 28px;
+    font-size: 18px;
   }
+
+.employee_add_form {
+    display: grid;
+    place-items: center;
+    border: 1px solid red;
+    width: 70%;
+    margin: 0 auto;
+    row-gap: 15px;
+    background-color: gray;
+    padding: 20px 0;
+}
+
+.employee_add_form input {
+    width: 350px;
+    padding: 5px 10px;
+    border: 1px solid gray;
+    outline: 0;
+}
+
+.email,
+.position {
+    margin-left: 10px;
+}
+
+.add_btn {
+    border: 1px solid red;
+    padding: 10px 40px;
+    background-color: aqua;
+    border-radius: 10px;
+    font-weight: 600;
+}
+
+.employee_title {
+    text-align: center;
+    margin-top: 30px;
+    font-size: 18px;
+    font-weight: 600;
+}

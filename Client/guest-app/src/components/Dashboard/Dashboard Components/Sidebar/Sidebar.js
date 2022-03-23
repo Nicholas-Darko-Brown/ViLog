@@ -34,10 +34,6 @@ const Sidebar = () => {
             <div className="sidebar_menu">
                 <h3 className="sidebar_title">Quick Menu</h3>
                 <ul className="sidebar_list">
-                    <li className="sidebar_list_item">
-                        <People className='sidebar_icon'/>
-                        Visitors
-                    </li>
                     <li className="sidebar_list_item" onClick={() => {
                         navigate('/host')
                     }}>
@@ -56,7 +52,9 @@ const Sidebar = () => {
             <div className="sidebar_menu">
                 <h3 className="sidebar_title">File Transfer</h3>
                 <ul className="sidebar_list">
-                    <li className="sidebar_list_item">
+                    <li className="sidebar_list_item" onClick={() => {
+                        navigate('/reports')
+                    }}>
                         <Save className='sidebar_icon'/>
                         Reports
                     </li>

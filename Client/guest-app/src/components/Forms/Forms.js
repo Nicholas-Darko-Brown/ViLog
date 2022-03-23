@@ -6,15 +6,18 @@ import {
   Button,
   Text,
   Box,
+  useToast
 } from '@chakra-ui/react';
 import Axios from 'axios';
-import DatePicker from 'react-datepicker';
+// import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import './Forms.css'
 
 const Forms = () => {
   const [employee, setEmployee] = useState([]);
   const [selectedDate, setSelectedDate] = useState(null);
+
+  const toast = useToast()
 
   const timestamp = new Date(Date.now()).toISOString();
   console.log(timestamp)
@@ -27,6 +30,7 @@ const Forms = () => {
     email: '',
     position: '',
     host: '',
+    status: ''
     // timestamp: ''
   });
   console.log(data);
@@ -42,8 +46,8 @@ const Forms = () => {
   const handleSubmit = e => {
     console.log('submitted');
     e.preventDefault();
-    // console.log(data);
-    const newData = Object.assign(data, {timestamp: timestamp})
+    console.log(data);
+    const newData = Object.assign(data, {timestamp: timestamp}, {status: 'checked in'})
     console.log(newData)
 
     Axios.post(url, data);
@@ -147,7 +151,7 @@ const Forms = () => {
           {/*  */}
         </Select>
 
-        <DatePicker
+        {/* <DatePicker
           selected={selectedDate}
           onChange={date => setSelectedDate(date)}
           dateFormat="MMMM d, yyyy h:mm aa"
@@ -159,7 +163,7 @@ const Forms = () => {
           className='date_picker'
           id='timestamp'
           // value={data.timestamp}
-        />
+        /> */}
 
         <Button
           onClick={e => handleSubmit(e)}
