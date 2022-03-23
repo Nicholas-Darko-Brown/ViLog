@@ -202,6 +202,11 @@ app.post("/admin", (req, res) =>{
     }
 });
 
+// route for adding an employee
+app.post("/adminPage/addEmployee", (req, res) => {
+    
+});
+
 app.listen(port, () => {
     console.log(`Server listening on port ${port}`);
 });
