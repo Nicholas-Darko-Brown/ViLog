@@ -45,7 +45,7 @@ const visitorsTable = tables.visitors.name;
 const employeesTable = tables.employees.name;
 const administratorsTable = tables.administrators.name;
 // These variables store their corresponding values as sql keywords
-const {select, insertInto, values, from, where, update, set, as, group, by, and, union} = sql_keywords;
+const {select, insertInto, values, from, where, update, set, as, group, by, and, union, DELETE} = sql_keywords;
 // These variables store their corresponding values as column names in the tables
 const {idCol, fullNameCol, companyCol, phoneNumberCol, emailCol, hostCol, positionCol, signIn, signOut, day, month, year, status} = tables.visitors.colums;
 const {idCol1, fullNameCol1, emailCol1, positionCol1, phoneNumberCol1, passwordCol1} = tables.employees.colums;
@@ -132,12 +132,6 @@ app.get("/dashboardPage/graph", (req, res) =>{
     });
 });
 
-// route for editting the visitor
-app.put("/edit/:id", (req, res) =>{
-    const {id} = req.params;
-    const updateVisitorQuery = ``;
-});
-
 //route for adding visitors
 app.post("/", (req, res) => {
     const {name, company, tel, email, position, host, timestamp} = req.body;
@@ -200,6 +194,68 @@ app.post("/admin", (req, res) =>{
     }else{
         res.send("Please enter your username and password");
     }
+});
+
+// route for adding an employee
+app.post("/adminPage/addEmployee", (req, res) => {
+    const {name, email, tel, position, password} = req.body;
+    const insertEmployeeQuery = `${insertInto} ${employeesTable} (${fullNameCol1}, ${emailCol1}, ${phoneNumberCol1}, ${positionCol1}, ${passwordCol1}) ${values} (?,?,?,?,?)`;
+    db.query(insertEmployeeQuery, [name, email, tel, position, password], (err, result)=>{
+        if(err){
+            console.log(err);
+        }else{
+            console.log("Employee added.");
+            res.status(201).send(result);
+        }
+    });
+});
+
+//route for updating an employee's details
+app.put("/adminPage/updateEmployee", (req, res) => {
+    const {id, name, email, tel, position, password} = req.body;
+    const updateEmployeeQuery = `${update} ${employeesTable} ${set} ${fullNameCol1} = ?, ${emailCol1} = ?, ${phoneNumberCol1} = ?, ${positionCol1} = ?, ${passwordCol1} = ? ${where} ${idCol1} = ?`;
+    db.query(updateEmployeeQuery, [name, email, tel, position, password, id], (err, result)=>{
+        if(err){
+            console.log(err);
+        }else{
+            console.log("Employee updated.");
+            res.status(200).send(result);
+        }
+    });
+});
+
+// route for editting the visitor
+app.put("/updateVisit", (req, res) =>{
+    const {id} = req.params;
+    const updateVisitorQuery = ``;
+});
+
+//route for deleting an employee
+app.delete("/adminPage/deleteEmployee", (req, res)=>{
+    const {id} = req.body;
+    const deleteEmployeeQuery = `${DELETE} ${from} ${employeesTable} ${where} ${idCol1} = ?`;
+    db.query(deleteEmployeeQuery, [id], (err, result) => {
+        if(err){
+            console.log(err);
+        }else{
+            console.log("Employee deleted");
+            res.status(200).send(result)
+        }
+    });
+});
+
+//route for deleting
+app.delete("/deleteVisit", (req, res) =>{
+    const {id} = req.body;
+    const deleteVisitQuery = `${DELETE} ${from} ${visitorsTable} ${where} ${idCol} = ?`;
+    db.query(deleteVisitQuery, [id], (err, result)=>{
+        if(err){
+            console.log(err);
+        }else{
+            console.log("Visitor deleted");
+            res.status(200).send(result);
+        }
+    });
 });
 
 app.listen(port, () => {
