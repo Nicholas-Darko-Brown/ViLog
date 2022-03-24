@@ -54,7 +54,7 @@ const {emailCol2, passwordCol2} = tables.administrators.colums;
 //route for rendering employees name in the select option of the form
 app.get("/employeeName", (req, res) => {
     const {fullNameCol} = tables.employees.colums;
-    const selectEmployeesNameQuery = `${select} ${fullNameCol1} ${from} ${employeesTable}`;
+    const selectEmployeesNameQuery = `${select} ${fullNameCol1}, ${emailCol1} ${from} ${employeesTable}`;
     db.query(selectEmployeesNameQuery, (err, rows) =>{
         if(err){
             console.log(err);
@@ -155,20 +155,19 @@ app.post("/", (req, res) => {
 //route for Employee's authentication
 app.post("/dashboard", (req, res) =>{
     const {userEmail, password} = req.body;
-    const selectQuery = `${select} ${emailCol2}, ${passwordCol2} ${from} ${administratorsTable} ${where} ${emailCol2} = ? ${and} ${passwordCol2} = ?
-            ${union} ${select} ${emailCol1}, ${passwordCol1} ${from} ${employeesTable} ${where} ${emailCol1} = ? ${and} ${passwordCol1} = ?`;
+    const selectQuery = `${select} ${emailCol2}, ${passwordCol2} ${from} ${administratorsTable} ${where} ${emailCol2} = "${userEmail}" ${and} ${passwordCol2} = "${password}" ${union} ${select} ${emailCol1}, ${passwordCol1} ${from} ${employeesTable} ${where} ${emailCol1} = "${userEmail}" ${and} ${passwordCol1} = "${password}"`;
 
     if(userEmail && password){
-        db.query(selectQuery, [userEmail, password], (err, result, fields) =>{
-            if(err) throw err;
+        db.query(selectQuery, (err, result, fields) =>{
+            if(err) console.log(err);
             if(result.length > 0 && result){
                 req.session.loggedIn = true;
                 req.session.useremail = userEmail;
                 res.status(200).send("Logged in");
             }else{
-                throw new Error("Invalid username and password");
+                console.log("Invalid username and password");
             }
-            res.end();
+            console.log(result);
         });
     }else{
         res.send("Please enter your username and password");
@@ -187,7 +186,7 @@ app.post("/admin", (req, res) =>{
                 req.session.useremail = userEmail;
                 res.status(200).send("Logged in");
             }else{
-                throw new Error("Invalid username and password");
+                console.log("Invalid username and password");
             }
             res.end();
         });
@@ -198,9 +197,10 @@ app.post("/admin", (req, res) =>{
 
 // route for adding an employee
 app.post("/adminPage/addEmployee", (req, res) => {
-    const {name, email, tel, position, password} = req.body;
+    const {Full_Name, Email, Phone_Number, Position, Password} = req.body;
+    
     const insertEmployeeQuery = `${insertInto} ${employeesTable} (${fullNameCol1}, ${emailCol1}, ${phoneNumberCol1}, ${positionCol1}, ${passwordCol1}) ${values} (?,?,?,?,?)`;
-    db.query(insertEmployeeQuery, [name, email, tel, position, password], (err, result)=>{
+    db.query(insertEmployeeQuery, [Full_Name, Email, Phone_Number, Position, Password], (err, result)=>{
         if(err){
             console.log(err);
         }else{
@@ -211,10 +211,14 @@ app.post("/adminPage/addEmployee", (req, res) => {
 });
 
 //route for updating an employee's details
-app.put("/adminPage/updateEmployee", (req, res) => {
-    const {id, name, email, tel, position, password} = req.body;
+app.put("/adminPage/updateEmployee/:id", (req, res) => {
+
+    const id = req.params;
+    console.log(id);
+    const {Full_Name, Email, Phone_Number, Position, Password} = req.body;
+    console.log(req.body)
     const updateEmployeeQuery = `${update} ${employeesTable} ${set} ${fullNameCol1} = ?, ${emailCol1} = ?, ${phoneNumberCol1} = ?, ${positionCol1} = ?, ${passwordCol1} = ? ${where} ${idCol1} = ?`;
-    db.query(updateEmployeeQuery, [name, email, tel, position, password, id], (err, result)=>{
+    db.query(updateEmployeeQuery, [Full_Name, Email, Phone_Number, Position, Password, id], (err, result)=>{
         if(err){
             console.log(err);
         }else{
@@ -231,8 +235,8 @@ app.put("/updateVisit", (req, res) =>{
 });
 
 //route for deleting an employee
-app.delete("/adminPage/deleteEmployee", (req, res)=>{
-    const {id} = req.body;
+app.delete("/adminPage/deleteEmployee/:id", (req, res)=>{
+    const {id} = req.params;
     const deleteEmployeeQuery = `${DELETE} ${from} ${employeesTable} ${where} ${idCol1} = ?`;
     db.query(deleteEmployeeQuery, [id], (err, result) => {
         if(err){
@@ -245,8 +249,8 @@ app.delete("/adminPage/deleteEmployee", (req, res)=>{
 });
 
 //route for deleting
-app.delete("/deleteVisit", (req, res) =>{
-    const {id} = req.body;
+app.delete("/deleteVisit/:id", (req, res) =>{
+    const {id} = req.params;
     const deleteVisitQuery = `${DELETE} ${from} ${visitorsTable} ${where} ${idCol} = ?`;
     db.query(deleteVisitQuery, [id], (err, result)=>{
         if(err){
