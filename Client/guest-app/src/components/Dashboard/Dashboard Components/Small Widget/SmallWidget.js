@@ -5,9 +5,9 @@ import { Visibility } from '@material-ui/icons'
 const SmallWidget = () => {
   return (
     <div className='small_widget_container'>
-        <span className="small_widget_title">New User Members</span>
+        {/* <span className="small_widget_title">New User Members</span> */}
         <ul className="small_widget_list">
-            <li className="small_widget_list_item">
+            {/* <li className="small_widget_list_item">
                 <img src={User} alt="user_img" className="small_widget_img" />
                 <div className="small_widget_user">
                     <span className="small_widget_username">Kevin Keagan</span>
@@ -17,9 +17,9 @@ const SmallWidget = () => {
                     <Visibility className="small_widget_icon" />
                     Display
                 </button>
-            </li>
+            </li> */}
 
-            <li className="small_widget_list_item">
+            {/* <li className="small_widget_list_item">
                 <img src={User} alt="user_img" className="small_widget_img" />
                 <div className="small_widget_user">
                     <span className="small_widget_username">Kevin Keagan</span>
@@ -29,9 +29,9 @@ const SmallWidget = () => {
                     <Visibility className="small_widget_icon" />
                     Display
                 </button>
-            </li>
+            </li> */}
 
-            <li className="small_widget_list_item">
+            {/* <li className="small_widget_list_item">
                 <img src={User} alt="user_img" className="small_widget_img" />
                 <div className="small_widget_user">
                     <span className="small_widget_username">Kevin Keagan</span>
@@ -41,9 +41,9 @@ const SmallWidget = () => {
                     <Visibility className="small_widget_icon" />
                     Display
                 </button>
-            </li>
+            </li> */}
 
-            <li className="small_widget_list_item">
+            {/* <li className="small_widget_list_item">
                 <img src={User} alt="user_img" className="small_widget_img" />
                 <div className="small_widget_user">
                     <span className="small_widget_username">Kevin Keagan</span>
@@ -53,9 +53,9 @@ const SmallWidget = () => {
                     <Visibility className="small_widget_icon" />
                     Display
                 </button>
-            </li>
+            </li> */}
 
-            <li className="small_widget_list_item">
+            {/* <li className="small_widget_list_item">
                 <img src={User} alt="user_img" className="small_widget_img" />
                 <div className="small_widget_user">
                     <span className="small_widget_username">Kevin Keagan</span>
@@ -65,7 +65,7 @@ const SmallWidget = () => {
                     <Visibility className="small_widget_icon" />
                     Display
                 </button>
-            </li>
+            </li> */}
         </ul>
     </div>
   )

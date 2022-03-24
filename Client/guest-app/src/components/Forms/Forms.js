@@ -6,18 +6,24 @@ import {
   Button,
   Text,
   Box,
-  useToast
 } from '@chakra-ui/react';
 import Axios from 'axios';
-// import DatePicker from 'react-datepicker';
-import 'react-datepicker/dist/react-datepicker.css';
 import './Forms.css'
 
 const Forms = () => {
   const [employee, setEmployee] = useState([]);
-  const [selectedDate, setSelectedDate] = useState(null);
 
-  const toast = useToast()
+  const fetchEmployeesData = async () => {
+    const { data } = await Axios.get('/adminPage/employeeList');
+    setEmployee(data);
+    data.map(employee => {
+      return `${employee.Full_Name} || ${employee.Email}`
+    })
+  };
+
+  useEffect(() => {
+    fetchEmployeesData();
+  }, []);
 
   const timestamp = new Date(Date.now()).toISOString();
   console.log(timestamp)
@@ -29,7 +35,6 @@ const Forms = () => {
     tel: '',
     email: '',
     position: '',
-    host: '',
     status: ''
     // timestamp: ''
   });
@@ -47,22 +52,12 @@ const Forms = () => {
     console.log('submitted');
     e.preventDefault();
     console.log(data);
-    const newData = Object.assign(data, {timestamp: timestamp}, {status: 'checked in'})
+    const newData = Object.assign(data, {timestamp: timestamp}, {status: 'checked in'}, {fetchEmployeesData: fetchEmployeesData})
     console.log(newData)
 
     Axios.post(url, newData);
   };
 
-  const fetchEmployees = async () => {
-    const { data } = await Axios.get('/employeeName');
-    setEmployee(data);
-  };
-
-  useEffect(() => {
-    fetchEmployees();
-  }, []);
-
-  console.log(Date.now)
 
   return (
     <Box display="flex" justifyContent="center" height="100%">

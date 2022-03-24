@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState } from 'react';
 import {
   Button,
   Center,
@@ -7,10 +7,12 @@ import {
   Input,
   InputGroup,
   InputRightElement,
+  useToast,
 } from '@chakra-ui/react';
 import { BiHide, BiShow } from 'react-icons/bi';
 
 import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
 
 const Dashboard = () => {
   const [show, setShow] = useState(false);
@@ -18,106 +20,137 @@ const Dashboard = () => {
 
   let navigate = useNavigate();
 
-  const userRef = useRef();
-  const errRef = useRef();
+  const [state, setState] = useState({
+    email: '',
+    password: '',
+  });
 
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [errorMessage, setErrorMessage] = useState('');
-  const [success, setSuccess] = useState(false);
+  console.log(state);
 
-  useEffect(() => {
-    userRef.current.focus();
-  }, []);
+  const toast = useToast();
 
-  useEffect(() => {
-    setErrorMessage('');
-  }, [email, password]);
+  const handleInputChange = e => {
+    const value = e.target.value;
 
-  const handleSubmit = async e => {
-    e.preventDefault();
-    console.log(email, password);
-    setEmail('');
-    setPassword('');
-    setSuccess(true);
+    setState({
+      ...state,
+      [e.target.name]: value,
+    });
   };
 
+  const userEmail = state.email;
+  const password = state.password;
+
+  const handleLogin = async () => {
+    if (!userEmail || !password) {
+      toast({
+        title: 'Fill all fields',
+        status: 'warning',
+        duration: 3000,
+        isClosable: true,
+        position: 'top',
+      })
+      return;
+    } else if (!userEmail) {
+      toast({
+        title: 'Fill all fields',
+        status: 'warning',
+        duration: 3000,
+        isClosable: true,
+        position: 'top',
+      })
+      return;
+    }
+
+    // navigate('/adminPage')
+
+    try {
+      const { data } = await axios.post(
+        '/dashboard',
+        { userEmail, password },
+        {
+          headers: {
+            'Content-type': 'application/json',
+          },
+        }
+      );
+      console.log(data);
+
+      if (data === 'Logged in') {
+        toast({
+          title: 'Login successful',
+          status: 'success',
+          duration: 3000,
+          isClosable: true,
+          position: 'top',
+        });
+        navigate('/host');
+      }
+    } catch (err) {
+      toast({
+        title: 'Failed login',
+        description: err.message,
+        status: 'error',
+        duration: 3000,
+        isClosable: true,
+        position: 'top',
+      });
+    }
+  };
+
+  console.log(userEmail);
+  console.log(password);
+
   return (
-    <>
-      {success ? (
-        <section>
-          <h1>You are logged in!</h1>
-        </section>
-      ) : (
-        <Center h="100vh" bg="blackAlpha.400">
-          <p
-            ref={errRef}
-            className={errorMessage ? 'errorMessage' : 'offscreen'}
-            aria-live="assertive"
+    <Center h="100vh" bg="blackAlpha.400">
+      <FormControl
+        w="25%"
+        display="flex"
+        flexDirection="column"
+        justifyContent="center"
+        borderRadius="1rem"
+        boxShadow="2xl"
+        bg="gray.100"
+        p={7}
+      >
+        <Heading size="lg">Login</Heading>
+        <Input
+          id="email"
+          type="email"
+          name="email"
+          placeholder="Enter your email"
+          mt={4}
+          onChange={handleInputChange}
+          autoComplete="off"
+          required
+        />
+        <InputGroup size="md">
+          <Input
+            name="password"
+            pr="3rem"
+            type={show ? 'text' : 'password'}
+            placeholder="Enter password"
+            mt={4}
+            mb={8}
+            onChange={handleInputChange}
+            required
+          />
+          <InputRightElement
+            width="3rem"
+            h="4.5rem"
+            size="sm"
+            onClick={handleClick}
           >
-            {' '}
-            {errorMessage}{' '}
-          </p>
-          <FormControl
-            w="25%"
-            display="flex"
-            flexDirection="column"
-            justifyContent="center"
-            borderRadius="1rem"
-            boxShadow="2xl"
-            bg="gray.100"
-            p={7}
-            onSubmit={handleSubmit}
-          >
-            <Heading size="lg">Login</Heading>
-            <Input
-              id="email"
-              type="email"
-              placeholder="Enter your email"
-              mt={4}
-              ref={userRef}
-              autoComplete="off"
-              onChange={e => setEmail(e.target.value)}
-              value={email}
-              required
-            />
-            <InputGroup size="md">
-              <Input
-                pr="3rem"
-                type={show ? 'text' : 'password'}
-                placeholder="Enter password"
-                mt={4}
-                mb={8}
-                ref={userRef}
-                onChange={e => setPassword(e.target.value)}
-                value={password}
-                required
-              />
-              <InputRightElement
-                width="3rem"
-                h="4.5rem"
-                size="sm"
-                onClick={handleClick}
-              >
-                {show ? <BiShow /> : <BiHide />}
-              </InputRightElement>
-            </InputGroup>
-            <Center>
-              <Button
-                bg="#e77449"
-                color="white"
-                size="md"
-                onClick={() => {
-                  navigate('/dashboardPage');
-                }}
-              >
-                Submit
-              </Button>
-            </Center>
-          </FormControl>
+            {show ? <BiShow /> : <BiHide />}
+          </InputRightElement>
+        </InputGroup>
+        <Center>
+        <Button bg="#e77449" color="white" size="md" onClick={handleLogin}>
+            Submit
+          </Button>
         </Center>
-      )}
-    </>
+      </FormControl>
+    </Center>
   );
 };
 

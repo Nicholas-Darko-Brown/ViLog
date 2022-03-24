@@ -1,6 +1,7 @@
 import React from 'react';
 
 const EmployeeReadOnlyRow = ({ employee, handleEmployeeEditClick, handleEmployeeDeleteClick }) => {
+  console.log(employee)
   return (
     <tr>
       <td>{employee.Full_Name}</td>

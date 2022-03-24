@@ -70,7 +70,7 @@ const AdminPage = () => {
   const fetchEmployeesData = async () => {
     const { data } = await axios.get('/adminPage/employeeList');
     setEmployees(data);
-    console.log(data);
+    console.log(data)
   };
 
   useEffect(() => {
@@ -177,6 +177,8 @@ const AdminPage = () => {
       Phone_Number: '',
       Position: '',
     });
+
+    // axios.post("adminPage/addEmployee")
   };
 
   const handleVisitorEditFormSubmit = (e) => {
@@ -242,7 +244,7 @@ const AdminPage = () => {
     setVisitorEditFormData(formValues)
   };
 
-  const handleEmployeeEditClick = (e, employee) => {
+  const handleEmployeeEditClick =async (e, employee) => {
     e.preventDefault();
     setEditEmployeeId(employee.Id);
 
@@ -254,6 +256,16 @@ const AdminPage = () => {
     }
 
     setEmployeeEditFormData(formValues)
+    console.log(employeeEditFormData)
+
+    try{
+     await axios.put("adminPage/updateEmployee", {
+            body: {employeeEditFormData},
+          })
+    } catch(error){
+      console.log('something happened here');
+    }
+    
   };
 
   // cancel button
@@ -274,16 +286,22 @@ const AdminPage = () => {
     newVisitors.splice(index, 1)
 
     setVisitors(newVisitors)
+
+    axios.delete("/deleteVisit/visitorId")
   }
 
   const handleEmployeeDeleteClick = (employeeId) => {
     const newEmployees = [...employees]
+
+    console.log(employeeId)
 
     const index = employees.findIndex((employee) => employee.Id === employeeId)
 
     newEmployees.splice(index, 1)
 
     setEmployees(newEmployees)
+
+    axios.delete("/adminPage/deleteEmployee/employeeId")
   }
 
 

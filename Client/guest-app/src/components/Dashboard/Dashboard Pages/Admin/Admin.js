@@ -7,7 +7,7 @@ import {
   Input,
   InputGroup,
   InputRightElement,
-  useToast
+  useToast,
 } from '@chakra-ui/react';
 import { BiHide, BiShow } from 'react-icons/bi';
 
@@ -21,72 +21,77 @@ const Admin = () => {
   const [state, setState] = useState({
     email: '',
     password: '',
-  })
+  });
 
-  const toast = useToast()
+  const toast = useToast();
 
-  let navigate = useNavigate()
+  let navigate = useNavigate();
 
-  const handleInputChange = (e) => {
+  const handleInputChange = e => {
     const value = e.target.value;
 
     setState({
-      ...state, [e.target.name] : value
-    })
-    
-  }
+      ...state,
+      [e.target.name]: value,
+    });
+  };
 
   const userEmail = state.email;
   const password = state.password;
 
   const handleLogin = async () => {
-    if(!userEmail || !password){
+    if (!userEmail || !password) {
       toast({
         title: 'Fill all fields',
         status: 'warning',
         duration: 1000,
         isClosable: true,
-        position: 'top'
-      })
-      return
+        position: 'top',
+      });
+      return;
     }
 
     // navigate('/adminPage')
 
     try {
-      const { data } = await axios.post("/admin", {userEmail, password}, {headers: {
-        'Content-type': 'application/json'
-      }})
+      const { data } = await axios.post(
+        '/admin',
+        { userEmail, password },
+        {
+          headers: {
+            'Content-type': 'application/json',
+          },
+        }
+      );
       console.log(data);
 
-      if(data === "Logged in"){
+      if (data === 'Logged in') {
         toast({
           title: 'Login successful',
           status: 'success',
           duration: 3000,
           isClosable: true,
-          position: 'top'
-        })
-        navigate("/adminPage")
+          position: 'top',
+        });
+        navigate('/adminPage');
       }
-    } catch(err) {
+    } catch (err) {
       toast({
         title: 'Failed login',
-        description: err.message ,
+        description: err.message,
         status: 'error',
         duration: 3000,
         isClosable: true,
-        position: 'top'
+        position: 'top',
       });
     }
-  }
+  };
 
-
-  console.log(userEmail)
-  console.log(password)
+  console.log(userEmail);
+  console.log(password);
 
   return (
-    <Center h="100vh" bg='blackAlpha.400'>
+    <Center h="100vh" bg="blackAlpha.400">
       <FormControl
         w="25%"
         display="flex"
@@ -94,11 +99,18 @@ const Admin = () => {
         justifyContent="center"
         borderRadius="1rem"
         boxShadow="2xl"
-        bg='gray.100'
+        bg="gray.100"
         p={7}
       >
         <Heading size="lg">Login</Heading>
-        <Input id="email" type="email" name="email" placeholder="Enter your email" mt={4} onChange={handleInputChange}/>
+        <Input
+          id="email"
+          type="email"
+          name="email"
+          placeholder="Enter your email"
+          mt={4}
+          onChange={handleInputChange}
+        />
         <InputGroup size="md">
           <Input
             name="password"
@@ -107,7 +119,6 @@ const Admin = () => {
             placeholder="Enter password"
             mt={4}
             mb={8}
-            
             onChange={handleInputChange}
           />
           <InputRightElement
@@ -120,7 +131,7 @@ const Admin = () => {
           </InputRightElement>
         </InputGroup>
         <Center>
-          <Button bg="#e77449" color='white' size="md" onClick={handleLogin}>
+          <Button bg="#e77449" color="white" size="md" onClick={handleLogin}>
             Submit
           </Button>
         </Center>
