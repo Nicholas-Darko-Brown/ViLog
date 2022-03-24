@@ -1,55 +1,55 @@
 import React from 'react';
 
-const EmployeeEditableRow = ({
-  employeeEditFormData,
-  handleEmployeeEditFormChange,
-  handleCancelClick
-}) => {
+const EmployeeEditableRow = ({ employeeEditFormData, handleEmployeeEditFormChange, handleEmployeeCancelClick }) => {
   return (
     <tr>
       <td>
+        {' '}
         <input
           type="text"
           required="required"
+          placeholder="Enter name..."
           name="Full_Name"
-          placeholder="Enter full name"
           value={employeeEditFormData.Full_Name}
           onChange={handleEmployeeEditFormChange}
-        />
+        />{' '}
       </td>
       <td>
+        {' '}
         <input
           type="email"
           required="required"
+          placeholder="Enter email..."
           name="Email"
-          placeholder="Enter email"
           value={employeeEditFormData.Email}
           onChange={handleEmployeeEditFormChange}
-        />
+        />{' '}
       </td>
       <td>
+        {' '}
         <input
           type="tel"
           required="required"
+          placeholder="Enter phone number..."
           name="Phone_Number"
-          placeholder="Enter phone number"
           value={employeeEditFormData.Phone_Number}
           onChange={handleEmployeeEditFormChange}
-        />
+        />{' '}
       </td>
       <td>
+        {' '}
         <input
           type="text"
           required="required"
+          placeholder="Enter position..."
           name="Position"
-          placeholder="Enter position"
           value={employeeEditFormData.Position}
           onChange={handleEmployeeEditFormChange}
-        />
+        />{' '}
       </td>
       <td>
-        <button type="submit">Update</button>
-        <button type='button' onClick={handleCancelClick}>Cancel</button>
+          <button className='update_btn' type='submit'>Update</button>
+          <button className='cancel_btn' type='button' onClick={handleEmployeeCancelClick}>Cancel</button>
       </td>
     </tr>
   );

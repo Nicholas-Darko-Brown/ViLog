@@ -23,7 +23,8 @@ const Report = () => {
 
     console.log(reports)
 
-    const reportTickets = reports.map(report => report);
+    const reportTickets = reports.filter(report => report.Full_Name.length > 4);
+    console.log(reportTickets)
 
   return (
     <div>

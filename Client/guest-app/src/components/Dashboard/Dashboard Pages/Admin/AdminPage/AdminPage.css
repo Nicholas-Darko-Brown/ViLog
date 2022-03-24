@@ -9,16 +9,15 @@
 .admin_content {
     flex: 4;
     margin: 10px 10px 40px 10px ;
-    box-shadow: 0px 6px 7px 0px rgba(0,0,0,0.5);
+    /* box-shadow: 0px 6px 7px 0px rgba(0,0,0,0.5);
     -webkit-box-shadow: 0px 6px 7px 0px rgba(0,0,0,0.5);
-    -moz-box-shadow: 0px 6px 7px 0px rgba(0,0,0,0.5);
+    -moz-box-shadow: 0px 6px 7px 0px rgba(0,0,0,0.5); */
     border-radius: 15px;
     padding: 10px;
     display: flex;
     flex-direction: column;
     gap: 10px;
     padding: 1rem;
-    border: 1px solid red;
 }
   
   table {
@@ -35,16 +34,17 @@
   }
   
   th {
-    background-color: rgb(117, 201, 250);
+    background-color: rgb(253, 130, 92);
+    color: #ffffff;
   }
   
   td {
-    background-color: rgb(205, 235, 253);
+    background-color: rgba(253, 206, 191, 0.233);
   }
 
   .table_title {
       font-size: 22px;
-      font-weight: 600;
+      font-weight: 800;
   }
 
   .employee_table {
@@ -89,11 +89,44 @@
 }
 
 .add_btn {
-    border: 1px solid red;
-    padding: 10px 40px;
-    background-color: aqua;
+    color: #ffffff;
+    padding: 8px 25px;
+    background-color: rgb(253, 130, 92);
     border-radius: 10px;
     font-weight: 600;
+}
+
+.add_btn:hover,
+.edit_btn:hover,
+.delete_btn:hover,
+.cancel_btn:hover,
+.update_btn:hover {
+  opacity: 0.8;
+}
+
+.edit_btn {
+    padding: 3px 15px;
+    background-color: rgb(95, 190, 95);
+    border-radius: 10px;
+    font-weight: 600;
+    color: #ffffff;
+}
+
+.update_btn {
+    padding: 3px 15px;
+    background-color: rgb(153, 132, 250);
+    border-radius: 10px;
+    font-weight: 600;
+    margin-right: 5px;
+    color: white;
+}
+
+.delete_btn {
+  padding: 3px 15px;
+  background-color: rgb(214, 79, 79);
+  border-radius: 10px;
+  font-weight: 600;
+  color: #ffffff;
 }
 
 .employee_title {
@@ -101,4 +134,12 @@
     margin-top: 30px;
     font-size: 18px;
     font-weight: 600;
+}
+
+.cancel_btn {
+  padding: 3px 15px;
+  background-color: rgb(155, 155, 155);
+  border-radius: 10px;
+  font-weight: 600;
+  color: #ffffff;
 }

@@ -1,6 +1,6 @@
 import React from 'react';
 
-const EmployeeReadOnlyRow = ({ employee, handleEditEmployeeClick, handleDeleteClick }) => {
+const EmployeeReadOnlyRow = ({ employee, handleEmployeeEditClick, handleEmployeeDeleteClick }) => {
   return (
     <tr>
       <td>{employee.Full_Name}</td>
@@ -8,8 +8,8 @@ const EmployeeReadOnlyRow = ({ employee, handleEditEmployeeClick, handleDeleteCl
       <td>{employee.Phone_Number}</td>
       <td>{employee.Position}</td>
       <td>
-        <button type='button' onClick={(e) => handleEditEmployeeClick(e, employee)}>Edit</button>
-        <button type='button'onClick={() => handleDeleteClick(employee.Id)} >Delete</button>
+          <button className='edit_btn' type='button' onClick={(e) => handleEmployeeEditClick(e, employee)}>Edit</button>
+          <button className='delete_btn' type='button' onClick={() => handleEmployeeDeleteClick(employee.Id)} >Delete</button>
       </td>
     </tr>
   );

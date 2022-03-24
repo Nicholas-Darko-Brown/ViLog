@@ -22,11 +22,14 @@ const ReportsComponent = ({ reports }) => {
         <table className="table">
           <thead>
             <tr>
-              <th scope="col">Id</th>
-              <th scope="col">Title</th>
+              <th scope="col">Host</th>
               <th scope="col">Position</th>
+              <th scope="col">Visitor</th>
               <th scope="col">Phone Number</th>
-              <th scope="col">Status</th>
+              <th scope="col">Checked In</th>
+              <th scope="col">Checked Out</th>
+              <th scope="col">Position</th>
+              <th scope="col"></th>
             </tr>
           </thead>
           <tbody>
@@ -36,9 +39,6 @@ const ReportsComponent = ({ reports }) => {
                 <td>{report.Email}</td>
                 <td>{report.Position}</td>
                 <td>{report.Phone_Number}</td>
-                <td className={assignColorToTicketStatus(report)}>
-                  {report.status}
-                </td>
                 {/* <td>
                   <Link to={`/ticket/${report.id}`}>See comments</Link>
                 </td> */}
