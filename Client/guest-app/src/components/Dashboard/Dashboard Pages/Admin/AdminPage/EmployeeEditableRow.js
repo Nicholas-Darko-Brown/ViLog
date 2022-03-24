@@ -48,7 +48,7 @@ const EmployeeEditableRow = ({ employeeEditFormData, handleEmployeeEditFormChang
         />{' '}
       </td>
       <td>
-          <button className='update_btn' type='submit'>Update</button>
+          <button className='update_btn' type='submit' >Update</button>
           <button className='cancel_btn' type='button' onClick={handleEmployeeCancelClick}>Cancel</button>
       </td>
     </tr>

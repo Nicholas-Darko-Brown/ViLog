@@ -1,5 +1,4 @@
 import { useState, useEffect, Fragment } from 'react';
-import { nanoid } from 'nanoid';
 import './AdminPage.css';
 import Navbar from '../../../Dashboard Components/Navbar/Navbar';
 import Sidebar from '../../../Dashboard Components/Sidebar/Sidebar';
@@ -131,7 +130,6 @@ const AdminPage = () => {
     e.preventDefault();
 
     const newVisitor = {
-      Id: nanoid(),
       Full_name: addVisitorFormData.Full_name,
       Email: addVisitorFormData.Email,
       Status: addVisitorFormData.Status,
@@ -156,13 +154,14 @@ const AdminPage = () => {
       Position: '',
       Host: '',
     });
+
+    axios.post(`/`, newVisitor)
   };
 
   const handleAddEmployeeFormSubmit = e => {
     e.preventDefault();
 
     const newEmployee = {
-      Id: nanoid(),
       Full_Name: addEmployeeFormData.Full_Name,
       Email: addEmployeeFormData.Email,
       Phone_Number: addEmployeeFormData.Phone_Number,
@@ -170,6 +169,7 @@ const AdminPage = () => {
     };
 
     const newEmployees = [...employees, newEmployee];
+    console.log(newEmployees)
     setEmployees(newEmployees);
     setAddFormEmployeeData({
       Full_Name: '',
@@ -178,7 +178,7 @@ const AdminPage = () => {
       Position: '',
     });
 
-    // axios.post("adminPage/addEmployee")
+    axios.post(`adminPage/addEmployee`, newEmployee)
   };
 
   const handleVisitorEditFormSubmit = (e) => {
@@ -215,13 +215,17 @@ const AdminPage = () => {
       Phone_Number: employeeEditFormData.Phone_Number,
       Position: employeeEditFormData.Position,
     }
+    console.log(editedEmployee)
 
     const newEmployees = [...employees]
+    console.log(newEmployees)
     const index = employees.findIndex((employee) => employee.Id === editEmployeeId)
 
     newEmployees[index] = editedEmployee
     setEmployees(newEmployees)
     setEditEmployeeId(null)
+
+    axios.put(`adminPage/updateEmployee/${editEmployeeId}`, editedEmployee)
   }
 
   //edit click
@@ -244,7 +248,7 @@ const AdminPage = () => {
     setVisitorEditFormData(formValues)
   };
 
-  const handleEmployeeEditClick =async (e, employee) => {
+  const handleEmployeeEditClick = (e, employee) => {
     e.preventDefault();
     setEditEmployeeId(employee.Id);
 
@@ -256,16 +260,10 @@ const AdminPage = () => {
     }
 
     setEmployeeEditFormData(formValues)
-    console.log(employeeEditFormData)
+    // console.log(employeeEditFormData)
 
-    try{
-     await axios.put("adminPage/updateEmployee", {
-            body: {employeeEditFormData},
-          })
-    } catch(error){
-      console.log('something happened here');
-    }
-    
+
+   
   };
 
   // cancel button
@@ -287,7 +285,7 @@ const AdminPage = () => {
 
     setVisitors(newVisitors)
 
-    axios.delete("/deleteVisit/visitorId")
+    axios.delete(`/deleteVisit/${visitorId}`)
   }
 
   const handleEmployeeDeleteClick = (employeeId) => {
@@ -301,7 +299,7 @@ const AdminPage = () => {
 
     setEmployees(newEmployees)
 
-    axios.delete("/adminPage/deleteEmployee/employeeId")
+    axios.delete(`/adminPage/deleteEmployee/${employeeId}`)
   }
 
 

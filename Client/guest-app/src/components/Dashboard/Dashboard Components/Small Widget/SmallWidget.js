@@ -1,6 +1,6 @@
 import './SmallWidget.css'
-import User from '../../../../assets/user.png'
-import { Visibility } from '@material-ui/icons'
+// import User from '../../../../assets/user.png'
+// import { Visibility } from '@material-ui/icons'
 
 const SmallWidget = () => {
   return (
