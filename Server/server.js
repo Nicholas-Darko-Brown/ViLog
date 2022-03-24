@@ -8,6 +8,7 @@ const tables = require("./config/tables");
 const path = require("path");
 const session = require("express-session");
 const moment = require("moment");
+const nodemailer = require("nodemailer");
 
 dotenv.config({path:'../.env'});
 const app = express();
@@ -148,6 +149,29 @@ app.post("/", (req, res) => {
         }else{
             console.log("visitor added.");
             res.status(201).send(result);
+
+            const transporter = nodemailer.createTransport({
+                service: 'gmail',
+                auth: {
+                    user: 'vilogtext@gmail.com',
+                    pass: 'vilog2022'
+                }
+            });
+
+            const mailOptions = {
+                from: 'vilogtext@gmail.com',
+                to: email,
+                subject: "Message from vilogtext@gmail.com: ViLog checkIn",
+                text: "This is the message"
+            };
+            
+            transporter.sendMail(mailOptions, (err, info)=>{
+                if(err){
+                    console.log(err);
+                }else{
+                    console.log(`Email sent: ${info.response}`);
+                }
+            });
         }
     });
 });
