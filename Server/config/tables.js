@@ -26,7 +26,7 @@ const tables = {
             day: "Day",
             month: "Months",
             year: "Year",
-            status: "Status"
+            Status: "Status"
         }
     },
 
