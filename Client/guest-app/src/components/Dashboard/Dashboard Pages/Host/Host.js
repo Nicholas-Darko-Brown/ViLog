@@ -3,8 +3,8 @@ import './Host.css';
 import Navbar from '../../Dashboard Components/Navbar/Navbar';
 import Sidebar from '../../Dashboard Components/Sidebar/Sidebar';
 
-import { DataGrid } from '@material-ui/data-grid';
-import { DeleteOutline } from '@material-ui/icons';
+// import { DataGrid } from '@material-ui/data-grid';
+// import { DeleteOutline } from '@material-ui/icons';
 
 import { hostRows } from '../../../../DummyData';
 // import { Link } from 'react-router-dom';
@@ -123,13 +123,13 @@ const Host = () => {
                         {visitor.Position}
                       </div>
                       <div className="visitor_phone">
-                        {'0' + visitor.Phone_Number}
+                        {visitor.Phone_Number}
                       </div>
                       <div className="visitor_email">
                         {visitor.Email}
                       </div>
                     </td>
-                    <td>{visitor.Host}</td>
+                    <td>{visitor.Full_Name}</td>
                     <td>{visitor.Time_In}</td>
                     <td>{visitor.Time_Out}</td>
                   </tr>
