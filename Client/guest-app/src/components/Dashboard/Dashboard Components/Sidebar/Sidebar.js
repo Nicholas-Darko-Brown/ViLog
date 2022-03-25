@@ -24,15 +24,11 @@ const Sidebar = () => {
                         <BarChart className='sidebar_icon'/>
                         Statistics
                     </li>
-                    <li className="sidebar_list_item">
-                        <TrendingUp className='sidebar_icon'/>
-                        Sales
-                    </li>
                 </ul>
             </div>
 
             <div className="sidebar_menu">
-                <h3 className="sidebar_title">Quick Menu</h3>
+                <h3 className="sidebar_title">Account</h3>
                 <ul className="sidebar_list">
                     <li className="sidebar_list_item" onClick={() => {
                         navigate('/host')

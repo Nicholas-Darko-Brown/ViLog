@@ -1,37 +1,34 @@
-import './FeaturedInfo.css'
-import { ArrowDownward, ArrowUpward } from '@material-ui/icons'
+import './FeaturedInfo.css';
+// import { ArrowDownward, ArrowUpward } from '@material-ui/icons';
+import { useEffect, useState } from 'react';
+import axios from 'axios';
 
 const FeaturedInfo = () => {
+  const [charts, setCharts] = useState();
+
+  const fetchChart = async () => {
+    const { data } = await axios.get('/dashboardPage/graph');
+    setCharts(data);
+    console.log(data);
+  };
+
+  useEffect(() => {
+    fetchChart();
+  }, []);
+
   return (
-    <div className='featuredInfo_container'>
+    <div className="featuredInfo_container">
+    {charts && charts.map((chart) => (
         <div className="featuredInfo_item">
-            <span className="featuredInfo_title">Revenue</span>
-            <div className="featuredInfo_money_container">
-                <span className="featuredInfo_money">$2,415</span>
-                <span className="featuredInfo_money_rate negative">-11.4 <ArrowDownward /></span>
-            </div>
-            <span className="featuredInfo_subtitle">Compared to last month</span>
+          <span className="featuredInfo_title">Number of Visits</span>
+          <div className="featuredInfo_money_container">
+            <span className="featuredInfo_money"> { chart.Months } - </span>
+            <span className="featuredInfo_money_rate negative"> {chart.Visit} </span>
+          </div>
         </div>
-
-        <div className="featuredInfo_item">
-            <span className="featuredInfo_title">Sales</span>
-            <div className="featuredInfo_money_container">
-                <span className="featuredInfo_money">$3,415</span>
-                <span className="featuredInfo_money_rate negative">-1.4 <ArrowDownward /></span>
-            </div>
-            <span className="featuredInfo_subtitle">Compared to last month</span>
-        </div>
-
-        <div className="featuredInfo_item">
-            <span className="featuredInfo_title">Cost</span>
-            <div className="featuredInfo_money_container">
-                <span className="featuredInfo_money">$2,615</span>
-                <span className="featuredInfo_money_rate positive">+1.4 <ArrowUpward /></span>
-            </div>
-            <span className="featuredInfo_subtitle">Compared to last month</span>
-        </div>
+        ))}
     </div>
-  )
-}
+  );
+};
 
-export default FeaturedInfo
+export default FeaturedInfo;

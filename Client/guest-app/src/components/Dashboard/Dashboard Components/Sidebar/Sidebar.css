@@ -4,7 +4,7 @@
     position: sticky;
     top: 50px;
     left: 20px;
-    /* border-right: 1px solid black; */
+    
 }
 
 .sidebar_wrapper {
@@ -12,6 +12,9 @@
     padding: 5px 40px;
     /* background-color: rgb(235, 235, 8); */
     border-radius: 15px;
+    /* border: 1px solid black; */
+    -webkit-box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.5); 
+box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.5);
 }
 
 .sidebar_menu {

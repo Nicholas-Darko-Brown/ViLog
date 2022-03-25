@@ -75,3 +75,11 @@
 .visitor_company {
     color: rgb(168, 168, 168);
 }
+
+.visitor_position {
+    color: #ff6a6a;
+}
+
+.visitor_name {
+    font-weight: 600;
+}
