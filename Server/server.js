@@ -244,7 +244,7 @@ app.post("/adminPage/addEmployee", (req, res) => {
 //route for updating an employee's details
 app.put("/adminPage/updateEmployee/:id", (req, res) => {
 
-    const id = req.params;
+    const {id} = req.params;
     console.log(id);
     const {Full_Name, Email, Phone_Number, Position, Password} = req.body;
     console.log(req.body)
