@@ -19,6 +19,31 @@
     gap: 10px;
     padding: 1rem;
 }
+
+.subtitle {
+  font-size: 18px;
+  font-weight: 600;
+  margin-top: 20px;
+}
+
+.add_form {
+  border: 1px solid black;
+  border-radius: 5px;
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
+}
+
+.add_form input {
+  outline: 0;
+  border: 1px solid black;
+  border-radius: 5px;
+  padding: 5px;
+}
+
+.admin_title {
+  margin-top: 20px;
+}
   
   table {
     border-collapse: collapse;
@@ -49,6 +74,10 @@
 
   .employee_table {
       margin-top: 50px;
+  }
+
+  .employee_wrapper {
+    overflow-x: auto;
   }
   
   form {

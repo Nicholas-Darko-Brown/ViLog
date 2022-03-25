@@ -1,6 +1,6 @@
 import React from 'react'
 import './Sidebar.css'
-import { Home,BarChart, TrendingUp, AccountCircle, People, Save, Share, ExitToApp, VerifiedUser } from '@material-ui/icons';
+import { Home,BarChart, AccountCircle, Save, Share, ExitToApp, VerifiedUser } from '@material-ui/icons';
 
 import { useNavigate } from 'react-router-dom';
 
@@ -20,7 +20,9 @@ const Sidebar = () => {
                         <Home className='sidebar_icon'/>
                         Home
                     </li>
-                    <li className="sidebar_list_item">
+                    <li className="sidebar_list_item" onClick={() => {
+                        navigate('/dashboardPage')
+                    }}>
                         <BarChart className='sidebar_icon'/>
                         Statistics
                     </li>

@@ -344,8 +344,8 @@ const AdminPage = () => {
             </table>
           </form>
 
-          <h2>Add a Visitor</h2>
-          <form onSubmit={handleAddVisitorFormSubmit}>
+          <h2 className='subtitle'>Add a Visitor</h2>
+          <form className='add_form' onSubmit={handleAddVisitorFormSubmit}>
             <input
               type="text"
               name="Full_name"
@@ -388,13 +388,14 @@ const AdminPage = () => {
             </button>
           </form>
 
-          <span className='table_title'>ADMIN EMPLOYEE DATA</span>
-          <form onSubmit={handleEmployeeEditFormSubmit}>
+          <span className='table_title admin_title'>ADMIN EMPLOYEE DATA</span>
+          <form onSubmit={handleEmployeeEditFormSubmit} >
             <table>
               <thead>
                 <tr>
                   <th>Name </th>
                   <th>Email </th>
+                  {/* <th>Password </th> */}
                   <th>Phone </th>
                   <th>Position </th>
                   <th>Actions</th>
@@ -418,8 +419,8 @@ const AdminPage = () => {
             </table>
           </form>
 
-          <h2>Add an Employee</h2>
-          <form onSubmit={handleAddEmployeeFormSubmit}>
+          <h2 className='subtitle'>Add an Employee</h2>
+          <form className='add_form' onSubmit={handleAddEmployeeFormSubmit} >
             <input
               type="text"
               name="Full_Name"
@@ -436,6 +437,14 @@ const AdminPage = () => {
               onChange={handleAddEmployeeFormChange}
               value={addEmployeeFormData.Email}
             />
+            {/* <input
+              type="password"
+              name="Password"
+              required="required"
+              placeholder="Enter password"
+              onChange={handleAddEmployeeFormChange}
+              value={addEmployeeFormData.Password}
+            /> */}
             <input
               type="tel"
               name="Phone_Number"

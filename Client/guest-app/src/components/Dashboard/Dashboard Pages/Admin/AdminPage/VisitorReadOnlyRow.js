@@ -8,7 +8,7 @@ const VisitorReadOnlyRow = ({ visitor, handleVisitorEditClick, handleVisitorDele
       {/* <td>{visitor.Status}</td>
       <td>{visitor.Time_In}</td>
       <td>{visitor.Time_Out}</td> */}
-      <td>{visitor.Phone_Number}</td>
+      <td>{'0' + visitor.Phone_Number}</td>
       {/* <td>{visitor.Company}</td> */}
       <td>{visitor.Position}</td>
       {/* <td>{visitor.Host}</td> */}
