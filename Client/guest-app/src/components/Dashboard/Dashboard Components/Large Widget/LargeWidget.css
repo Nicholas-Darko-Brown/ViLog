@@ -24,9 +24,9 @@
     padding: 7px 2px;
 }
 
-.row-child {
-    /* border: 1px solid black; */
-}
+/* .row-child {
+    border: 1px solid black;
+} */
 
 .large_widget_user {
     display: flex;
@@ -66,4 +66,12 @@
 .large_widget_btn.Declined {
     background-color: #fff0f1;
     color: #d95087;
+}
+
+.visitor_column {
+    display: flex;
+    flex-direction: column;
+}
+.visitor_company {
+    color: rgb(168, 168, 168);
 }

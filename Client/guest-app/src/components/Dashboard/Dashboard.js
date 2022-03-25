@@ -84,7 +84,7 @@ const Dashboard = () => {
           isClosable: true,
           position: 'top',
         });
-        navigate('/host');
+        navigate('/dashboardPage');
       }
     } catch (err) {
       toast({
