@@ -16,9 +16,6 @@ const Forms = () => {
   const fetchEmployeesData = async () => {
     const { data } = await Axios.get('/adminPage/employeeList');
     setEmployee(data);
-    data.map(employee => {
-      return `${employee.Full_Name} || ${employee.Email}`
-    })
   };
 
   useEffect(() => {
@@ -36,7 +33,6 @@ const Forms = () => {
     email: '',
     position: '',
     status: ''
-    // timestamp: ''
   });
   console.log(data);
 
@@ -52,7 +48,7 @@ const Forms = () => {
     console.log('submitted');
     e.preventDefault();
     console.log(data);
-    const newData = Object.assign(data, {timestamp: timestamp}, {status: 'checked in'}, {fetchEmployeesData: fetchEmployeesData})
+    const newData = Object.assign(data, {timestamp: timestamp}, {status: 'checked in'})
     console.log(newData)
 
     Axios.post(url, newData);
