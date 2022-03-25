@@ -35,7 +35,7 @@ const LargeWidget = () => {
                 <div className="">{visitor.Full_name}</div>
                 <div className="visitor_company">{visitor.Company}</div>
               </td>
-              <td>{visitor.Host}</td>
+              <td>{visitor.Full_Name}</td>
               <td>{visitor.Time_Out}</td>
             </tr>
           ))}

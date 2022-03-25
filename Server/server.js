@@ -46,7 +46,7 @@ const visitorsTable = tables.visitors.name;
 const employeesTable = tables.employees.name;
 const administratorsTable = tables.administrators.name;
 // These variables store their corresponding values as sql keywords
-const {select, insertInto, values, from, where, update, set, as, group, by, and, union, DELETE} = sql_keywords;
+const {select, insertInto, values, from, where, update, set, as, group, by, and, union, DELETE, InnerJoin, on} = sql_keywords;
 // These variables store their corresponding values as column names in the tables
 const {idCol, fullNameCol, companyCol, phoneNumberCol, emailCol, hostCol, positionCol, signIn, signOut, day, month, year, Status} = tables.visitors.colums;
 const {idCol1, fullNameCol1, emailCol1, positionCol1, phoneNumberCol1, passwordCol1} = tables.employees.colums;
@@ -68,7 +68,7 @@ app.get("/employeeName", (req, res) => {
 
 //route for retrieving the visitors log in the host page
 app.get("/host", (req, res) => {
-    const selectVisitorListQuery = `${select} ${idCol}, ${fullNameCol}, ${emailCol}, ${companyCol}, ${hostCol}, ${signIn}, ${signOut} ${from} ${visitorsTable}`;
+    const selectVisitorListQuery = `${select} v.${idCol}, v.${fullNameCol}, v.${emailCol}, v.${phoneNumberCol}, v.${companyCol}, v.${positionCol}, e.${fullNameCol1}, v.${signIn}, v.${signOut} ${from} ${visitorsTable} v ${InnerJoin} ${employeesTable} e ${on} v.${hostCol} = e.${idCol1}`;
     db.query(selectVisitorListQuery, (err, rows) =>{
         if(err){
             console.log(err);
@@ -81,7 +81,7 @@ app.get("/host", (req, res) => {
 
 //route for retrieving the visitors log in the admin page
 app.get("/adminPage/visitorsLog", (req, res) =>{
-    const selectVisitorListQuery = `${select} ${idCol}, ${fullNameCol}, ${emailCol}, ${phoneNumberCol}, ${companyCol}, ${positionCol}, ${hostCol}, ${signIn}, ${signOut} ${from} ${visitorsTable}`;
+    const selectVisitorListQuery = `${select} v.${idCol}, v.${fullNameCol}, v.${emailCol}, v.${phoneNumberCol}, v.${companyCol}, v.${positionCol}, e.${fullNameCol1}, v.${signIn}, v.${signOut} ${from} ${visitorsTable} v ${InnerJoin} ${employeesTable} e ${on} v.${hostCol} = e.${idCol1}`;
     const y = db.query(selectVisitorListQuery, (err, rows) =>{
         if(err){
             console.log(err);
@@ -106,19 +106,19 @@ app.get("/adminPage/employeeList", (req, res) =>{
 });
 
 //route for getting the visitor data in the edit page
-app.get("/edit/:id", (req, res) =>{
-    const {id} = req.params;
-    const selectVisitorQuery = `${select} ${fullNameCol}, ${positionCol}, ${emailCol}, ${phoneNumberCol} ${from} ${visitorsTable} ${where} ${idCol} = ${id}`;
-    db.query(selectVisitorQuery, (err, rows) =>{
-        if(err){
-            console.log(err);
-        }else{
-            const visitorData = rows[0];
-            console.log(visitorData);
-            res.status(200).send(visitorData);
-        }
-    });
-});
+// app.get("/edit/:id", (req, res) =>{
+//     const {id} = req.params;
+//     const selectVisitorQuery = `${select} ${fullNameCol}, ${positionCol}, ${emailCol}, ${phoneNumberCol} ${from} ${visitorsTable} ${where} ${idCol} = ${id}`;
+//     db.query(selectVisitorQuery, (err, rows) =>{
+//         if(err){
+//             console.log(err);
+//         }else{
+//             const visitorData = rows[0];
+//             console.log(visitorData);
+//             res.status(200).send(visitorData);
+//         }
+//     });
+// });
 
 // route for the graph
 app.get("/dashboardPage/graph", (req, res) =>{
@@ -260,10 +260,10 @@ app.put("/adminPage/updateEmployee/:id", (req, res) => {
 });
 
 // route for editting the visitor
-app.put("/updateVisit", (req, res) =>{
-    const {id} = req.params;
-    const updateVisitorQuery = ``;
-});
+// app.put("/updateVisit", (req, res) =>{
+//     const {id} = req.params;
+//     const updateVisitorQuery = ``;
+// });
 
 //route for deleting an employee
 app.delete("/adminPage/deleteEmployee/:id", (req, res)=>{

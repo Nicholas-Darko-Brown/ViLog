@@ -11,7 +11,9 @@ const sql_keywords = {
     by: "BY",
     and: "AND",
     union: "UNION",
-    DELETE: "DELETE"
+    DELETE: "DELETE",
+    InnerJoin: "INNER JOIN",
+    on: "ON"
 }
 
 module.exports = sql_keywords;

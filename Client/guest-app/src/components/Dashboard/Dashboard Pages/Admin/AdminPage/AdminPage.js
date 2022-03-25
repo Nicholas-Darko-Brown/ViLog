@@ -26,7 +26,7 @@ const AdminPage = () => {
     Phone_Number: '',
     Company: '',
     Position: '',
-    Host: '',
+    Full_Name: ''
   });
 
   const [addEmployeeFormData, setAddFormEmployeeData] = useState({
@@ -45,7 +45,7 @@ const AdminPage = () => {
     Phone_Number: '',
     Company: '',
     Position: '',
-    Host: '',
+    Full_Name: ''
   })
 
   const [employeeEditFormData, setEmployeeEditFormData] = useState({
@@ -138,7 +138,7 @@ const AdminPage = () => {
       Phone_Number: addVisitorFormData.Phone_Number,
       Company: addVisitorFormData.Company,
       Position: addVisitorFormData.Position,
-      Host: addVisitorFormData.Host,
+      Full_Name: addVisitorFormData.Full_Name,
     };
 
     const newVisitors = [...visitors, newVisitor];
@@ -152,7 +152,7 @@ const AdminPage = () => {
       Phone_Number: '',
       Company: '',
       Position: '',
-      Host: '',
+      Full_Name: '',
     });
 
     axios.post(`/`, newVisitor)
@@ -194,7 +194,7 @@ const AdminPage = () => {
       Phone_Number: visitorEditFormData.Phone_Number,
       Company: visitorEditFormData.Company,
       Position: visitorEditFormData.Position,
-      Host: visitorEditFormData.Host,
+      Full_Name: visitorEditFormData.Full_Name,
     }
 
     const newVisitors = [...visitors]
@@ -242,7 +242,7 @@ const AdminPage = () => {
       Phone_Number: visitor.Phone_Number,
       Company: visitor.Company,
       Position: visitor.Position,
-      Host: visitor.Host,
+      Full_Name: visitor.Full_Name,
     };
 
     setVisitorEditFormData(formValues)
