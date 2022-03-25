@@ -137,7 +137,7 @@ const Forms = () => {
         >
           {employee ? (
             employee.map(name => {
-              return <option value={name.Full_Name}>{name.Full_Name}</option>;
+              return <option value={name.Id}>{name.Full_Name}</option>;
             })
           ) : (
             <option value="yvonne smith">Yvonne Smith</option>

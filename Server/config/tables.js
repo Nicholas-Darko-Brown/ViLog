@@ -19,7 +19,7 @@ const tables = {
             companyCol: "Company",
             phoneNumberCol: "Phone_Number",
             emailCol: "Email",
-            hostCol: "Host",
+            hostCol: "HostId",
             positionCol: "Position",
             signIn: "Time_In",
             signOut: "Time_Out",

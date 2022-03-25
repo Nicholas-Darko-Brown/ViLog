@@ -55,7 +55,7 @@ const {emailCol2, passwordCol2} = tables.administrators.colums;
 //route for rendering employees name in the select option of the form
 app.get("/employeeName", (req, res) => {
     const {fullNameCol} = tables.employees.colums;
-    const selectEmployeesNameQuery = `${select} ${fullNameCol1}, ${emailCol1} ${from} ${employeesTable}`;
+    const selectEmployeesNameQuery = `${select} ${idCol1}, ${fullNameCol1} ${from} ${employeesTable}`;
     db.query(selectEmployeesNameQuery, (err, rows) =>{
         if(err){
             console.log(err);
@@ -141,13 +141,21 @@ app.post("/", (req, res) => {
     const MONTH = moment(timestamp,"YYYY/MM/DD").format("MMMM");
     const YEAR = moment(timestamp,"YYYY/MM/DD").format("YYYY");
     const insertVisitorQuery = `${insertInto} ${visitorsTable} (${fullNameCol}, ${companyCol}, ${phoneNumberCol}, ${emailCol}, ${hostCol}, ${positionCol}, ${signIn}, ${day}, ${month}, ${year}, ${Status}) ${values} (?,?,?,?,?,?,?,?,?,?,?)`;
-
+    const selectEmployeeEmailQuery = `${select} ${fullNameCol1}, ${emailCol1} ${from} ${employeesTable} ${where} ${idCol1} = ?`;
     db.query(insertVisitorQuery, [name, company, tel, email, host, position, timeIn.toLocaleTimeString(), DAY, MONTH, YEAR, status], (err, result) =>{
         if(err){
             console.log(err);
         }else{
             console.log("visitor added.");
             res.status(201).send(result);
+        }
+    });
+
+    db.query(selectEmployeeEmailQuery, [host], (err, result) =>{
+        if(err){
+            console.log(err);
+        }else{
+            console.log(result[0]);
 
             const transporter = nodemailer.createTransport({
                 service: 'gmail',
@@ -159,9 +167,9 @@ app.post("/", (req, res) => {
 
             const mailOptions = {
                 from: 'vilogtext@gmail.com',
-                to: email,
+                to: result[0].Email,
                 subject: "Message from vilogtext@gmail.com: ViLog checkIn",
-                text: "This is the message"
+                text: `Hello ${result[0].Full_Name}.`
             };
             
             transporter.sendMail(mailOptions, (err, info)=>{
