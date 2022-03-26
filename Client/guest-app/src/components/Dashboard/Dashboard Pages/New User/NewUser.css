@@ -1,0 +1,70 @@
+.new_user_container {
+    flex: 4
+}
+
+.new_user_sidebar {
+    display: flex;
+}
+
+.new_user_content {
+    flex: 4;
+    margin: 20px;
+    padding-left: 20px;
+    padding-top: 10px;
+    border-radius: 15px;
+    box-shadow: 0px 6px 7px 0px rgba(0,0,0,0.5);
+    -webkit-box-shadow: 0px 6px 7px 0px rgba(0,0,0,0.5);
+    -moz-box-shadow: 0px 6px 7px 0px rgba(0,0,0,0.5);
+    border: 1px solid sienna;
+}
+
+.new_user_title {
+    font-size: 22px;
+    font-weight: 600;
+}
+
+.new_user_form_wrapper {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.new_user_item {
+    width: 400px;
+    display: flex;
+    flex-direction: column;
+    margin-top: 10px;
+    margin-right: 20px;
+}
+
+.new_user_item>label {
+    margin-bottom: 10px;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.new_user_item>input {
+    height: 35px;
+    padding: 10px;
+    border: 1px solid gray;
+    outline: 0;
+    border-radius: 5px;
+}
+
+.new_user_item>input:focus {
+    border: 2px solid blue;
+}
+
+.new_user_btn {
+    width: 200px;
+    border: none;
+    background-color: #e77449;
+    color: white;
+    padding: 7px;
+    font-weight: 600;
+    border-radius: 5px;
+    margin-top: 50px;
+}
+
+.new_user_btn:hover {
+    opacity: 0.8;
+} 
