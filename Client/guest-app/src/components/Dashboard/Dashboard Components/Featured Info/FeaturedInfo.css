@@ -26,18 +26,19 @@
 }
 
 .featuredInfo_money {
-    font-size: 25px;
+    font-size: 18px;
     font-weight: 600;
 }
 
 .featuredInfo_money_rate {
     display: flex;
     align-items: center;
-    margin-left: 30px;
+    margin-left: 10px;
 }
 
 .negative {
-    color: red;
+    color: rgb(253, 130, 92);
+    font-size: 22px;
 }
 
 .positive {

@@ -1,3 +1,4 @@
+import { useState, useEffect } from 'react';
 import './Chart.css';
 import {
   LineChart,
@@ -8,22 +9,35 @@ import {
   Tooltip, 
   ResponsiveContainer,
 } from 'recharts';
+import axios from 'axios';
 
+// Graph of Monthly Visitors
 const Chart = ({ title, data, dataKey, grid }) => {
 
+  const [chart, setChart] = useState([])
+
+  const fetchChart = async () => {
+    const { data } = await axios.get('/dashboardPage/graph');
+    setChart(data);
+    console.log(data)
+  }
+
+  useEffect(() => {
+    fetchChart()
+  }, [])
 
   return (
     <div className="chart_container">
       <h3 className="chart_title">{ title }</h3>
       <ResponsiveContainer width="100%" aspect={4 / 1}>
-        <LineChart data={data}>
-          <XAxis dataKey="month" />
+      
+        <LineChart data={chart}>
+          <XAxis dataKey="Months" />
           <YAxis />
-          <Line type="monotone" dataKey={dataKey} />
+          <Line type="monotone" dataKey="Visit"/>
           <Tooltip />
           {grid && <CartesianGrid strokeDasharray='5 5'/>}
         </LineChart>
-        
       </ResponsiveContainer>
     </div>
   );

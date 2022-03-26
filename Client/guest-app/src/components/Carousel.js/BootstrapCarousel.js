@@ -4,7 +4,7 @@ import Home from '../Home/Home'
 import Forms from '../Forms/Forms'
 import SignedIn from '../SignedIn/SignedIn';
 
-
+// Homepage Carousel
 const BootstrapCarousel = () => {
 
   return (

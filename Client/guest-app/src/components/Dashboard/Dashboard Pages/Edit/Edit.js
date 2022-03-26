@@ -19,7 +19,7 @@ const Edit = () => {
         <Sidebar />
         <div className="edit_content">
           <div className="edit_content_title_container">
-            <span className="edit_content_title">Edit User</span>
+            <span className="edit_content_title">Edit Visitor Data</span>
             <button className="edit_add_btn" onClick={() => {
               navigate('/newUser')
             }}>Create  <Add /> </button>

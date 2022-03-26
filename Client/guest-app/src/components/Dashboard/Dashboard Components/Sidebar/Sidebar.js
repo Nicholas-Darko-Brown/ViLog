@@ -1,9 +1,9 @@
 import React from 'react'
 import './Sidebar.css'
-import { Home,BarChart, TrendingUp, AccountCircle, People, Save, Share, ExitToApp, VerifiedUser } from '@material-ui/icons';
-
+import { Home,BarChart, AccountCircle, Save, ExitToApp, VerifiedUser } from '@material-ui/icons';
 import { useNavigate } from 'react-router-dom';
 
+// Sidebar of Dashboard
 const Sidebar = () => {
     let navigate = useNavigate()
 
@@ -20,32 +20,28 @@ const Sidebar = () => {
                         <Home className='sidebar_icon'/>
                         Home
                     </li>
-                    <li className="sidebar_list_item">
+                    <li className="sidebar_list_item" onClick={() => {
+                        navigate('/dashboardPage')
+                    }}>
                         <BarChart className='sidebar_icon'/>
                         Statistics
-                    </li>
-                    <li className="sidebar_list_item">
-                        <TrendingUp className='sidebar_icon'/>
-                        Sales
                     </li>
                 </ul>
             </div>
 
             <div className="sidebar_menu">
-                <h3 className="sidebar_title">Quick Menu</h3>
+                <h3 className="sidebar_title">Account</h3>
                 <ul className="sidebar_list">
-                    <li className="sidebar_list_item">
-                        <People className='sidebar_icon'/>
-                        Visitors
-                    </li>
                     <li className="sidebar_list_item" onClick={() => {
                         navigate('/host')
                     }}>
                         <AccountCircle className='sidebar_icon'/>
-                        Hosts
+                        Host
                     </li>
-                    <li className="sidebar_list_item">
-                        <VerifiedUser className='sidebar_icon'/>
+                    <li className="sidebar_list_item" onClick={() => {
+                        navigate('/admin')
+                    }}>
+                        <VerifiedUser className='sidebar_icon' />
                         Admin
                     </li>
                 </ul>
@@ -54,17 +50,15 @@ const Sidebar = () => {
             <div className="sidebar_menu">
                 <h3 className="sidebar_title">File Transfer</h3>
                 <ul className="sidebar_list">
-                    <li className="sidebar_list_item">
+                    <li className="sidebar_list_item" onClick={() => {
+                        navigate('/reports')
+                    }}>
                         <Save className='sidebar_icon'/>
                         Reports
                     </li>
                     <li className="sidebar_list_item">
                         <ExitToApp className='sidebar_icon'/>
                         Export
-                    </li>
-                    <li className="sidebar_list_item">
-                        <Share className='sidebar_icon'/>
-                        Share
                     </li>
                 </ul>
             </div>

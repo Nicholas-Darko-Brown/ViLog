@@ -1,67 +1,51 @@
-import './LargeWidget.css'
-import User from '../../../../assets/user.png'
+import { useEffect, useState } from 'react';
+import './LargeWidget.css';
+import axios from 'axios';
 
+// Table for Signed In Visitors
 const LargeWidget = () => {
-  const Button = ({ type }) => {
-    return <button className={"large_widget_btn " + type}>{type}</button>
-  }
+  const [visitors, setVisitors] = useState([]);
+
+  const fetchVisitors = async () => {
+    const { data } = await axios.get('/adminPage/visitorsLog');
+    setVisitors(data);
+    console.log(data);
+  };
+
+  useEffect(() => {
+    fetchVisitors();
+  }, []);
 
   return (
-    <div className='large_widget_container'>
-      <span className="large_widget_title">Current Visitors</span>
+    <div className="large_widget_container">
+      <span className="large_widget_title">Signed In Visitors</span>
       <table className="large_widget_table">
-        <tr className="large_widget_table_row">
-          <th className="large_widget_table_head">Visitor</th>
-          <th className="large_widget_table_head">Host</th>
-          <th className="large_widget_table_head">Sign In</th>
-          <th className="large_widget_table_head">Sign Out</th>
-          <th className="large_widget_table_head">Status</th>
-        </tr>
-
-        <tr className="large_widget_table_row row-child">
-          <td className="large_widget_user">
-            <img src={User} alt="" className="large_widget_img" />
-            <span className="large_widget_name">Susan Carol</span>
-          </td>
-
-          <td className="large_widget_host">Kevin Keagan</td>
-          <td className="large_widget_sign_in">Feb 24, 22 | 09:04</td>
-          <td className="large_widget_sign_out">Feb 24, 22 | 10:15</td>
-          <td className="large_widget_button">
-            <Button type="Approved" />
-          </td>
-        </tr>
-
-        <tr className="large_widget_table_row row-child">
-          <td className="large_widget_user">
-            <img src={User} alt="" className="large_widget_img" />
-            <span className="large_widget_name">Susan Carol</span>
-          </td>
-
-          <td className="large_widget_host">Kevin Keagan</td>
-          <td className="large_widget_sign_in">Feb 24, 22 | 09:04</td>
-          <td className="large_widget_sign_out">Feb 24, 22 | 10:15</td>
-          <td className="large_widget_button">
-            <Button type="Pending" />
-          </td>
-        </tr>
-
-        <tr className="large_widget_table_row row-child">
-          <td className="large_widget_user">
-            <img src={User} alt="" className="large_widget_img" />
-            <span className="large_widget_name">Susan Carol</span>
-          </td>
-
-          <td className="large_widget_host">Kevin Keagan</td>
-          <td className="large_widget_sign_in">Feb 24, 22 | 09:04</td>
-          <td className="large_widget_sign_out">Feb 24, 22 | 10:15</td>
-          <td className="large_widget_button">
-            <Button type="Declined" />
-          </td>
-        </tr>
+        <thead>
+          <tr>
+            <th>Signed In</th>
+            <th>Visitor</th>
+            <th>Host</th>
+            <th>Signed Out</th>
+            <th>Status</th>
+          </tr>
+        </thead>
+        <tbody>
+          {visitors.map(visitor => (
+            <tr>
+              <td>{visitor.Time_In}</td>
+              <td className="visitor_column">
+                <div className="">{visitor.Full_name}</div>
+                <div className="visitor_company">{visitor.Company}</div>
+              </td>
+              <td>{visitor.Full_Name}</td>
+              <td>{visitor.Time_Out}</td>
+              <td>{visitor.Status}</td>
+            </tr>
+          ))}
+        </tbody>
       </table>
     </div>
-  )
-}
+  );
+};
 
-export default LargeWidget
+export default LargeWidget;
