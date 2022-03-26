@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {
   Box,
   Flex,
@@ -20,13 +20,41 @@ import {
 import Logo from '../../assets/logo-1.png';
 import { MdDashboard } from 'react-icons/md';
 import { FiLogOut } from 'react-icons/fi';
-
 import { useNavigate } from 'react-router-dom';
 import FastLogin from '../FastLogin/FastLogin';
+import axios from 'axios';
 
+// Homepage
 const Home = () => {
   let navigate = useNavigate();
   const { isOpen, onOpen, onClose } = useDisclosure();
+
+  const [data, setData] = useState({
+    Id: '',
+    name: '',
+    company: '',
+    tel: '',
+    email: '',
+    position: '',
+    status: ''
+  });
+
+  const timestamp = new Date(Date.now()).toISOString();
+  console.log(timestamp)
+
+  const url = "/adminPage/visitorsLog"
+
+  const handleSubmit = (e) => {
+
+    console.log("here")
+    e.preventDefault()
+
+    const newData = Object.assign({Id: data.Id}, {timestamp: timestamp}, {status: 'checked out'})
+    // setData(newData)
+    console.log(newData)
+
+    axios.put(url, newData);
+  }
 
   return (
     <Box height="100vh">
@@ -85,7 +113,7 @@ const Home = () => {
                   <Button colorScheme="blue" mr={3} onClick={onClose}>
                     Close
                   </Button>
-                  <Button variant="ghost">Confirm</Button>
+                  <Button onClick={handleSubmit} onClose={onClose} variant="ghost">Confirm</Button>
                 </ModalFooter>
               </ModalContent>
             </Modal>

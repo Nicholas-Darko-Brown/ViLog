@@ -1,8 +1,8 @@
 import './FeaturedInfo.css';
-// import { ArrowDownward, ArrowUpward } from '@material-ui/icons';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 
+// Small Widgets to display statistics of visitors
 const FeaturedInfo = () => {
   const [charts, setCharts] = useState();
 

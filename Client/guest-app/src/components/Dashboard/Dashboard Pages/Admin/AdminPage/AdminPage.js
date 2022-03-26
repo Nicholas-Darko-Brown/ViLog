@@ -12,7 +12,7 @@ const AdminPage = () => {
   const [visitors, setVisitors] = useState([]);
   const [employees, setEmployees] = useState([]);
 
-  //state of edit button
+  // State of edit button
   const [editVisitorId, setEditVisitorId] = useState(null);
   const [editEmployeeId, setEditEmployeeId] = useState(null);
 
@@ -260,10 +260,6 @@ const AdminPage = () => {
     }
 
     setEmployeeEditFormData(formValues)
-    // console.log(employeeEditFormData)
-
-
-   
   };
 
   // cancel button

@@ -3,6 +3,7 @@ import './Navbar.css'
 import { NotificationsNone, Settings } from '@material-ui/icons';
 import User from '../../../../assets/user.png'
 
+// Navigation bar
 const Navbar = () => {
   return (
     <div className='navbar'>
@@ -12,10 +13,10 @@ const Navbar = () => {
             </div>
 
             <div className="navbar_right">
-                {/* <div className="navbar_icons_container">
+                <div className="navbar_icons_container">
                     <NotificationsNone />
                     <span className="navbar_icon_badge">2</span>
-                </div> */}
+                </div>
 
                 <div className="navbar_icons_container">
                     <Settings />

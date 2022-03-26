@@ -18,6 +18,7 @@ import EmployeeEdit from './components/Dashboard/Dashboard Pages/Edit/EmployeeEd
 import NewEmployeeUser from './components/Dashboard/Dashboard Pages/New User/NewEmployeeUser/NewEmployeeUser'
 import Report from './components/Dashboard/Dashboard Components/Reports/Report';
 
+// Routes to various pages
 const App = () => {
   return (
     <ChakraProvider>
@@ -27,12 +28,10 @@ const App = () => {
           <Route path='/' element={<BootsrapCarousel />}></Route>
           <Route path='/dashboard' element={<Dashboard />}></Route>
           <Route path='/logout' element={<Logout />}></Route>
-          {/* <Route path='*' element={<Error />}></Route> */}
           <Route path='/dashboardPage' element={<DashboardPage />}></Route>
           <Route path='/host' element={<Host />}></Route>
           <Route path='/edit/:editId' element={<Edit />}></Route>
           <Route path='/newUser' element={<NewUser />}></Route>
-
           <Route path='/admin' element={<Admin />}></Route>
           <Route path='/adminPage' element={<AdminPage />}></Route>
           <Route path='/employeeEdit/:employeeEdit' element={<EmployeeEdit />}></Route>

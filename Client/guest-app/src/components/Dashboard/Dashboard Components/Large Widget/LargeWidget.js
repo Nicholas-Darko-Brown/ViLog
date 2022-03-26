@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import './LargeWidget.css';
 import axios from 'axios';
 
+// Table for Signed In Visitors
 const LargeWidget = () => {
   const [visitors, setVisitors] = useState([]);
 

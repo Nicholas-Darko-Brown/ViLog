@@ -1,9 +1,9 @@
 import React from 'react'
 import './Sidebar.css'
-import { Home,BarChart, AccountCircle, Save, Share, ExitToApp, VerifiedUser } from '@material-ui/icons';
-
+import { Home,BarChart, AccountCircle, Save, ExitToApp, VerifiedUser } from '@material-ui/icons';
 import { useNavigate } from 'react-router-dom';
 
+// Sidebar of Dashboard
 const Sidebar = () => {
     let navigate = useNavigate()
 
@@ -36,7 +36,7 @@ const Sidebar = () => {
                         navigate('/host')
                     }}>
                         <AccountCircle className='sidebar_icon'/>
-                        Hosts
+                        Host
                     </li>
                     <li className="sidebar_list_item" onClick={() => {
                         navigate('/admin')
@@ -59,10 +59,6 @@ const Sidebar = () => {
                     <li className="sidebar_list_item">
                         <ExitToApp className='sidebar_icon'/>
                         Export
-                    </li>
-                    <li className="sidebar_list_item">
-                        <Share className='sidebar_icon'/>
-                        Share
                     </li>
                 </ul>
             </div>

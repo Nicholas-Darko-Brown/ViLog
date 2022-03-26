@@ -11,6 +11,7 @@ import {
 } from 'recharts';
 import axios from 'axios';
 
+// Graph of Monthly Visitors
 const Chart = ({ title, data, dataKey, grid }) => {
 
   const [chart, setChart] = useState([])

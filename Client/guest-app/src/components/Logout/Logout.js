@@ -12,8 +12,11 @@ import {
     Text
   } from '@chakra-ui/react'
 
+
 const Logout = () => {
     const { isOpen, onOpen, onClose } = useDisclosure()
+
+
     return (
       <>
         <Button onClick={onOpen}>Logout</Button>

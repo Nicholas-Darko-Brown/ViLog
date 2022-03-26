@@ -14,6 +14,7 @@ import { BiHide, BiShow } from 'react-icons/bi';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
+// Admin login
 const Admin = () => {
   const [show, setShow] = useState(false);
   const handleClick = () => setShow(!show);
@@ -44,14 +45,12 @@ const Admin = () => {
       toast({
         title: 'Fill all fields',
         status: 'warning',
-        duration: 1000,
+        duration: 3000,
         isClosable: true,
         position: 'top',
       });
       return;
     }
-
-    // navigate('/adminPage')
 
     try {
       const { data } = await axios.post(

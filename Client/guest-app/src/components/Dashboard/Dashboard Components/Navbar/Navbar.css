@@ -24,16 +24,13 @@ img {
     justify-content: space-between;
     align-items: center;
     padding: 0px 20px;
-    /* border: 1px solid green; */
 }
 
 .navbar_left {
-    /* border: 1px solid blue; */
     cursor: pointer;
 }
 
 .navbar_right {
-    /* border: 1px solid orange; */
     display: flex;
     align-items: center;
     gap: 15px;
@@ -50,7 +47,7 @@ img {
     color: grey;
 }
 
-/* .navbar_icon_badge {
+.navbar_icon_badge {
     position: absolute;
     top: -5px;
     right: 0px;
@@ -63,7 +60,7 @@ img {
     justify-content: center;
     align-items: center;
     font-size: 10px;
-} */
+}
 
 .user_icon {
     width: 30px;

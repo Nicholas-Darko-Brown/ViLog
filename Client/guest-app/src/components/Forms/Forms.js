@@ -8,8 +8,8 @@ import {
   Box,
 } from '@chakra-ui/react';
 import Axios from 'axios';
-import './Forms.css'
 
+// Visitor submission form
 const Forms = () => {
   const [employee, setEmployee] = useState([]);
 
@@ -22,6 +22,7 @@ const Forms = () => {
     fetchEmployeesData();
   }, []);
 
+  // Get check in time
   const timestamp = new Date(Date.now()).toISOString();
   console.log(timestamp)
 
@@ -141,20 +142,6 @@ const Forms = () => {
 
           {/*  */}
         </Select>
-
-        {/* <DatePicker
-          selected={selectedDate}
-          onChange={date => setSelectedDate(date)}
-          dateFormat="MMMM d, yyyy h:mm aa"
-          minDate={new Date()}
-          filterDate={date => date.getDay() !== 6 && date.getDay() !== 0}
-          showYearDropdown
-          showTimeSelect
-          placeholderText="Please, select your check in time"
-          className='date_picker'
-          id='timestamp'
-          // value={data.timestamp}
-        /> */}
 
         <Button
           onClick={e => handleSubmit(e)}

@@ -10,10 +10,10 @@ import {
   useToast,
 } from '@chakra-ui/react';
 import { BiHide, BiShow } from 'react-icons/bi';
-
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
+// Dashboard Login
 const Dashboard = () => {
   const [show, setShow] = useState(false);
   const handleClick = () => setShow(!show);
@@ -61,8 +61,6 @@ const Dashboard = () => {
       })
       return;
     }
-
-    // navigate('/adminPage')
 
     try {
       const { data } = await axios.post(
