@@ -24,7 +24,7 @@ const GeneratePDF = reports => {
     const date = Date().split(' ');
     const dateStr = date[0] + date[1] + date[2] + date[3] + date[4];
 
-    doc.text('Closed reports within the last one month', 14, 15);
+    doc.text("Employees data.", 14, 15);
     doc.save(`report_${dateStr}.pdf`);
   };
 
