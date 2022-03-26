@@ -169,7 +169,7 @@ app.post("/", (req, res) => {
                 from: 'vilogtext@gmail.com',
                 to: result[0].Email,
                 subject: "Message from vilogtext@gmail.com: ViLog checkIn",
-                text: `Hello ${result[0].Full_Name}.`
+                text: `Hello ${result[0].Full_Name}. Your visitor ${name} is waiting for you.`
             };
             
             transporter.sendMail(mailOptions, (err, info)=>{

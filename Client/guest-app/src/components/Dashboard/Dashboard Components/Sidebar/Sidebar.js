@@ -1,6 +1,6 @@
 import React from 'react'
 import './Sidebar.css'
-import { Home,BarChart, AccountCircle, Save, ExitToApp, VerifiedUser } from '@material-ui/icons';
+import { Home,BarChart, AccountCircle, Save, ExitToApp, VerifiedUser, ArrowBack } from '@material-ui/icons';
 import { useNavigate } from 'react-router-dom';
 
 // Sidebar of Dashboard
@@ -59,6 +59,18 @@ const Sidebar = () => {
                     <li className="sidebar_list_item">
                         <ExitToApp className='sidebar_icon'/>
                         Export
+                    </li>
+                </ul>
+            </div>
+
+            <div className="sidebar_menu">
+                <h3 className="sidebar_title">Go back</h3>
+                <ul className="sidebar_list">
+                    <li className="sidebar_list_item" onClick={() => {
+                        navigate('/')
+                    }}>
+                        <ArrowBack className='sidebar_icon'/>
+                        Guest
                     </li>
                 </ul>
             </div>
