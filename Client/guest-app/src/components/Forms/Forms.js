@@ -35,22 +35,17 @@ const Forms = () => {
     position: '',
     status: ''
   });
-  console.log(data);
 
 
   const handleChange = e => {
     const newData = { ...data };
     newData[e.target.id] = e.target.value;
     setData(newData);
-    console.log(newData);
   };
 
   const handleSubmit = e => {
-    console.log('submitted');
     e.preventDefault();
-    console.log(data);
     const newData = Object.assign(data, {timestamp: timestamp}, {status: 'checked in'})
-    console.log(newData)
 
     Axios.post(url, newData);
   };
