@@ -20,7 +20,6 @@ const AdminPage = () => {
   const [addVisitorFormData, setAddFormVisitorData] = useState({
     Full_name: '',
     Email: '',
-    Status: '',
     Time_In: '',
     Time_Out: '',
     Phone_Number: '',
@@ -40,7 +39,6 @@ const AdminPage = () => {
   const [visitorEditFormData, setVisitorEditFormData] = useState({
     Full_name: '',
     Email: '',
-    Status: '',
     Time_In: '',
     Time_Out: '',
     Phone_Number: '',
@@ -134,7 +132,6 @@ const AdminPage = () => {
     const newVisitor = {
       Full_name: addVisitorFormData.Full_name,
       Email: addVisitorFormData.Email,
-      Status: addVisitorFormData.Status,
       Time_In: addVisitorFormData.Time_In,
       Time_Out: addVisitorFormData.Time_Out,
       Phone_Number: addVisitorFormData.Phone_Number,
@@ -148,7 +145,6 @@ const AdminPage = () => {
     setAddFormVisitorData({
       Full_name: '',
       Email: '',
-      Status: '',
       Time_In: '',
       Time_Out: '',
       Phone_Number: '',
@@ -192,7 +188,6 @@ const AdminPage = () => {
       Id: editVisitorId,
       Full_name: visitorEditFormData.Full_name,
       Email: visitorEditFormData.Email,
-      Status: visitorEditFormData.Status,
       Time_In: visitorEditFormData.Time_In,
       Time_Out: visitorEditFormData.Time_Out,
       Phone_Number: visitorEditFormData.Phone_Number,
@@ -207,6 +202,8 @@ const AdminPage = () => {
     newVisitors[index] = editedVisitor
     setVisitors(newVisitors)
     setEditVisitorId(null)
+
+    axios.put(`/updateVisit/${editVisitorId}`, editedVisitor)
   }
 
   const handleEmployeeEditFormSubmit = (e) => {
@@ -241,7 +238,6 @@ const AdminPage = () => {
     const formValues = {
       Full_name: visitor.Full_name,
       Email: visitor.Email,
-      Status: visitor.Status,
       Time_In: visitor.Time_In,
       Time_Out: visitor.Time_Out,
       Phone_Number: visitor.Phone_Number,

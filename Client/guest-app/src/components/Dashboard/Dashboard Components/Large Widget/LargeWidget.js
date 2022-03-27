@@ -26,7 +26,6 @@ const LargeWidget = () => {
             <th>Visitor</th>
             <th>Host</th>
             <th>Signed Out</th>
-            <th>Status</th>
           </tr>
         </thead>
         <tbody>
@@ -39,7 +38,6 @@ const LargeWidget = () => {
               </td>
               <td>{visitor.Full_Name}</td>
               <td>{visitor.Time_Out}</td>
-              <td>{visitor.Status}</td>
             </tr>
           ))}
         </tbody>

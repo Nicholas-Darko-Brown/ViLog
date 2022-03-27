@@ -1,6 +1,10 @@
 import React from 'react';
 
-const VisitorEditableRow = ({ visitorEditFormData, handleVisitorEditFormChange, handleVisitorCancelClick }) => {
+const VisitorEditableRow = ({
+  visitorEditFormData,
+  handleVisitorEditFormChange,
+  handleVisitorCancelClick,
+}) => {
   return (
     <tr>
       <td>
@@ -26,8 +30,28 @@ const VisitorEditableRow = ({ visitorEditFormData, handleVisitorEditFormChange, 
         />{' '}
       </td>
       {/* <td> <input type="text" required="required" placeholder='Enter status...' name='Status' /> </td> */}
-        <td> <input type="text" required="required" placeholder='Enter time in...' name='Time_In' /> </td>
-        <td> <input type="text" required="required" placeholder='Enter time out...' name='Time_Out' /> </td>
+      <td>
+        {' '}
+        <input
+          type="text"
+          required="required"
+          placeholder="Enter time in..."
+          name="Time_In"
+          value={visitorEditFormData.Time_In}
+          onChange={handleVisitorEditFormChange}
+        />{' '}
+      </td>
+      <td>
+        {' '}
+        <input
+          type="text"
+          required="required"
+          placeholder="Enter time out..."
+          name="Time_Out"
+          value={visitorEditFormData.Time_Out}
+          onChange={handleVisitorEditFormChange}
+        />{' '}
+      </td>
       <td>
         {' '}
         <input
@@ -39,7 +63,17 @@ const VisitorEditableRow = ({ visitorEditFormData, handleVisitorEditFormChange, 
           onChange={handleVisitorEditFormChange}
         />{' '}
       </td>
-      <td> <input type="text" required="required" placeholder='Enter company...' name='Company' /> </td>
+      <td>
+        {' '}
+        <input
+          type="text"
+          required="required"
+          placeholder="Enter company..."
+          name="Company"
+          value={visitorEditFormData.Company}
+          onChange={handleVisitorEditFormChange}
+        />{' '}
+      </td>
       <td>
         {' '}
         <input
@@ -51,10 +85,28 @@ const VisitorEditableRow = ({ visitorEditFormData, handleVisitorEditFormChange, 
           onChange={handleVisitorEditFormChange}
         />{' '}
       </td>
-      <td> <input type="text" required="required" placeholder='Enter host...' name='Host' /> </td>
       <td>
-          <button className='update_btn' type='submit'>Update</button>
-          <button className='cancel_btn' type='button' onClick={handleVisitorCancelClick}>Cancel</button>
+        {' '}
+        <input
+          type="text"
+          required="required"
+          placeholder="Enter host..."
+          name="Host"
+          value={visitorEditFormData.Full_Name}
+          onChange={handleVisitorEditFormChange}
+        />{' '}
+      </td>
+      <td>
+        <button className="update_btn" type="submit">
+          Update
+        </button>
+        <button
+          className="cancel_btn"
+          type="button"
+          onClick={handleVisitorCancelClick}
+        >
+          Cancel
+        </button>
       </td>
     </tr>
   );
