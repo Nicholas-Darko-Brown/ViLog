@@ -51,16 +51,7 @@ const Dashboard = () => {
         position: 'top',
       })
       return;
-    } else if (!userEmail) {
-      toast({
-        title: 'Fill all fields',
-        status: 'warning',
-        duration: 3000,
-        isClosable: true,
-        position: 'top',
-      })
-      return;
-    }
+    } 
 
     try {
       const { data } = await axios.post(
