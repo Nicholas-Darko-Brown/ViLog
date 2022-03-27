@@ -142,7 +142,7 @@ app.post("/", (req, res) => {
     const YEAR = moment(timestamp,"YYYY/MM/DD").format("YYYY");
     const insertVisitorQuery = `${insertInto} ${visitorsTable} (${fullNameCol}, ${companyCol}, ${phoneNumberCol}, ${emailCol}, ${hostCol}, ${positionCol}, ${signIn}, ${day}, ${month}, ${year}, ${Status}) ${values} (?,?,?,?,?,?,?,?,?,?,?)`;
     const selectEmployeeEmailQuery = `${select} ${fullNameCol1}, ${emailCol1} ${from} ${employeesTable} ${where} ${idCol1} = ?`;
-    db.query(insertVisitorQuery, [name, company, tel, email, host, position, timeIn.toLocaleTimeString(), DAY, MONTH, YEAR, status], (err, result) =>{
+    db.query(insertVisitorQuery, [name, company, tel, email, host, position, `checked in on ${timeIn.toLocaleDateString()} at ${timeIn.toLocaleTimeString()}`, DAY, MONTH, YEAR, status], (err, result) =>{
         if(err){
             console.log(err);
         }else{
@@ -260,10 +260,10 @@ app.put("/adminPage/updateEmployee/:id", (req, res) => {
 });
 
 // route for editting the visitor
-// app.put("/updateVisit", (req, res) =>{
-//     const {id} = req.params;
-//     const updateVisitorQuery = ``;
-// });
+app.put("/updateVisit/:id", (req, res) =>{
+    const {id} = req.params;
+    const updateVisitorQuery = ``;
+});
 
 //route for deleting an employee
 app.delete("/adminPage/deleteEmployee/:id", (req, res)=>{
