@@ -32,6 +32,7 @@ const AdminPage = () => {
   const [addEmployeeFormData, setAddFormEmployeeData] = useState({
     Full_Name: '',
     Email: '',
+    Password: '',
     Phone_Number: '',
     Position: '',
   });
@@ -51,6 +52,7 @@ const AdminPage = () => {
   const [employeeEditFormData, setEmployeeEditFormData] = useState({
     Full_Name: '',
     Email: '',
+    Password: '',
     Phone_Number: '',
     Position: '',
   })
@@ -164,6 +166,7 @@ const AdminPage = () => {
     const newEmployee = {
       Full_Name: addEmployeeFormData.Full_Name,
       Email: addEmployeeFormData.Email,
+      Password: addEmployeeFormData.Password,
       Phone_Number: addEmployeeFormData.Phone_Number,
       Position: addEmployeeFormData.Position,
     };
@@ -174,6 +177,7 @@ const AdminPage = () => {
     setAddFormEmployeeData({
       Full_Name: '',
       Email: '',
+      Password: '',
       Phone_Number: '',
       Position: '',
     });
@@ -212,6 +216,7 @@ const AdminPage = () => {
       Id: editEmployeeId,
       Full_Name: employeeEditFormData.Full_Name,
       Email: employeeEditFormData.Email,
+      Password: employeeEditFormData.Password,
       Phone_Number: employeeEditFormData.Phone_Number,
       Position: employeeEditFormData.Position,
     }
@@ -255,6 +260,7 @@ const AdminPage = () => {
     const formValues = {
       Full_Name: employee.Full_Name,
       Email: employee.Email,
+      Password: employee.Password,
       Phone_Number: employee.Phone_Number,
       Position: employee.Position,
     }
@@ -312,13 +318,13 @@ const AdminPage = () => {
                 <tr>
                   <th>Visitor Name</th>
                   <th>Email</th>
-                  {/* <th>Status</th>
+                  {/* <th>Status</th> */}
                 <th>Time In</th>
-                <th>Time Out</th> */}
+                <th>Time Out</th>
                   <th>Phone</th>
-                  {/* <th>Company</th> */}
+                  <th>Company</th>
                   <th>Position</th>
-                  {/* <th>Host</th> */}
+                  <th>Host</th>
                   <th>Actions</th>
                 </tr>
               </thead>
@@ -346,7 +352,7 @@ const AdminPage = () => {
               type="text"
               name="Full_name"
               required="required"
-              placeholder="Enter name"
+              placeholder="Name of visitor"
               onChange={handleAddVisitorFormChange}
               value={addVisitorFormData.Full_name}
             />
@@ -354,31 +360,31 @@ const AdminPage = () => {
               type="email"
               name="Email"
               required="required"
-              placeholder="Enter email"
+              placeholder="Visitor's email"
               onChange={handleAddVisitorFormChange}
               value={addVisitorFormData.Email}
             />
-            {/* <input type="text" name='Status' required='required' placeholder='Enter status' onChange={handleAddVisitorFormChange} value={addVisitorFormData.Status} />
-            <input type="text" name='Time_In' required='required' placeholder='Enter time in' onChange={handleAddVisitorFormChange} value={addVisitorFormData.Time_In} />
-            <input type="text" name='Time_Out' required='required' placeholder='Enter time_out' onChange={handleAddVisitorFormChange} value={addVisitorFormData.Time_Out} /> */}
+            {/* <input type="text" name='Status' required='required' placeholder='Enter status' onChange={handleAddVisitorFormChange} value={addVisitorFormData.Status} /> */}
+            <input type="text" name='Time_In' required='required' placeholder='Time in' onChange={handleAddVisitorFormChange} value={addVisitorFormData.Time_In} />
+            <input type="text" name='Time_Out' required='required' placeholder='Time out' onChange={handleAddVisitorFormChange} value={addVisitorFormData.Time_Out} />
             <input
               type="tel"
               name="Phone_Number"
               required="required"
-              placeholder="Enter phone number"
+              placeholder="Phone number of visitor"
               onChange={handleAddVisitorFormChange}
               value={addVisitorFormData.Phone_Number}
             />
-            {/* <input type="text" name='Company' required='required' placeholder='Enter company' onChange={handleAddVisitorFormChange} value={addVisitorFormData.Company} /> */}
+            <input type="text" name='Company' required='required' placeholder="Visitor's company" onChange={handleAddVisitorFormChange} value={addVisitorFormData.Company} />
             <input
               type="text"
               name="Position"
               required="required"
-              placeholder="Enter position"
+              placeholder="Position of visitor"
               onChange={handleAddVisitorFormChange}
               value={addVisitorFormData.Position}
             />
-            {/* <input type="text" name='Host' required='required' placeholder='Enter host' onChange={handleAddVisitorFormChange} value={addVisitorFormData.Host} /> */}
+            <input type="text" name='Host' required='required' placeholder="Host" onChange={handleAddVisitorFormChange} value={addVisitorFormData.Host} />
             <button type="submit" className="add_btn">
               Add
             </button>
@@ -391,7 +397,7 @@ const AdminPage = () => {
                 <tr>
                   <th>Name </th>
                   <th>Email </th>
-                  {/* <th>Password </th> */}
+                  <th>Password </th>
                   <th>Phone </th>
                   <th>Position </th>
                   <th>Actions</th>
@@ -421,7 +427,7 @@ const AdminPage = () => {
               type="text"
               name="Full_Name"
               required="required"
-              placeholder="Enter name"
+              placeholder="Name of host/employee"
               onChange={handleAddEmployeeFormChange}
               value={addEmployeeFormData.Full_Name}
             />
@@ -429,23 +435,23 @@ const AdminPage = () => {
               type="email"
               name="Email"
               required="required"
-              placeholder="Enter email"
+              placeholder="Email"
               onChange={handleAddEmployeeFormChange}
               value={addEmployeeFormData.Email}
             />
-            {/* <input
+            <input
               type="password"
               name="Password"
               required="required"
-              placeholder="Enter password"
+              placeholder="Password"
               onChange={handleAddEmployeeFormChange}
               value={addEmployeeFormData.Password}
-            /> */}
+            />
             <input
               type="tel"
               name="Phone_Number"
               required="required"
-              placeholder="Enter phone number"
+              placeholder="Phone number"
               onChange={handleAddEmployeeFormChange}
               value={addEmployeeFormData.Phone_Number}
             />
@@ -453,7 +459,7 @@ const AdminPage = () => {
               type="text"
               name="Position"
               required="required"
-              placeholder="Enter position"
+              placeholder="Position"
               onChange={handleAddEmployeeFormChange}
               value={addEmployeeFormData.Position}
             />

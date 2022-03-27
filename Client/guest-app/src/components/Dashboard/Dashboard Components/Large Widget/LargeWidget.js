@@ -18,7 +18,7 @@ const LargeWidget = () => {
 
   return (
     <div className="large_widget_container">
-      <span className="large_widget_title">Signed In Visitors</span>
+      <span className="large_widget_title">Visitors</span>
       <table className="large_widget_table">
         <thead>
           <tr>

@@ -25,7 +25,7 @@ const EmployeeEditableRow = ({ employeeEditFormData, handleEmployeeEditFormChang
           onChange={handleEmployeeEditFormChange}
         />{' '}
       </td>
-      {/* <td>
+      <td>
         {' '}
         <input
           type="password"
@@ -35,7 +35,7 @@ const EmployeeEditableRow = ({ employeeEditFormData, handleEmployeeEditFormChang
           value={employeeEditFormData.Password}
           onChange={handleEmployeeEditFormChange}
         />{' '}
-      </td> */}
+      </td>
       <td>
         {' '}
         <input

@@ -25,9 +25,9 @@ const VisitorEditableRow = ({ visitorEditFormData, handleVisitorEditFormChange, 
           onChange={handleVisitorEditFormChange}
         />{' '}
       </td>
-      {/* <td> <input type="text" required="required" placeholder='Enter status...' name='Status' /> </td>
+      {/* <td> <input type="text" required="required" placeholder='Enter status...' name='Status' /> </td> */}
         <td> <input type="text" required="required" placeholder='Enter time in...' name='Time_In' /> </td>
-        <td> <input type="text" required="required" placeholder='Enter time out...' name='Time_Out' /> </td> */}
+        <td> <input type="text" required="required" placeholder='Enter time out...' name='Time_Out' /> </td>
       <td>
         {' '}
         <input
@@ -39,7 +39,7 @@ const VisitorEditableRow = ({ visitorEditFormData, handleVisitorEditFormChange, 
           onChange={handleVisitorEditFormChange}
         />{' '}
       </td>
-      {/* <td> <input type="text" required="required" placeholder='Enter company...' name='Company' /> </td> */}
+      <td> <input type="text" required="required" placeholder='Enter company...' name='Company' /> </td>
       <td>
         {' '}
         <input
@@ -51,7 +51,7 @@ const VisitorEditableRow = ({ visitorEditFormData, handleVisitorEditFormChange, 
           onChange={handleVisitorEditFormChange}
         />{' '}
       </td>
-      {/* <td> <input type="text" required="required" placeholder='Enter host...' name='Host' /> </td> */}
+      <td> <input type="text" required="required" placeholder='Enter host...' name='Host' /> </td>
       <td>
           <button className='update_btn' type='submit'>Update</button>
           <button className='cancel_btn' type='button' onClick={handleVisitorCancelClick}>Cancel</button>
