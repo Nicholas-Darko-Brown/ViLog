@@ -3,6 +3,7 @@ import { Carousel } from 'react-bootstrap'
 import Home from '../Home/Home'
 import Forms from '../Forms/Forms'
 import SignedIn from '../SignedIn/SignedIn';
+import Login from '../Login/Login';
 
 // Homepage Carousel
 const BootstrapCarousel = () => {
@@ -19,6 +20,12 @@ const BootstrapCarousel = () => {
         <Carousel.Item>
           <div style={{height: '10', backgroundColor: "rgba(255, 255, 255, 0.8)"}}>
             <Forms />
+          </div>
+        </Carousel.Item>
+
+        <Carousel.Item>
+          <div style={{height: '10', backgroundColor: "rgba(255, 255, 255, 0.8)"}}>
+            <Login />
           </div>
         </Carousel.Item>
 

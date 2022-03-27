@@ -17,6 +17,7 @@ import AdminPage from './components/Dashboard/Dashboard Pages/Admin/AdminPage/Ad
 import EmployeeEdit from './components/Dashboard/Dashboard Pages/Edit/EmployeeEdit/EmployeeEdit';
 import NewEmployeeUser from './components/Dashboard/Dashboard Pages/New User/NewEmployeeUser/NewEmployeeUser'
 import Report from './components/Dashboard/Dashboard Components/Reports/Report';
+import Login from './components/Login/Login';
 
 // Routes to various pages
 const App = () => {
@@ -37,6 +38,7 @@ const App = () => {
           <Route path='/employeeEdit/:employeeEdit' element={<EmployeeEdit />}></Route>
           <Route path='/newEmployeeUser' element={<NewEmployeeUser />}></Route>
           <Route path='/reports' element={<Report />}></Route>
+          <Route path='/visitorLogin' element={<Login />}></Route>
         </Routes>
       </Router>
         

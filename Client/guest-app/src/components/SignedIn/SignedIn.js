@@ -2,6 +2,7 @@ import React from 'react';
 import { Text, Box, Image } from '@chakra-ui/react';
 import Done from '../../assets/done.png';
 import User from '../../assets/user.png';
+import './SignedIn.css'
 
 // Signed In
 const SignedIn = () => {
@@ -44,6 +45,8 @@ const SignedIn = () => {
           <p id="message" ></p>
         </Text>
         <Image src={User} alt="done" w="5rem" />
+
+        <button className='logout_btn' style={{ backgroundColor: 'red', padding: '10px 20px', borderRadius: '10px', color: 'white', fontWeight: 600}}>Logout</button>
       </Box>
     </Box>
   );
