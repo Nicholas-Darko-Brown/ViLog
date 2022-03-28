@@ -209,10 +209,10 @@ app.post("/visitorLogin", (req, res)=>{
                        if(err){
                            console.log(err);
                        }else{
-                           console.log("Visitors added.")
+                           console.log("Visitors added.");
+                           res.status(200).send(result[0].Id);
                        }
                    });
-                   res.send(result[0])
                }else{
                    console.log("Wrong password");
                }
