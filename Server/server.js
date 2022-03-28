@@ -262,7 +262,16 @@ app.put("/adminPage/updateEmployee/:id", (req, res) => {
 // route for editting the visitor
 app.put("/updateVisit/:id", (req, res) =>{
     const {id} = req.params;
-    const updateVisitorQuery = ``;
+    const {Full_name, Email, Time_In, Time_Out, Phone_Number, Company, Position, Full_Name} = req.body;
+    const updateVisitorQuery = `${update} ${visitorsTable} ${set} ${fullNameCol} = ?, ${emailCol} = ?, ${signIn} = ?, ${signOut} = ?, ${phoneNumberCol} = ?, ${companyCol} = ?, ${positionCol} = ? ${where} ${idCol} = ?`;
+    db.query(updateVisitorQuery, [Full_Name, Email, Time_In, Time_Out, Phone_Number, Company, Position, id], (err, result) =>{
+        if(err){
+            console.log(err);
+        }else{
+            console.log("Visitor's log updated.");
+            res.status(200).send(result);
+        }
+    });
 });
 
 //route for deleting an employee
