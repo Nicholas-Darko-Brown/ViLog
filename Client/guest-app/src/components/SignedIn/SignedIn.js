@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Text, Box, Image } from '@chakra-ui/react';
 import Done from '../../assets/done.png';
 import User from '../../assets/user.png';
@@ -8,6 +8,8 @@ import axios from 'axios';
 
 // Signed In
 const SignedIn = () => {
+  const [visitor, setVisitor] = useState({})
+
   const handleMessage = () => {
     document.getElementById("message").textContent = "Please wait, contacting your host in no time..."
   }
@@ -23,14 +25,16 @@ const SignedIn = () => {
   // const navigate = useNavigate()
 
   const timestamp = new Date(Date.now()).toISOString();
-  console.log(timestamp)
+  // console.log(timestamp)
 
   const handleSubmit = (e) => {
     e.preventDefault();
     const newData = { timestamp: timestamp };
     console.log(newData)
 
-    axios.put(`/updateVisit/${newData}`, newData)
+    axios.put(`/updateVisit/${newData}`, newData).then(function (response) {
+      console.log(response)
+    })
   };
 
   
