@@ -25,29 +25,32 @@ const Login = () => {
   
     // Get check in time
     const timestamp = new Date(Date.now()).toISOString();
-    console.log(timestamp)
+    // console.log(timestamp)
   
-    const url = 'http://localhost:3000/';
+    const url = '/visitorLogin';
     const [data, setData] = useState({
       email: '',
       password: '',
       position: '',
     });
+    console.log(data)
   
   
     const handleChange = e => {
       const newData = { ...data };
       newData[e.target.id] = e.target.value;
       setData(newData);
+      console.log(newData)
     };
   
     const handleSubmit = e => {
       e.preventDefault();
-      const newData = Object.assign(data, {timestamp: timestamp}, {status: 'checked in'})
+      const newData = Object.assign(data, {timestamp: timestamp})
+      console.log(newData)
   
       axios.post(url, newData);
 
-      navigate('/signedIn')
+      // navigate('/signedIn')
     };
 
 
@@ -133,7 +136,7 @@ const Login = () => {
       </Select>
 
       <Button
-        onClick={e => handleSubmit(e)}
+        onClick={handleSubmit}
         type="submit"
         colorScheme="orange"
         variant="solid"
