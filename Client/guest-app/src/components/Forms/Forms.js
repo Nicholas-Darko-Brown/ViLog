@@ -6,12 +6,17 @@ import {
   Button,
   Text,
   Box,
+  InputGroup,
+  InputRightElement,
 } from '@chakra-ui/react';
 import Axios from 'axios';
+import { BiHide, BiShow } from 'react-icons/bi';
 
 // Visitor submission form
 const Forms = () => {
   const [employee, setEmployee] = useState([]);
+  const [show, setShow] = React.useState(false);
+  const handleClick = () => setShow(!show);
 
   const fetchEmployeesData = async () => {
     const { data } = await Axios.get('/adminPage/employeeList');
@@ -24,7 +29,7 @@ const Forms = () => {
 
   // Get check in time
   const timestamp = new Date(Date.now()).toISOString();
-  console.log(timestamp)
+  console.log(timestamp);
 
   const url = 'http://localhost:3000/';
   const [data, setData] = useState({
@@ -32,10 +37,10 @@ const Forms = () => {
     company: '',
     tel: '',
     email: '',
+    password: '',
     position: '',
-    status: ''
+    status: '',
   });
-
 
   const handleChange = e => {
     const newData = { ...data };
@@ -45,11 +50,14 @@ const Forms = () => {
 
   const handleSubmit = e => {
     e.preventDefault();
-    const newData = Object.assign(data, {timestamp: timestamp}, {status: 'checked in'})
+    const newData = Object.assign(
+      data,
+      { timestamp: timestamp },
+      { status: 'checked in' }
+    );
 
     Axios.post(url, newData);
   };
-
 
   return (
     <Box display="flex" justifyContent="center" height="100%">
@@ -71,7 +79,7 @@ const Forms = () => {
           textTransform="uppercase"
           letterSpacing="2px"
           textAlign="center"
-          mb={10}
+          mb={5}
         >
           Tell us about yourself
         </Text>
@@ -81,7 +89,8 @@ const Forms = () => {
           value={data.name}
           type="text"
           id="name"
-          placeholder="Name"
+          placeholder="Full name"
+          required="required"
         />
         <Input
           onChange={e => handleChange(e)}
@@ -90,6 +99,7 @@ const Forms = () => {
           id="company"
           mt={2}
           placeholder="Company"
+          required="required"
         />
         <Input
           onChange={e => handleChange(e)}
@@ -98,6 +108,7 @@ const Forms = () => {
           id="tel"
           mt={2}
           placeholder="Phone"
+          required="required"
         />
         <Input
           onChange={e => handleChange(e)}
@@ -106,7 +117,24 @@ const Forms = () => {
           id="email"
           mt={2}
           placeholder="Email"
+          required="required"
         />
+        <InputGroup size="md">
+          <Input
+          onChange={e => handleChange(e)}
+          value={data.password}
+          id="password"
+            pr="4.5rem"
+            type={show ? 'text' : 'password'}
+            placeholder="Password"
+            required="required"
+            mt={2}
+          />
+          <InputRightElement width="3rem" h="3.5rem" onClick={handleClick}>
+
+              {show ? <BiShow /> : <BiHide />}
+          </InputRightElement>
+        </InputGroup>
 
         <Select
           onChange={e => handleChange(e)}
@@ -115,6 +143,7 @@ const Forms = () => {
           id="position"
           placeholder="Select your position"
           mt={2}
+          required="required"
         >
           <option value="visitor">Visitor</option>
           <option value="contractor">Contractor</option>
@@ -143,10 +172,14 @@ const Forms = () => {
           type="submit"
           colorScheme="orange"
           variant="solid"
-          mt={9}
+          mt={4}
         >
-          Submit
+          Sign Up
         </Button>
+
+        <Text textAlign="center" m={5}>
+          Already signed up? Login at the next slide
+        </Text>
       </FormControl>
     </Box>
   );
