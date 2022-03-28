@@ -21,7 +21,7 @@ import Logo from '../../assets/logo-1.png';
 import { MdDashboard } from 'react-icons/md';
 import { FiLogOut } from 'react-icons/fi';
 import { useNavigate } from 'react-router-dom';
-import FastLogin from '../FastLogin/FastLogin';
+// import FastLogin from '../FastLogin/FastLogin';
 import axios from 'axios';
 
 // Homepage
@@ -77,8 +77,8 @@ const Home = () => {
           <Box display="flex" gap="1rem" >
             <Button
               rightIcon={<MdDashboard />}
-              colorScheme="gray"
-              variant="outline"
+              colorScheme="orange"
+              variant="solid"
               fontWeight="bold"
               onClick={() => {
                 navigate('/dashboard');
@@ -88,13 +88,13 @@ const Home = () => {
             </Button>
 
             {/* Logout Button */}
-            <Button
+            {/* <Button
               onClick={onOpen}
               rightIcon={<FiLogOut />}
               colorScheme="orange"
             >
               Logout
-            </Button>
+            </Button> */}
             {/* Logout popup */}
             <Modal isOpen={isOpen} onClose={onClose} isCentered>
               <ModalOverlay />
@@ -127,7 +127,7 @@ const Home = () => {
 
         
       </Flex>
-      <FastLogin />
+      {/* <FastLogin /> */}
     </Box>
   );
 };

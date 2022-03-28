@@ -1,68 +1,65 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# ViLog
 
-## Available Scripts
+<!-- - [Live Project](https://url-shortening-amalitech.netlify.app/) -->
 
-In the project directory, you can run:
+####  The challenge was to build an automated monitoring system for AmaliTech that would monitor visitors to AmaliTech premises, and provide accurate and reliable reports to AmaliTech Management.
 
-### `npm start`
+![ViLog](./Screenshot.png)
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+#### Guest/Visitors are be able to:
+- Login and Logout
+- Fast check-in in no time
+- Register through QR Code which accelerates check-ins for expected guests.
+- Smart check-in for recurring visits
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+#### Hosts/Employees are be able to:
+- Receive timely customized email and text notifications when your guest arrives.
+- Track Live Visitors and visit times.
+- Create custom reports based on data that you have acquired. 
+- Export, Share and save reports in csv/pdf formats
 
-### `npm test`
+#### Admin is be able to:
+- Manage Employee Data.
+- View more statistical real time Admin dashboard
+- Create custom reports based on data that you have acquired. 
+- Export, Share and save reports in csv/pdf formats
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+#### Technologies used:
+This project was built using these technologies:
+- JavaScript
+- CSS
+- Styled Components(Chakra UI, Material UI, Bootstrap)
+- Flexbox
+- Git
+- Markdown
+- React
+- Netlify
+- Heroku
+- Nodejs
+- MySQL
+- Express js
 
-### `npm run build`
+#### How to start the project?
+```sh
+FRONTEND:: In the Terminal;
+1. install node modules using ***npm install***
+2. run ***npm start***
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+BACKEND:: In the Terminal;
+1. install node modules using ***npm install***
+2. run ***npm start***
+```
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+#### What we learned?
+> ##### Nicholas Darko Brown
+    - Experience in using various UI Libraries for fast creation of web apps.
+    - Authentication of forms
+    - Implementation of node mailer 
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+> ##### Andrew Koffi N'dirri
+    - Implementation of node mailer for sending email to host
 
-### `npm run eject`
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+#### Future additions
+1. Implementation of QR Code for fast check-ins
