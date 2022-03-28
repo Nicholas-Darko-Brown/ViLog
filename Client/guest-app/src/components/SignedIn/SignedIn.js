@@ -14,7 +14,7 @@ const SignedIn = () => {
   setTimeout(handleMessage, 5000)
 
   const handleConfirmedMessage = () => {
-    document.getElementById("message").textContent = "Your host has been notified. Kindly wait for him"
+    document.getElementById("message").textContent = "Your host has been notified. Kindly wait for him/her"
   }
 
   setTimeout(handleConfirmedMessage, 10000)

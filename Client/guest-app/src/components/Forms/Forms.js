@@ -183,7 +183,7 @@ const Forms = () => {
         </Button>
 
         <Text textAlign="center" m={5}>
-          Already signed up? Login at the next slide
+          Already signed up? <span style={{ fontWeight: 600 }}>Login</span> at the next slide
         </Text>
       </FormControl>
     </Box>
