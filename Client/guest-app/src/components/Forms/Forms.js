@@ -58,7 +58,7 @@ const Forms = () => {
       { timestamp: timestamp },
       { status: 'checked in' }
     );
-
+    console.log(newData);
     Axios.post(url, newData);
 
     navigate('/signedIn')

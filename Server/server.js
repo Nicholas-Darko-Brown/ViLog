@@ -50,7 +50,7 @@ const administratorsTable = tables.administrators.name;
 // These variables store their corresponding values as sql keywords
 const {select, insertInto, values, from, where, update, set, as, group, by, and, union, DELETE, InnerJoin, on} = sql_keywords;
 // These variables store their corresponding values as column names in the tables
-const {idCol, fullNameCol, companyCol, phoneNumberCol, emailCol, hostCol, positionCol, signIn, signOut, day, month, year, Status} = tables.visitors.colums;
+const {idCol, fullNameCol, companyCol, phoneNumberCol, emailCol, hostCol, positionCol, signIn, signOut, day, month, year, passwordCol} = tables.visitors.colums;
 const {idCol1, fullNameCol1, emailCol1, positionCol1, phoneNumberCol1, passwordCol1} = tables.employees.colums;
 const {emailCol2, passwordCol2} = tables.administrators.colums;
 
@@ -144,7 +144,7 @@ app.post("/", (req, res) => {
     const YEAR = moment(timestamp,"YYYY/MM/DD").format("YYYY");
     const salt = bcrypt.genSaltSync(saltRounds);
     const hash = bcrypt.hashSync(password, salt);
-    const insertVisitorQuery = `${insertInto} ${visitorsTable} (${fullNameCol}, ${companyCol}, ${phoneNumberCol}, ${emailCol}, ${hostCol}, ${positionCol}, ${signIn}, ${day}, ${month}, ${year}, ${password}) ${values} (?,?,?,?,?,?,?,?,?,?,?)`;
+    const insertVisitorQuery = `${insertInto} ${visitorsTable} (${fullNameCol}, ${companyCol}, ${phoneNumberCol}, ${emailCol}, ${hostCol}, ${positionCol}, ${signIn}, ${day}, ${month}, ${year}, ${passwordCol}) ${values} (?,?,?,?,?,?,?,?,?,?,?)`;
     const selectEmployeeEmailQuery = `${select} ${fullNameCol1}, ${emailCol1} ${from} ${employeesTable} ${where} ${idCol1} = ?`;
     db.query(insertVisitorQuery, [name, company, tel, email, host, position, `checked in on ${timeIn.toLocaleDateString()} at ${timeIn.toLocaleTimeString()}`, DAY, MONTH, YEAR, hash], (err, result) =>{
         if(err){
@@ -185,6 +185,42 @@ app.post("/", (req, res) => {
             });
         }
     });
+});
+
+app.post("/visitorLogin", (req, res)=>{
+    const{email, password, position, host, timestamp} = req.body;
+    const SelectQuery = `${select} * ${from} ${visitorsTable} ${where} ${emailCol} = "${email}"`;
+    if(email){
+        db.query(SelectQuery, async(err, result)=>{
+            const e = await bcrypt.compare(password, result[0].Password);
+            if(err){
+                console.log(err);
+            }else{
+               if(e){
+                   console.log(result[0]);
+                   const DAY = moment(timestamp,"YYYY/MM/DD").date();
+                   const MONTH = moment(timestamp,"YYYY/MM/DD").format("MMMM");
+                   const YEAR = moment(timestamp,"YYYY/MM/DD").format("YYYY");
+                   const salt = bcrypt.genSaltSync(saltRounds);
+                   const hash = bcrypt.hashSync(password, salt);
+                   const timeIn = new Date(timestamp);
+                   const insert = `${insertInto} ${visitorsTable} (${fullNameCol}, ${companyCol}, ${phoneNumberCol}, ${emailCol}, ${hostCol}, ${positionCol}, ${signIn}, ${day}, ${month}, ${year}, ${passwordCol}) ${values} (?,?,?,?,?,?,?,?,?,?,?)`;
+                   db.query(insert, [result[0].Full_name, result[0].Company, result[0].Phone_Number, email, host, position, `checked in on ${timeIn.toLocaleDateString()} at ${timeIn.toLocaleTimeString()}`, DAY, MONTH, YEAR, hash], (err, rslt)=>{
+                       if(err){
+                           console.log(err);
+                       }else{
+                           console.log("Visitors added.")
+                       }
+                   });
+                   res.send(result[0])
+               }else{
+                   console.log("Wrong password");
+               }
+            }
+        })
+    }else{
+        console.log("Invalid username");
+    }
 });
 
 //route for Employee's authentication
