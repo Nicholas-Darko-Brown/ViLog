@@ -10,6 +10,7 @@ toast.configure()
 const Login = () => {
     const [employee, setEmployee] = useState([]);
     const [show, setShow] = useState(false);
+    const [visitor, setVisitor] = useState([])
     const handleClick = () => setShow(!show);
 
     const fetchEmployeesData = async () => {
@@ -48,7 +49,9 @@ const Login = () => {
       const newData = Object.assign(data, {timestamp: timestamp})
       console.log(newData)
   
-      axios.post(url, newData);
+      axios.post(url, newData).then(function (response) {
+        console.log(response)
+      })
 
       // navigate('/signedIn')
     };

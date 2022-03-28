@@ -8,7 +8,7 @@ import axios from 'axios';
 
 // Signed In
 const SignedIn = () => {
-  const [visitor, setVisitor] = useState({})
+
 
   const handleMessage = () => {
     document.getElementById("message").textContent = "Please wait, contacting your host in no time..."
@@ -32,9 +32,8 @@ const SignedIn = () => {
     const newData = { timestamp: timestamp };
     console.log(newData)
 
-    axios.put(`/updateVisit/${newData}`, newData).then(function (response) {
-      console.log(response)
-    })
+    axios.put(`/updateVisit/${newData}`, newData)
+
   };
 
   
