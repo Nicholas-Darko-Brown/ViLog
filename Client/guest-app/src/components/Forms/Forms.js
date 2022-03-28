@@ -11,12 +11,15 @@ import {
 } from '@chakra-ui/react';
 import Axios from 'axios';
 import { BiHide, BiShow } from 'react-icons/bi';
+import { useNavigate } from 'react-router-dom';
 
 // Visitor submission form
 const Forms = () => {
   const [employee, setEmployee] = useState([]);
   const [show, setShow] = React.useState(false);
   const handleClick = () => setShow(!show);
+
+  const navigate = useNavigate()
 
   const fetchEmployeesData = async () => {
     const { data } = await Axios.get('/adminPage/employeeList');
@@ -57,6 +60,8 @@ const Forms = () => {
     );
 
     Axios.post(url, newData);
+
+    navigate('/signedIn')
   };
 
   return (

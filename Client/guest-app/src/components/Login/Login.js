@@ -4,6 +4,7 @@ import React, { useState, useEffect } from 'react'
 import { BiHide, BiShow } from 'react-icons/bi';
 import { toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
+import { useNavigate } from 'react-router-dom';
 
 toast.configure()
 const Login = () => {
@@ -16,7 +17,7 @@ const Login = () => {
       setEmployee(data);
     };
   
-    // const navigate = useNavigate()
+    const navigate = useNavigate()
   
     useEffect(() => {
       fetchEmployeesData();
@@ -45,6 +46,8 @@ const Login = () => {
       const newData = Object.assign(data, {timestamp: timestamp}, {status: 'checked in'})
   
       axios.post(url, newData);
+
+      navigate('/signedIn')
     };
 
 

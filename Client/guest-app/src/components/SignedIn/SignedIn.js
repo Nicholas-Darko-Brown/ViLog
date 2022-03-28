@@ -3,6 +3,7 @@ import { Text, Box, Image } from '@chakra-ui/react';
 import Done from '../../assets/done.png';
 import User from '../../assets/user.png';
 import './SignedIn.css'
+import { useNavigate } from 'react-router-dom';
 
 // Signed In
 const SignedIn = () => {
@@ -10,13 +11,15 @@ const SignedIn = () => {
     document.getElementById("message").textContent = "Please wait, contacting your host in no time..."
   }
 
-  setTimeout(handleMessage, 8000)
+  setTimeout(handleMessage, 5000)
 
   const handleConfirmedMessage = () => {
     document.getElementById("message").textContent = "Your host has been notified. Kindly wait for him"
   }
 
-  setTimeout(handleConfirmedMessage, 20000)
+  setTimeout(handleConfirmedMessage, 10000)
+
+  const navigate = useNavigate()
 
 
   return (
@@ -46,7 +49,9 @@ const SignedIn = () => {
         </Text>
         <Image src={User} alt="done" w="5rem" />
 
-        <button className='logout_btn' style={{ backgroundColor: 'red', padding: '10px 20px', borderRadius: '10px', color: 'white', fontWeight: 600}}>Logout</button>
+        <button onClick={() => {
+          navigate('/')
+        }} className='logout_btn' style={{ backgroundColor: 'red', padding: '10px 20px', borderRadius: '10px', color: 'white', fontWeight: 600}}>Logout</button>
       </Box>
     </Box>
   );
