@@ -9,6 +9,8 @@ const path = require("path");
 const session = require("express-session");
 const moment = require("moment");
 const nodemailer = require("nodemailer");
+const bcrypt = require('bcryptjs');
+const saltRounds = 10;
 
 dotenv.config({path:'../.env'});
 const app = express();
