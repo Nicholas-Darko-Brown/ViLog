@@ -210,7 +210,7 @@ app.post("/visitorLogin", (req, res)=>{
                            console.log(err);
                        }else{
                            console.log("Visitors added.");
-                           res.status(200).send(result[0].Id);
+                           res.send(rslt);
                        }
                    });
                }else{
