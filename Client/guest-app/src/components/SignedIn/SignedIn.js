@@ -4,6 +4,7 @@ import Done from '../../assets/done.png';
 import User from '../../assets/user.png';
 import './SignedIn.css'
 import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
 
 // Signed In
 const SignedIn = () => {
@@ -19,7 +20,20 @@ const SignedIn = () => {
 
   setTimeout(handleConfirmedMessage, 10000)
 
-  const navigate = useNavigate()
+  // const navigate = useNavigate()
+
+  const timestamp = new Date(Date.now()).toISOString();
+  console.log(timestamp)
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const newData = { timestamp: timestamp };
+    console.log(newData)
+
+    axios.put(`/updateVisit/${newData}`, newData)
+  };
+
+  
 
 
   return (
@@ -49,9 +63,7 @@ const SignedIn = () => {
         </Text>
         <Image src={User} alt="done" w="5rem" />
 
-        <button onClick={() => {
-          navigate('/')
-        }} className='logout_btn' style={{ backgroundColor: 'red', padding: '10px 20px', borderRadius: '10px', color: 'white', fontWeight: 600}}>Logout</button>
+        <button onClick={handleSubmit} className='logout_btn' style={{ backgroundColor: 'red', padding: '10px 20px', borderRadius: '10px', color: 'white', fontWeight: 600}}>Logout</button>
       </Box>
     </Box>
   );
