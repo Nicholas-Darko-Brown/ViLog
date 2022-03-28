@@ -20,6 +20,7 @@ const AdminPage = () => {
   const [addVisitorFormData, setAddFormVisitorData] = useState({
     Full_name: '',
     Email: '',
+    Password: '',
     Time_In: '',
     Time_Out: '',
     Phone_Number: '',
@@ -39,6 +40,7 @@ const AdminPage = () => {
   const [visitorEditFormData, setVisitorEditFormData] = useState({
     Full_name: '',
     Email: '',
+    Password: '',
     Time_In: '',
     Time_Out: '',
     Phone_Number: '',
@@ -132,6 +134,7 @@ const AdminPage = () => {
     const newVisitor = {
       Full_name: addVisitorFormData.Full_name,
       Email: addVisitorFormData.Email,
+      Password: addVisitorFormData.Password,
       Time_In: addVisitorFormData.Time_In,
       Time_Out: addVisitorFormData.Time_Out,
       Phone_Number: addVisitorFormData.Phone_Number,
@@ -145,6 +148,7 @@ const AdminPage = () => {
     setAddFormVisitorData({
       Full_name: '',
       Email: '',
+      Password: '',
       Time_In: '',
       Time_Out: '',
       Phone_Number: '',
@@ -188,6 +192,7 @@ const AdminPage = () => {
       Id: editVisitorId,
       Full_name: visitorEditFormData.Full_name,
       Email: visitorEditFormData.Email,
+      Password: visitorEditFormData.Password,
       Time_In: visitorEditFormData.Time_In,
       Time_Out: visitorEditFormData.Time_Out,
       Phone_Number: visitorEditFormData.Phone_Number,
@@ -238,6 +243,7 @@ const AdminPage = () => {
     const formValues = {
       Full_name: visitor.Full_name,
       Email: visitor.Email,
+      Password: visitor.Password,
       Time_In: visitor.Time_In,
       Time_Out: visitor.Time_Out,
       Phone_Number: visitor.Phone_Number,
@@ -314,7 +320,7 @@ const AdminPage = () => {
                 <tr>
                   <th>Visitor Name</th>
                   <th>Email</th>
-                  {/* <th>Status</th> */}
+                  <th>Password</th>
                 <th>Time In</th>
                 <th>Time Out</th>
                   <th>Phone</th>
@@ -360,7 +366,7 @@ const AdminPage = () => {
               onChange={handleAddVisitorFormChange}
               value={addVisitorFormData.Email}
             />
-            {/* <input type="text" name='Status' required='required' placeholder='Enter status' onChange={handleAddVisitorFormChange} value={addVisitorFormData.Status} /> */}
+            <input type="password" name='Password' required='required' placeholder='Enter password' onChange={handleAddVisitorFormChange} value={addVisitorFormData.Password} />
             <input type="text" name='Time_In' required='required' placeholder='Time in' onChange={handleAddVisitorFormChange} value={addVisitorFormData.Time_In} />
             <input type="text" name='Time_Out' required='required' placeholder='Time out' onChange={handleAddVisitorFormChange} value={addVisitorFormData.Time_Out} />
             <input
@@ -380,7 +386,7 @@ const AdminPage = () => {
               onChange={handleAddVisitorFormChange}
               value={addVisitorFormData.Position}
             />
-            <input type="text" name='Host' required='required' placeholder="Host" onChange={handleAddVisitorFormChange} value={addVisitorFormData.Host} />
+            <input type="text" name='Full_Name' required='required' placeholder="Host" onChange={handleAddVisitorFormChange} value={addVisitorFormData.Full_Name} />
             <button type="submit" className="add_btn">
               Add
             </button>

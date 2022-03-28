@@ -4,11 +4,13 @@ import React, { useState, useEffect } from 'react'
 import { BiHide, BiShow } from 'react-icons/bi';
 import { toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
+import { useNavigate } from 'react-router-dom';
 
 toast.configure()
 const Login = () => {
     const [employee, setEmployee] = useState([]);
     const [show, setShow] = useState(false);
+    const [visitor, setVisitor] = useState([])
     const handleClick = () => setShow(!show);
 
     const fetchEmployeesData = async () => {
@@ -16,7 +18,7 @@ const Login = () => {
       setEmployee(data);
     };
   
-    // const navigate = useNavigate()
+    const navigate = useNavigate()
   
     useEffect(() => {
       fetchEmployeesData();
@@ -24,27 +26,34 @@ const Login = () => {
   
     // Get check in time
     const timestamp = new Date(Date.now()).toISOString();
-    console.log(timestamp)
+    // console.log(timestamp)
   
-    const url = 'http://localhost:3000/';
+    const url = '/visitorLogin';
     const [data, setData] = useState({
       email: '',
       password: '',
       position: '',
     });
+    console.log(data)
   
   
     const handleChange = e => {
       const newData = { ...data };
       newData[e.target.id] = e.target.value;
       setData(newData);
+      console.log(newData)
     };
   
     const handleSubmit = e => {
       e.preventDefault();
-      const newData = Object.assign(data, {timestamp: timestamp}, {status: 'checked in'})
+      const newData = Object.assign(data, {timestamp: timestamp})
+      console.log(newData)
   
-      axios.post(url, newData);
+      axios.post(url, newData).then(function (response) {
+        console.log(response)
+      })
+
+      // navigate('/signedIn')
     };
 
 
@@ -130,7 +139,7 @@ const Login = () => {
       </Select>
 
       <Button
-        onClick={e => handleSubmit(e)}
+        onClick={handleSubmit}
         type="submit"
         colorScheme="orange"
         variant="solid"

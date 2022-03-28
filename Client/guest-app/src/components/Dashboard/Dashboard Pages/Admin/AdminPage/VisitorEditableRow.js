@@ -29,7 +29,8 @@ const VisitorEditableRow = ({
           onChange={handleVisitorEditFormChange}
         />{' '}
       </td>
-      {/* <td> <input type="text" required="required" placeholder='Enter status...' name='Status' /> </td> */}
+      <td> <input type="password" required="required" placeholder='Enter password...' name='Password' value={visitorEditFormData.Password}
+          onChange={handleVisitorEditFormChange}/> </td>
       <td>
         {' '}
         <input
@@ -91,7 +92,7 @@ const VisitorEditableRow = ({
           type="text"
           required="required"
           placeholder="Enter host..."
-          name="Host"
+          name="Full_Name"
           value={visitorEditFormData.Full_Name}
           onChange={handleVisitorEditFormChange}
         />{' '}

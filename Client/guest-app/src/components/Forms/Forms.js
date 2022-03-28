@@ -11,12 +11,15 @@ import {
 } from '@chakra-ui/react';
 import Axios from 'axios';
 import { BiHide, BiShow } from 'react-icons/bi';
+import { useNavigate } from 'react-router-dom';
 
 // Visitor submission form
 const Forms = () => {
   const [employee, setEmployee] = useState([]);
   const [show, setShow] = React.useState(false);
   const handleClick = () => setShow(!show);
+
+  const navigate = useNavigate();
 
   const fetchEmployeesData = async () => {
     const { data } = await Axios.get('/adminPage/employeeList');
@@ -39,7 +42,6 @@ const Forms = () => {
     email: '',
     password: '',
     position: '',
-    status: '',
   });
 
   const handleChange = e => {
@@ -50,13 +52,11 @@ const Forms = () => {
 
   const handleSubmit = e => {
     e.preventDefault();
-    const newData = Object.assign(
-      data,
-      { timestamp: timestamp },
-      { status: 'checked in' }
-    );
+    const newData = Object.assign(data, { timestamp: timestamp });
 
     Axios.post(url, newData);
+
+    navigate('/signedIn');
   };
 
   return (
@@ -121,9 +121,9 @@ const Forms = () => {
         />
         <InputGroup size="md">
           <Input
-          onChange={e => handleChange(e)}
-          value={data.password}
-          id="password"
+            onChange={e => handleChange(e)}
+            value={data.password}
+            id="password"
             pr="4.5rem"
             type={show ? 'text' : 'password'}
             placeholder="Password"
@@ -131,8 +131,7 @@ const Forms = () => {
             mt={2}
           />
           <InputRightElement width="3rem" h="3.5rem" onClick={handleClick}>
-
-              {show ? <BiShow /> : <BiHide />}
+            {show ? <BiShow /> : <BiHide />}
           </InputRightElement>
         </InputGroup>
 
@@ -178,7 +177,8 @@ const Forms = () => {
         </Button>
 
         <Text textAlign="center" m={5}>
-          Already signed up? Login at the next slide
+          Already signed up? <span style={{ fontWeight: 600 }}>Login</span> at
+          the next slide
         </Text>
       </FormControl>
     </Box>
