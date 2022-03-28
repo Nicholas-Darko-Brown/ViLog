@@ -137,14 +137,16 @@ app.get("/dashboardPage/graph", (req, res) =>{
 
 //route for adding visitors
 app.post("/", (req, res) => {
-    const {name, company, tel, email, position, host, timestamp,status} = req.body;
+    const {name, company, tel, email, position, host, timestamp, password} = req.body;
     const timeIn = new Date(timestamp);
     const DAY = moment(timestamp,"YYYY/MM/DD").date();
     const MONTH = moment(timestamp,"YYYY/MM/DD").format("MMMM");
     const YEAR = moment(timestamp,"YYYY/MM/DD").format("YYYY");
-    const insertVisitorQuery = `${insertInto} ${visitorsTable} (${fullNameCol}, ${companyCol}, ${phoneNumberCol}, ${emailCol}, ${hostCol}, ${positionCol}, ${signIn}, ${day}, ${month}, ${year}, ${Status}) ${values} (?,?,?,?,?,?,?,?,?,?,?)`;
+    const salt = bcrypt.genSaltSync(saltRounds);
+    const hash = bcrypt.hashSync(password, salt);
+    const insertVisitorQuery = `${insertInto} ${visitorsTable} (${fullNameCol}, ${companyCol}, ${phoneNumberCol}, ${emailCol}, ${hostCol}, ${positionCol}, ${signIn}, ${day}, ${month}, ${year}, ${password}) ${values} (?,?,?,?,?,?,?,?,?,?,?)`;
     const selectEmployeeEmailQuery = `${select} ${fullNameCol1}, ${emailCol1} ${from} ${employeesTable} ${where} ${idCol1} = ?`;
-    db.query(insertVisitorQuery, [name, company, tel, email, host, position, `checked in on ${timeIn.toLocaleDateString()} at ${timeIn.toLocaleTimeString()}`, DAY, MONTH, YEAR, status], (err, result) =>{
+    db.query(insertVisitorQuery, [name, company, tel, email, host, position, `checked in on ${timeIn.toLocaleDateString()} at ${timeIn.toLocaleTimeString()}`, DAY, MONTH, YEAR, hash], (err, result) =>{
         if(err){
             console.log(err);
         }else{

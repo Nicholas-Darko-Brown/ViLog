@@ -26,7 +26,7 @@ const tables = {
             day: "Day",
             month: "Months",
             year: "Year",
-            Status: "Status"
+            Password: "Password"
         }
     },
 
