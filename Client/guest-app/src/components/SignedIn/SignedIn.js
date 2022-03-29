@@ -1,9 +1,9 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Text, Box, Image } from '@chakra-ui/react';
 import Done from '../../assets/done.png';
 import User from '../../assets/user.png';
 import './SignedIn.css'
-import { useNavigate } from 'react-router-dom';
+// import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
 // Signed In

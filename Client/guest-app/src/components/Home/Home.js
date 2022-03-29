@@ -19,7 +19,7 @@ import {
 } from '@chakra-ui/react';
 import Logo from '../../assets/logo-1.png';
 import { MdDashboard } from 'react-icons/md';
-import { FiLogOut } from 'react-icons/fi';
+// import { FiLogOut } from 'react-icons/fi';
 import { useNavigate } from 'react-router-dom';
 // import FastLogin from '../FastLogin/FastLogin';
 import axios from 'axios';
@@ -27,9 +27,9 @@ import axios from 'axios';
 // Homepage
 const Home = () => {
   let navigate = useNavigate();
-  const { isOpen, onOpen, onClose } = useDisclosure();
+  const { isOpen, onClose } = useDisclosure();
 
-  const [data, setData] = useState({
+  const [data] = useState({
     Id: '',
     name: '',
     company: '',
