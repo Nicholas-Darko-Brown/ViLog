@@ -317,7 +317,15 @@ app.put("/updateVisit/:id", (req, res) =>{
 //route for deleting an employee
 app.delete("/adminPage/deleteEmployee/:id", (req, res)=>{
     const {id} = req.params;
+    const updateQuery = `${update} ${visitorsTable} ${set} ${hostCol} = NULL ${where} ${hostCol} = ?`;
     const deleteEmployeeQuery = `${DELETE} ${from} ${employeesTable} ${where} ${idCol1} = ?`;
+    db.query(updateQuery, [id], (err, result) => {
+        if(err){
+            console.log(err);
+        }else{
+            console.log("Host Id modified");
+        }
+    });
     db.query(deleteEmployeeQuery, [id], (err, result) => {
         if(err){
             console.log(err);
