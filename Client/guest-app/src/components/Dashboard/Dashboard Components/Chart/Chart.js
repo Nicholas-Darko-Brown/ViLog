@@ -17,7 +17,7 @@ const Chart = ({ title, data, dataKey, grid }) => {
   const [chart, setChart] = useState([])
 
   const fetchChart = async () => {
-    const { data } = await axios.get('/dashboardPage/graph');
+    const { data } = await axios.get('https://viilogg.herokuapp.com/dashboardPage/graph');
     setChart(data);
     console.log(data)
   }

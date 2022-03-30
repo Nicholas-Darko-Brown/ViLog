@@ -55,7 +55,7 @@ const Dashboard = () => {
 
     try {
       const { data } = await axios.post(
-        '/dashboard',
+        'https://viilogg.herokuapp.com/dashboard',
         { userEmail, password },
         {
           headers: {

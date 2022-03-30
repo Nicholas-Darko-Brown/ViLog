@@ -32,7 +32,7 @@ const SignedIn = () => {
     const newData = { timestamp: timestamp };
     console.log(newData)
 
-    axios.put(`/updateVisit/${newData}`, newData)
+    axios.put(`https://viilogg.herokuapp.com/updateVisit/${newData}`, newData)
 
   };
 

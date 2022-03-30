@@ -54,7 +54,7 @@ const Admin = () => {
 
     try {
       const { data } = await axios.post(
-        '/admin',
+        'https://viilogg.herokuapp.com/admin',
         { userEmail, password },
         {
           headers: {

@@ -42,7 +42,7 @@ const Home = () => {
   const timestamp = new Date(Date.now()).toISOString();
   console.log(timestamp)
 
-  const url = "/adminPage/visitorsLog"
+  const url = "https://viilogg.herokuapp.com/adminPage/visitorsLog"
 
   const handleSubmit = (e) => {
 

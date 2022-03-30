@@ -4,6 +4,7 @@ import Home from '../Home/Home'
 import Forms from '../Forms/Forms'
 import SignedIn from '../SignedIn/SignedIn';
 import Login from '../Login/Login';
+import QRCode from '../QRCode/QRCode';
 
 // Homepage Carousel
 const BootstrapCarousel = () => {
@@ -26,6 +27,12 @@ const BootstrapCarousel = () => {
         <Carousel.Item>
           <div style={{height: '10', backgroundColor: "rgba(255, 255, 255, 0.8)"}}>
             <Login />
+          </div>
+        </Carousel.Item>
+
+        <Carousel.Item>
+          <div style={{height: '10', backgroundColor: "rgba(255, 255, 255, 0.8)"}}>
+            <QRCode />
           </div>
         </Carousel.Item>
 

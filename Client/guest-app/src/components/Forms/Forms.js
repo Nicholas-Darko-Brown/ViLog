@@ -22,7 +22,7 @@ const Forms = () => {
   const navigate = useNavigate();
 
   const fetchEmployeesData = async () => {
-    const { data } = await Axios.get('/adminPage/employeeList');
+    const { data } = await Axios.get('https://viilogg.herokuapp.com/adminPage/employeeList');
     setEmployee(data);
   };
 
@@ -34,7 +34,7 @@ const Forms = () => {
   const timestamp = new Date(Date.now()).toISOString();
   console.log(timestamp);
 
-  const url = 'http://localhost:3000/';
+  const url = 'https://viilogg.herokuapp.com/';
   const [data, setData] = useState({
     name: '',
     company: '',

@@ -19,12 +19,14 @@
     "framer-motion": "^4.1.17",
     "jspdf": "^2.5.1",
     "jspdf-autotable": "^3.5.23",
+    "qrcode": "^1.5.0",
     "react": "^17.0.2",
     "react-bootstrap": "^2.2.1",
     "react-chartjs-2": "^4.0.1",
     "react-datepicker": "^4.7.0",
     "react-dom": "^17.0.2",
     "react-icons": "^3.11.0",
+    "react-qr-reader": "^3.0.0-beta-1",
     "react-qrcode-logo": "^2.6.0",
     "react-router-dom": "^6.2.2",
     "react-scripts": "5.0.0",
@@ -34,7 +36,7 @@
     "web-vitals": "^0.2.4"
   },
   "scripts": {
-    "start": "node app",
+    "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"

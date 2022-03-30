@@ -16,7 +16,7 @@ const Report = () => {
   useEffect(() => {
     const getAllReports = async () => {
       try {
-        const response = await axios.get('/adminPage/employeeList');
+        const response = await axios.get('https://viilogg.herokuapp.com/adminPage/employeeList');
         setReports(response.data);
         console.log(response);
       } catch (err) {
@@ -32,7 +32,7 @@ const Report = () => {
   useEffect(() => {
     const getVisitorsReport = async () => {
       try {
-        const response = await axios.get('/adminPage/visitorsLog');
+        const response = await axios.get('https://viilogg.herokuapp.com/adminPage/visitorsLog');
         setVisitors(response.data);
         console.log(response);
       } catch (err) {
@@ -45,7 +45,7 @@ const Report = () => {
   useEffect(() => {
     const getChartReport = async () => {
       try {
-        const response = await axios.get('/dashboardPage/graph');
+        const response = await axios.get('https://viilogg.herokuapp.com/dashboardPage/graph');
         setCharts(response.data);
         console.log(response.data);
       } catch (err) {
