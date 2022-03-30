@@ -27,8 +27,11 @@ app.use(session({
 }));
 
 // added these line of codes in case of server error
-app.use((err, req, res, text) => {
+app.use((err, req, res, text, next) => {
     console.log(err.stack);
+    res.header("Access-Control-Allow-Origin", "*")
+    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept")
+    next()
     res.type('text/plain');
     res.status(500).send('Internal server error 500');
 });
@@ -42,7 +45,7 @@ db.getConnection((err, connection) => {
     }
     if(connection) connection.release();
     return;
-});
+});  
 
 const visitorsTable = tables.visitors.name; 
 const employeesTable = tables.employees.name;
@@ -60,7 +63,7 @@ app.get("/employeeName", (req, res) => {
     const selectEmployeesNameQuery = `${select} ${idCol1}, ${fullNameCol1} ${from} ${employeesTable}`;
     db.query(selectEmployeesNameQuery, (err, rows) =>{
         if(err){
-            console.log(err);
+            console.log(err); 
         }else{
             console.log(rows);
             res.status(200).send(rows);
