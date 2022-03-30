@@ -14,7 +14,7 @@ const Login = () => {
     const handleClick = () => setShow(!show);
 
     const fetchEmployeesData = async () => {
-      const { data } = await axios.get('https://viilogg.herokuapp.com/adminPage/employeeList');
+      const { data } = await axios.get('/adminPage/employeeList');
       setEmployee(data);
     };
   
@@ -28,7 +28,7 @@ const Login = () => {
     const timestamp = new Date(Date.now()).toISOString();
     // console.log(timestamp)
   
-    const url = 'https://viilogg.herokuapp.com/visitorLogin';
+    const url = '/visitorLogin';
     const [data, setData] = useState({
       email: '',
       password: '',
@@ -59,7 +59,7 @@ const Login = () => {
 
 
   return (
-    <Box display="flex" justifyContent="center" height="100%">
+    <Box display="flex" justifyContent="center" height="100%" mt={20}>
     <FormControl
       isRequired
       w="30%"

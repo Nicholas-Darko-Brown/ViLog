@@ -9,7 +9,7 @@ const EmployeeReadOnlyRow = ({ employee, handleEmployeeEditClick, handleEmployee
       <td>{employee.Password}</td>
       <td>{employee.Phone_Number}</td>
       <td>{employee.Position}</td>
-      <td>
+      <td className='action_btn'>
           <button className='edit_btn' type='button' onClick={(e) => handleEmployeeEditClick(e, employee)}>Edit</button>
           <button className='delete_btn' type='button' onClick={() => handleEmployeeDeleteClick(employee.Id)} >Delete</button>
       </td>

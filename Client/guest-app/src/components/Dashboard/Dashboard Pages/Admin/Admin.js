@@ -26,7 +26,7 @@ const Admin = () => {
 
   const toast = useToast();
 
-  let navigate = useNavigate();
+  const navigate = useNavigate();
 
   const handleInputChange = e => {
     const value = e.target.value;
@@ -54,7 +54,7 @@ const Admin = () => {
 
     try {
       const { data } = await axios.post(
-        'https://viilogg.herokuapp.com/admin',
+        '/admin',
         { userEmail, password },
         {
           headers: {

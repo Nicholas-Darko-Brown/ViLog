@@ -5,7 +5,7 @@ import { useNavigate } from 'react-router-dom';
 
 // Sidebar of Dashboard
 const Sidebar = () => {
-    let navigate = useNavigate()
+    const navigate = useNavigate()
 
 
   return (

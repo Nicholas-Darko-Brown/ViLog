@@ -3,7 +3,7 @@ import { Text, Box, Image } from '@chakra-ui/react';
 import Done from '../../assets/done.png';
 import User from '../../assets/user.png';
 import './SignedIn.css'
-// import { useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
 // Signed In
@@ -22,7 +22,7 @@ const SignedIn = () => {
 
   setTimeout(handleConfirmedMessage, 10000)
 
-  // const navigate = useNavigate()
+  const navigate = useNavigate()
 
   const timestamp = new Date(Date.now()).toISOString();
   // console.log(timestamp)
@@ -32,8 +32,9 @@ const SignedIn = () => {
     const newData = { timestamp: timestamp };
     console.log(newData)
 
-    axios.put(`https://viilogg.herokuapp.com/updateVisit/${newData}`, newData)
+    axios.put(`/updateVisit/${newData}`, newData)
 
+    navigate("/")
   };
 
   

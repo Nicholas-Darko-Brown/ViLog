@@ -7,7 +7,7 @@ const LargeWidget = () => {
   const [visitors, setVisitors] = useState([]);
 
   const fetchVisitors = async () => {
-    const { data } = await axios.get('https://viilogg.herokuapp.com/adminPage/visitorsLog');
+    const { data } = await axios.get('/adminPage/visitorsLog');
     setVisitors(data);
     console.log(data);
   };

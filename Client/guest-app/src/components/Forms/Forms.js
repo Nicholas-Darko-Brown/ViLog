@@ -8,6 +8,7 @@ import {
   Box,
   InputGroup,
   InputRightElement,
+  useToast
 } from '@chakra-ui/react';
 import Axios from 'axios';
 import { BiHide, BiShow } from 'react-icons/bi';
@@ -19,10 +20,12 @@ const Forms = () => {
   const [show, setShow] = React.useState(false);
   const handleClick = () => setShow(!show);
 
+  const toast = useToast()
+
   const navigate = useNavigate();
 
   const fetchEmployeesData = async () => {
-    const { data } = await Axios.get('https://viilogg.herokuapp.com/adminPage/employeeList');
+    const { data } = await Axios.get('/adminPage/employeeList');
     setEmployee(data);
   };
 
@@ -34,7 +37,7 @@ const Forms = () => {
   const timestamp = new Date(Date.now()).toISOString();
   console.log(timestamp);
 
-  const url = 'https://viilogg.herokuapp.com/';
+  const url = '/';
   const [data, setData] = useState({
     name: '',
     company: '',
@@ -50,13 +53,56 @@ const Forms = () => {
     setData(newData);
   };
 
-  const handleSubmit = e => {
+  const visitorName = data.name
+  const visitorCompany = data.company
+  const visitorPhone = data.tel
+  const visitorEmail = data.email
+  const visitorPassword = data.password
+  const visitorPosition = data.position
+  const visitorHost = data.host
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
     const newData = Object.assign(data, { timestamp: timestamp });
 
-    Axios.post(url, newData);
+    if (!visitorName || !visitorCompany || !visitorPhone || !visitorEmail || !visitorPassword || !visitorPosition || !visitorHost) {
+      toast({
+        title: 'Fill all fields',
+        status: 'warning',
+        duration: 3000,
+        isClosable: true,
+        position: 'top',
+      })
+      return;
+    } 
 
-    navigate('/signedIn');
+    try {
+       const {data} = await Axios.post(url, newData);
+
+      if (data) {
+        toast({
+          title: 'Sign up successful',
+          status: 'success',
+          duration: 3000,
+          isClosable: true,
+          position: 'top',
+        });
+        navigate('/signedIn');
+      }
+    } catch(error) {
+      toast({
+        title: 'Failed login',
+        description: error.message,
+        status: 'error',
+        duration: 3000,
+        isClosable: true,
+        position: 'top',
+      });
+    }
+
+    
+
+    
   };
 
   return (
@@ -177,7 +223,9 @@ const Forms = () => {
         </Button>
 
         <Text textAlign="center" m={5}>
-          Already signed up? <span style={{ fontWeight: 600 }}>Login</span> at
+          Already signed up? <span > <button style={{ fontWeight: 900, textDecoration: "underline", color: "blue" }} onClick={() => {
+            navigate("/visitorLogin")
+          }}>Login</button> </span> at
           the next slide
         </Text>
       </FormControl>

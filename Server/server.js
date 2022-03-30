@@ -27,11 +27,8 @@ app.use(session({
 }));
 
 // added these line of codes in case of server error
-app.use((err, req, res, text, next) => {
+app.use((err, req, res, text) => {
     console.log(err.stack);
-    res.header("Access-Control-Allow-Origin", "*")
-    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept")
-    next()
     res.type('text/plain');
     res.status(500).send('Internal server error 500');
 });
@@ -59,7 +56,7 @@ const {emailCol2, passwordCol2} = tables.administrators.colums;
 
 //route for rendering employees name in the select option of the form
 app.get("/employeeName", (req, res) => {
-    const {fullNameCol} = tables.employees.colums;
+    //const {fullNameCol} = tables.employees.colums;
     const selectEmployeesNameQuery = `${select} ${idCol1}, ${fullNameCol1} ${from} ${employeesTable}`;
     db.query(selectEmployeesNameQuery, (err, rows) =>{
         if(err){
@@ -149,7 +146,7 @@ app.post("/", (req, res) => {
     const hash = bcrypt.hashSync(password, salt);
     const insertVisitorQuery = `${insertInto} ${visitorsTable} (${fullNameCol}, ${companyCol}, ${phoneNumberCol}, ${emailCol}, ${hostCol}, ${positionCol}, ${signIn}, ${day}, ${month}, ${year}, ${passwordCol}) ${values} (?,?,?,?,?,?,?,?,?,?,?)`;
     const selectEmployeeEmailQuery = `${select} ${fullNameCol1}, ${emailCol1} ${from} ${employeesTable} ${where} ${idCol1} = ?`;
-    db.query(insertVisitorQuery, [name, company, tel, email, host, position, `checked in on ${timeIn.toLocaleDateString()} at ${timeIn.toLocaleTimeString()}`, DAY, MONTH, YEAR, hash], (err, result) =>{
+    if(name && company && tel && email && position && host && timestamp && password){db.query(insertVisitorQuery, [name, company, tel, email, host, position, `checked in on ${timeIn.toLocaleDateString()} at ${timeIn.toLocaleTimeString()}`, DAY, MONTH, YEAR, hash], (err, result) =>{
         if(err){
             console.log(err);
         }else{
@@ -188,6 +185,12 @@ app.post("/", (req, res) => {
             });
         }
     });
+
+
+    }else{
+        console.log("Details not entered");
+    }
+    
 });
 
 app.post("/visitorLogin", (req, res)=>{

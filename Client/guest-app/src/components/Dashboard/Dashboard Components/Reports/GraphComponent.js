@@ -4,7 +4,7 @@ const GraphComponent = ({ charts }) => {
   return (
     <div className="container">
     {charts.length === 0 ? (
-      "You currently have no tickets created"
+      "No reports yet"
     ) : (
       <table className="table">
         <thead>

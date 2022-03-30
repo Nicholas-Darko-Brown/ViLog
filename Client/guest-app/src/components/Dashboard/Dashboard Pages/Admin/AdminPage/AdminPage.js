@@ -7,6 +7,7 @@ import VisitorReadOnlyRow from './VisitorReadOnlyRow';
 import EmployeeReadOnlyRow from './EmployeeReadOnlyRow';
 import VisitorEditableRow from './VisitorEditableRow';
 import EmployeeEditableRow from './EmployeeEditableRow';
+import QRCode from '../../../../QRCode/QRCode';
 
 const AdminPage = () => {
   const [visitors, setVisitors] = useState([]);
@@ -59,9 +60,11 @@ const AdminPage = () => {
 
   //fetching data from endpoint
   const fetchVisitorsData = async () => {
-    const { data } = await axios.get('https://viilogg.herokuapp.com/adminPage/visitorsLog');
+    const { data } = await axios.get('/adminPage/visitorsLog');
     setVisitors(data);
     console.log(data);
+    const myJSON = JSON.stringify(data)
+    console.log(myJSON)
   };
 
   useEffect(() => {
@@ -69,7 +72,7 @@ const AdminPage = () => {
   }, []);
 
   const fetchEmployeesData = async () => {
-    const { data } = await axios.get('https://viilogg.herokuapp.com/adminPage/employeeList');
+    const { data } = await axios.get('/adminPage/employeeList');
     setEmployees(data);
     console.log(data)
   };
@@ -182,7 +185,7 @@ const AdminPage = () => {
       Position: '',
     });
 
-    axios.post(`https://viilogg.herokuapp.com/adminPage/addEmployee`, newEmployee)
+    axios.post(`/adminPage/addEmployee`, newEmployee)
   };
 
   const handleVisitorEditFormSubmit = (e) => {
@@ -232,7 +235,7 @@ const AdminPage = () => {
     setEmployees(newEmployees)
     setEditEmployeeId(null)
 
-    axios.put(`https://viilogg.herokuapp.com/adminPage/updateEmployee/${editEmployeeId}`, editedEmployee)
+    axios.put(`/adminPage/updateEmployee/${editEmployeeId}`, editedEmployee)
   }
 
   //edit click
@@ -289,7 +292,7 @@ const AdminPage = () => {
 
     setVisitors(newVisitors)
 
-    axios.delete(`https://viilogg.herokuapp.com/deleteVisit/${visitorId}`)
+    axios.delete(`/deleteVisit/${visitorId}`)
   }
 
   const handleEmployeeDeleteClick = (employeeId) => {
@@ -303,7 +306,7 @@ const AdminPage = () => {
 
     setEmployees(newEmployees)
 
-    axios.delete(`https://viilogg.herokuapp.com/adminPage/deleteEmployee/${employeeId}`)
+    axios.delete(`/adminPage/deleteEmployee/${employeeId}`)
   }
 
 
@@ -469,6 +472,7 @@ const AdminPage = () => {
               Add
             </button>
           </form>
+          <QRCode />
         </div>
       </div>
     </div>

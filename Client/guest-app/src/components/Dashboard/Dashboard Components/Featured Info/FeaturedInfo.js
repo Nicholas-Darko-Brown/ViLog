@@ -7,7 +7,7 @@ const FeaturedInfo = () => {
   const [charts, setCharts] = useState();
 
   const fetchChart = async () => {
-    const { data } = await axios.get('https://viilogg.herokuapp.com/dashboardPage/graph');
+    const { data } = await axios.get('/dashboardPage/graph');
     setCharts(data);
     console.log(data);
   };
