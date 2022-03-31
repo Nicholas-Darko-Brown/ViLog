@@ -13,10 +13,11 @@ const bcrypt = require('bcryptjs');
 const saltRounds = 10;
 const twilio = require('twilio');
 
-const accountSid = 'ACaea7d9febf37fdf2c80ed6541814f021';
-const authToken = 'e4893b32c17c7de580e55f9e07a0bcd4';
+
 
 dotenv.config({path:'../.env'});
+const accountSid = process.env.TWILIO_ACCOUNT_SID;
+const authToken = process.env.TWILIO_AUTH_TOKEN;
 const app = express();
 const port = process.env.PORT || 5000;
 console.log(process.env.PORT);
@@ -188,12 +189,12 @@ app.post("/", (req, res) => {
                 }
             });
 
-            const client = new twilio(accountSid, authToken);
-            client.messages.create({
-                body: 'Hello Andrew, This is Twilio',
-                from: '+12183068283',
-                to: '+233249753029'
-            }).then(message => console.log(message.sid));
+            // const client = new twilio(accountSid, authToken);
+            // client.messages.create({
+            //     body: 'Hello Andrew, This is Twilio',
+            //     from: '+12183068283',
+            //     to: '+233249753029'
+            // }).then(message => console.log(message.sid));
         }
     });
 
