@@ -1,6 +1,0 @@
-.home_container {
-    background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('../../assets/photo1.jpg');
-   background-repeat: no-repeat;
-    background-position: center;
-    background-size: cover; 
-}
