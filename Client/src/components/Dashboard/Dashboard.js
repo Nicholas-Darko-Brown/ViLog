@@ -25,7 +25,6 @@ const Dashboard = () => {
     password: '',
   });
 
-  // toast
   const toast = useToast();
 
   const handleInputChange = e => {
@@ -41,49 +40,49 @@ const Dashboard = () => {
   const password = state.password;
 
   const handleLogin = async () => {
-    // if (!userEmail || !password) {
-    //   toast({
-    //     title: 'Fill all fields',
-    //     status: 'warning',
-    //     duration: 3000,
-    //     isClosable: true,
-    //     position: 'top',
-    //   })
-    //   return;
-    // } 
+    if (!userEmail || !password) {
+      toast({
+        title: 'Fill all fields',
+        status: 'warning',
+        duration: 3000,
+        isClosable: true,
+        position: 'top',
+      })
+      return;
+    } 
 
-    // try {
-    //   const { data } = await axios.post(
-    //     'https://viilogg.herokuapp.com/dashboard',
-    //     { userEmail, password },
-    //     {
-    //       headers: {
-    //         'Content-type': 'application/json',
-    //       },
-    //     }
-    //   );
-    //   console.log(data);
+    try {
+      const { data } = await axios.post(
+        'https://viilogg.herokuapp.com/dashboard',
+        { userEmail, password },
+        {
+          headers: {
+            'Content-type': 'application/json',
+          },
+        }
+      );
+      console.log(data);
 
-    //   if (data === 'Logged in') {
-    //     toast({
-    //       title: 'Login successful',
-    //       status: 'success',
-    //       duration: 3000,
-    //       isClosable: true,
-    //       position: 'top',
-    //     });
+      if (data === 'Logged in') {
+        toast({
+          title: 'Login successful',
+          status: 'success',
+          duration: 3000,
+          isClosable: true,
+          position: 'top',
+        });
         navigate('/dashboardPage');
-    //   }
-    // } catch (err) {
-    //   toast({
-    //     title: 'Failed login',
-    //     description: err.message,
-    //     status: 'error',
-    //     duration: 3000,
-    //     isClosable: true,
-    //     position: 'top',
-    //   });
-    // }
+      }
+    } catch (err) {
+      toast({
+        title: 'Failed login',
+        description: err.message,
+        status: 'error',
+        duration: 3000,
+        isClosable: true,
+        position: 'top',
+      });
+    }
   };
 
   return (
