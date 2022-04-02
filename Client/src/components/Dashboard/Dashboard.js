@@ -25,6 +25,7 @@ const Dashboard = () => {
     password: '',
   });
 
+  // toast
   const toast = useToast();
 
   const handleInputChange = e => {
