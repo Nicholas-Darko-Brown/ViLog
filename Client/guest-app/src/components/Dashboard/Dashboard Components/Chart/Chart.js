@@ -12,14 +12,13 @@ import {
 import axios from 'axios';
 
 // Graph of Monthly Visitors
-const Chart = ({ title, data, dataKey, grid }) => {
+const Chart = ({ title, grid }) => {
 
   const [chart, setChart] = useState([])
 
   const fetchChart = async () => {
     const { data } = await axios.get('/dashboardPage/graph');
     setChart(data);
-    console.log(data)
   }
 
   useEffect(() => {
@@ -30,7 +29,6 @@ const Chart = ({ title, data, dataKey, grid }) => {
     <div className="chart_container">
       <h3 className="chart_title">{ title }</h3>
       <ResponsiveContainer width="100%" aspect={4 / 1}>
-      
         <LineChart data={chart}>
           <XAxis dataKey="Months" />
           <YAxis />

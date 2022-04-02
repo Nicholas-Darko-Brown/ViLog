@@ -5,7 +5,7 @@ const VisitorsComponent = ({ visitors }) => {
   return (
     <div className="container">
       {visitors.length === 0 ? (
-        "You currently have no tickets created"
+        "No reports yet"
       ) : (
         <table className="table">
           <thead>
@@ -31,10 +31,6 @@ const VisitorsComponent = ({ visitors }) => {
                 <td>{visitor.Time_In}</td>
                 <td>{visitor.Time_Out}</td>
                 <td>{visitor.Position}</td>
-                
-                {/* <td>
-                  <Link to={`/ticket/${report.id}`}>See comments</Link>
-                </td> */}
               </tr>
             ))}
           </tbody>

@@ -5,7 +5,7 @@ const ReportsComponent = ({ reports }) => {
   return (
     <div className="container">
       {reports.length === 0 ? (
-        "You currently have no tickets created"
+        "No reports yet"
       ) : (
         <table className="table">
           <thead>
@@ -23,9 +23,6 @@ const ReportsComponent = ({ reports }) => {
                 <td>{report.Email}</td>
                 <td>{report.Position}</td>
                 <td>{report.Phone_Number}</td>
-                {/* <td>
-                  <Link to={`/ticket/${report.id}`}>See comments</Link>
-                </td> */}
               </tr>
             ))}
           </tbody>

@@ -1,14 +1,10 @@
-import React, { useState } from 'react';
-import { Text, Box, Image } from '@chakra-ui/react';
-import Done from '../../assets/done.png';
-import User from '../../assets/user.png';
-import './SignedIn.css'
+import { Text, Box } from '@chakra-ui/react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
 // Signed In
 const SignedIn = () => {
-
+  const navigate = useNavigate()
 
   const handleMessage = () => {
     document.getElementById("message").textContent = "Please wait, contacting your host in no time..."
@@ -22,10 +18,7 @@ const SignedIn = () => {
 
   setTimeout(handleConfirmedMessage, 10000)
 
-  // const navigate = useNavigate()
-
   const timestamp = new Date(Date.now()).toISOString();
-  // console.log(timestamp)
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -34,10 +27,10 @@ const SignedIn = () => {
 
     axios.put(`/updateVisit/${newData}`, newData)
 
+    localStorage.clear()
+
+    navigate("/visitorLogin")
   };
-
-  
-
 
   return (
     <Box
@@ -47,10 +40,11 @@ const SignedIn = () => {
       justifyContent="center"
       flexDirection="column"
       gap="3rem"
+      className='logout_container'
+      color='white'
     >
       <Box display="flex" alignItems="center" gap="2rem">
-        <Image src={Done} alt="done" />
-        <Text fontSize="1.2em" fontWeight="bold">
+        <Text fontSize="5xl" fontWeight="bold">
           Logged-In!
         </Text>
       </Box>
@@ -62,11 +56,10 @@ const SignedIn = () => {
         gap="2rem"
       >
         <Text fontSize="1.1em" fontWeight="normal" fontStyle="italic">
-          <p id="message" ></p>
+          <p id="message"></p>
         </Text>
-        <Image src={User} alt="done" w="5rem" />
 
-        <button onClick={handleSubmit} className='logout_btn' style={{ backgroundColor: 'red', padding: '10px 20px', borderRadius: '10px', color: 'white', fontWeight: 600}}>Logout</button>
+        <button onClick={handleSubmit} className='logout_btn' style={{ backgroundColor: 'red', padding: '10px 35px', borderRadius: '10px', color: 'white', fontWeight: 600, letterSpacing: '1.5px', fontSize:'1.3em', marginTop: "4rem"}}>Logout</button>
       </Box>
     </Box>
   );

@@ -1,5 +1,3 @@
-import React from 'react';
-
 const VisitorEditableRow = ({
   visitorEditFormData,
   handleVisitorEditFormChange,
@@ -18,7 +16,7 @@ const VisitorEditableRow = ({
           onChange={handleVisitorEditFormChange}
         />{' '}
       </td>
-      <td>
+      {/* <td>
         {' '}
         <input
           type="email"
@@ -28,7 +26,7 @@ const VisitorEditableRow = ({
           value={visitorEditFormData.Email}
           onChange={handleVisitorEditFormChange}
         />{' '}
-      </td>
+      </td> */}
       <td> <input type="password" required="required" placeholder='Enter password...' name='Password' value={visitorEditFormData.Password}
           onChange={handleVisitorEditFormChange}/> </td>
       <td>
@@ -64,7 +62,7 @@ const VisitorEditableRow = ({
           onChange={handleVisitorEditFormChange}
         />{' '}
       </td>
-      <td>
+      {/* <td>
         {' '}
         <input
           type="text"
@@ -85,7 +83,7 @@ const VisitorEditableRow = ({
           value={visitorEditFormData.Position}
           onChange={handleVisitorEditFormChange}
         />{' '}
-      </td>
+      </td> */}
       <td>
         {' '}
         <input

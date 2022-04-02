@@ -1,5 +1,3 @@
-import React from 'react';
-
 const EmployeeEditableRow = ({ employeeEditFormData, handleEmployeeEditFormChange, handleEmployeeCancelClick }) => {
   return (
     <tr>

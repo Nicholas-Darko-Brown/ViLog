@@ -11,14 +11,13 @@ import GraphComponent from './GraphComponent';
 const Report = () => {
   const [reports, setReports] = useState([]);
   const [visitors, setVisitors] = useState([])
-  const [charts, setCharts] = useState([]) // new
+  const [charts, setCharts] = useState([])
 
   useEffect(() => {
     const getAllReports = async () => {
       try {
         const response = await axios.get('/adminPage/employeeList');
         setReports(response.data);
-        console.log(response);
       } catch (err) {
         console.log(err);
       }
@@ -26,15 +25,11 @@ const Report = () => {
     getAllReports();
   }, []);
 
-  console.log(reports);
-
-  //new
   useEffect(() => {
     const getVisitorsReport = async () => {
       try {
         const response = await axios.get('/adminPage/visitorsLog');
         setVisitors(response.data);
-        console.log(response);
       } catch (err) {
         console.log(err);
       }
@@ -47,7 +42,6 @@ const Report = () => {
       try {
         const response = await axios.get('/dashboardPage/graph');
         setCharts(response.data);
-        console.log(response.data);
       } catch (err) {
         console.log(err);
       }
@@ -55,14 +49,11 @@ const Report = () => {
     getChartReport();
   }, []);
 
-  const reportTickets = reports.filter(report => report);
-  console.log(reportTickets);
+  const employeesReport = reports.filter(report => report);
 
   const visitorsReport = visitors.filter(visitor => visitor)
-  console.log(visitorsReport)
 
   const graphReport = charts.filter(chart => chart)
-  console.log(graphReport)
 
   return (
     <div>
@@ -71,7 +62,7 @@ const Report = () => {
         <div className="">
           <button
             className="btn btn-primary"
-            onClick={() => GeneratePDF(reportTickets)}
+            onClick={() => GeneratePDF(employeesReport)}
           >
             Generate Employee Report
           </button>

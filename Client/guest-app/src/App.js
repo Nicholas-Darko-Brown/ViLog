@@ -1,4 +1,3 @@
-import React from 'react';
 import {
   ChakraProvider,
   Box
@@ -6,19 +5,14 @@ import {
 import BootsrapCarousel from './components/Carousel.js/BootstrapCarousel';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import Dashboard from './components/Dashboard/Dashboard';
-import Logout from './components/Logout/Logout';
-// import Error from './components/ErrorPage/Error';
 import DashboardPage from './components/Dashboard/DashboardPage';
 import Host from './components/Dashboard/Dashboard Pages/Host/Host';
-import Edit from './components/Dashboard/Dashboard Pages/Edit/Edit';
-import NewUser from './components/Dashboard/Dashboard Pages/New User/NewUser';
 import Admin from './components/Dashboard/Dashboard Pages/Admin/Admin';
-import AdminPage from './components/Dashboard/Dashboard Pages/Admin/AdminPage/AdminPage';
-import EmployeeEdit from './components/Dashboard/Dashboard Pages/Edit/EmployeeEdit/EmployeeEdit';
-import NewEmployeeUser from './components/Dashboard/Dashboard Pages/New User/NewEmployeeUser/NewEmployeeUser'
+import AdminPage from './components/Dashboard/Dashboard Pages/Admin/AdminPage/AdminPage'
 import Report from './components/Dashboard/Dashboard Components/Reports/Report';
 import Login from './components/Login/Login';
 import SignedIn from './components/SignedIn/SignedIn';
+import Forms from './components/Forms/Forms';
 
 // Routes to various pages
 const App = () => {
@@ -29,18 +23,14 @@ const App = () => {
         <Routes>
           <Route path='/' element={<BootsrapCarousel />}></Route>
           <Route path='/dashboard' element={<Dashboard />}></Route>
-          <Route path='/logout' element={<Logout />}></Route>
           <Route path='/dashboardPage' element={<DashboardPage />}></Route>
           <Route path='/host' element={<Host />}></Route>
-          <Route path='/edit/:editId' element={<Edit />}></Route>
-          <Route path='/newUser' element={<NewUser />}></Route>
           <Route path='/admin' element={<Admin />}></Route>
           <Route path='/adminPage' element={<AdminPage />}></Route>
-          <Route path='/employeeEdit/:employeeEdit' element={<EmployeeEdit />}></Route>
-          <Route path='/newEmployeeUser' element={<NewEmployeeUser />}></Route>
           <Route path='/reports' element={<Report />}></Route>
           <Route path='/visitorLogin' element={<Login />}></Route>
           <Route path='/signedIn' element={<SignedIn />}></Route>
+          <Route path='/signUp' element={<Forms />} ></Route>
         </Routes>
       </Router>
         

@@ -8,21 +8,23 @@ import {
   Box,
   InputGroup,
   InputRightElement,
+  useToast
 } from '@chakra-ui/react';
-import Axios from 'axios';
+import axios from 'axios';
 import { BiHide, BiShow } from 'react-icons/bi';
 import { useNavigate } from 'react-router-dom';
 
 // Visitor submission form
 const Forms = () => {
   const [employee, setEmployee] = useState([]);
-  const [show, setShow] = React.useState(false);
+  const [show, setShow] = useState(false);
   const handleClick = () => setShow(!show);
 
   const navigate = useNavigate();
+  const toast = useToast()
 
   const fetchEmployeesData = async () => {
-    const { data } = await Axios.get('/adminPage/employeeList');
+    const { data } = await axios.get('/adminPage/employeeList');
     setEmployee(data);
   };
 
@@ -32,7 +34,6 @@ const Forms = () => {
 
   // Get check in time
   const timestamp = new Date(Date.now()).toISOString();
-  console.log(timestamp);
 
   const url = 'http://localhost:3000/';
   const [data, setData] = useState({
@@ -50,17 +51,62 @@ const Forms = () => {
     setData(newData);
   };
 
-  const handleSubmit = e => {
+  const fullname = data.name;
+  const company = data.company;
+  const phone = data.tel;
+  const userEmail = data.email;
+  const password = data.password;
+  const position = data.position;
+  const host = data.host;
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
     const newData = Object.assign(data, { timestamp: timestamp });
 
-    Axios.post(url, newData);
+    if(!fullname || !company || !phone || !userEmail || !password || !position || !host){
+      toast({
+        title: 'Fill all fields',
+        status: 'warning',
+        duration: 3000,
+        isClosable: true,
+        position: 'top',
+      })
+      return;
+    }
 
-    navigate('/signedIn');
+    try {
+      const {data} = await axios.post(url, newData, {
+        headers: {
+          'Content-type': 'application/json'
+        }
+      });
+
+      if (data) {
+        toast({
+          title: 'Sign up successful',
+          status: 'success',
+          duration: 3000,
+          isClosable: true,
+          position: 'top',
+        });
+
+        navigate('/signedIn');
+      }
+      
+    } catch (error) {
+      toast({
+        title: 'Failed login',
+        description: error.message,
+        status: 'error',
+        duration: 3000,
+        isClosable: true,
+        position: 'top',
+      });
+    }
   };
 
   return (
-    <Box display="flex" justifyContent="center" height="100%">
+    <Box display="flex" justifyContent="center" alignItems='center' height="95vh">
       <FormControl
         isRequired
         w="30%"
@@ -159,11 +205,7 @@ const Forms = () => {
             employee.map(name => {
               return <option value={name.Id}>{name.Full_Name}</option>;
             })
-          ) : (
-            <option value="yvonne smith">Yvonne Smith</option>
-          )}
-
-          {/*  */}
+          ) : null}
         </Select>
 
         <Button
@@ -176,9 +218,10 @@ const Forms = () => {
           Sign Up
         </Button>
 
-        <Text textAlign="center" m={5}>
-          Already signed up? <span style={{ fontWeight: 600 }}>Login</span> at
-          the next slide
+        <Text textAlign="center" mt={5}>
+          Already signed up? <span> <button onClick={() => {
+            navigate("/visitorLogin")
+          }} style={{color: 'blue', fontWeight: 900, textDecoration: 'underline'}}>Login</button> </span> here
         </Text>
       </FormControl>
     </Box>

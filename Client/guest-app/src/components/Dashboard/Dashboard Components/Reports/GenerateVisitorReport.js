@@ -1,7 +1,6 @@
 import jsPDF from 'jspdf';
 import 'jspdf-autotable';
 
-
 const GenerateVisitorPDF = visitors => {
     const doc = new jsPDF();
 

@@ -25,8 +25,6 @@ const Dashboard = () => {
     password: '',
   });
 
-  console.log(state);
-
   const toast = useToast();
 
   const handleInputChange = e => {
@@ -86,9 +84,6 @@ const Dashboard = () => {
       });
     }
   };
-
-  console.log(userEmail);
-  console.log(password);
 
   return (
     <Center h="100vh" bg="blackAlpha.400">

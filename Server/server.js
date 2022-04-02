@@ -142,49 +142,55 @@ app.post("/", (req, res) => {
     const DAY = moment(timestamp,"YYYY/MM/DD").date();
     const MONTH = moment(timestamp,"YYYY/MM/DD").format("MMMM");
     const YEAR = moment(timestamp,"YYYY/MM/DD").format("YYYY");
-    const salt = bcrypt.genSaltSync(saltRounds);
-    const hash = bcrypt.hashSync(password, salt);
+    // const salt = bcrypt.genSaltSync(saltRounds);
+    // const hash = bcrypt.hashSync(password, salt);
     const insertVisitorQuery = `${insertInto} ${visitorsTable} (${fullNameCol}, ${companyCol}, ${phoneNumberCol}, ${emailCol}, ${hostCol}, ${positionCol}, ${signIn}, ${day}, ${month}, ${year}, ${passwordCol}) ${values} (?,?,?,?,?,?,?,?,?,?,?)`;
     const selectEmployeeEmailQuery = `${select} ${fullNameCol1}, ${emailCol1} ${from} ${employeesTable} ${where} ${idCol1} = ?`;
-    db.query(insertVisitorQuery, [name, company, tel, email, host, position, `checked in on ${timeIn.toLocaleDateString()} at ${timeIn.toLocaleTimeString()}`, DAY, MONTH, YEAR, hash], (err, result) =>{
-        if(err){
-            console.log(err);
-        }else{
-            console.log("visitor added.");
-            res.status(201).send(result);
-        }
-    });
+    if(name && company && tel && email && position && host && timestamp && password){
 
-    db.query(selectEmployeeEmailQuery, [host], (err, result) =>{
-        if(err){
-            console.log(err);
-        }else{
-            console.log(result[0]);
+        db.query(insertVisitorQuery, [name, company, tel, email, host, position, `checked in on ${timeIn.toLocaleDateString()} at ${timeIn.toLocaleTimeString()}`, DAY, MONTH, YEAR, password], (err, result) =>{
+            if(err){
+                console.log(err);
+            }else{
+                console.log("visitor added.");
+                res.status(201).send(result);
+            }
+        });
+    
+        db.query(selectEmployeeEmailQuery, [host], (err, result) =>{
+            if(err){
+                console.log(err);
+            }else{
+                console.log(result[0]);
+    
+                const transporter = nodemailer.createTransport({
+                    service: 'gmail',
+                    auth: {
+                        user: 'vilogtext@gmail.com',
+                        pass: 'vilog2022'
+                    }
+                });
+    
+                const mailOptions = {
+                    from: 'vilogtext@gmail.com',
+                    to: result[0].Email,
+                    subject: "Message from vilogtext@gmail.com: ViLog checkIn",
+                    text: `Hello ${result[0].Full_Name}. Your visitor ${name} is waiting for you.`
+                };
+                
+                transporter.sendMail(mailOptions, (err, info)=>{
+                    if(err){
+                        console.log(err);
+                    }else{
+                        console.log(`Email sent: ${info.response}`);
+                    }
+                });
+            }
+        });
 
-            const transporter = nodemailer.createTransport({
-                service: 'gmail',
-                auth: {
-                    user: 'vilogtext@gmail.com',
-                    pass: 'vilog2022'
-                }
-            });
-
-            const mailOptions = {
-                from: 'vilogtext@gmail.com',
-                to: result[0].Email,
-                subject: "Message from vilogtext@gmail.com: ViLog checkIn",
-                text: `Hello ${result[0].Full_Name}. Your visitor ${name} is waiting for you.`
-            };
-            
-            transporter.sendMail(mailOptions, (err, info)=>{
-                if(err){
-                    console.log(err);
-                }else{
-                    console.log(`Email sent: ${info.response}`);
-                }
-            });
-        }
-    });
+    }else{
+        console.log("Details not entered");
+    }
 });
 
 app.post("/visitorLogin", (req, res)=>{

@@ -318,14 +318,14 @@ const AdminPage = () => {
             <table>
               <thead>
                 <tr>
-                  <th>Visitor Name</th>
-                  <th>Email</th>
+                  <th>Visitor</th>
+                  {/* <th>Email</th> */}
                   <th>Password</th>
                 <th>Time In</th>
                 <th>Time Out</th>
-                  <th>Phone</th>
-                  <th>Company</th>
-                  <th>Position</th>
+                  {/* <th>Phone</th> */}
+                  {/* <th>Company</th>
+                  <th>Position</th> */}
                   <th>Host</th>
                   <th>Actions</th>
                 </tr>
@@ -358,34 +358,34 @@ const AdminPage = () => {
               onChange={handleAddVisitorFormChange}
               value={addVisitorFormData.Full_name}
             />
-            <input
+            {/* <input
               type="email"
               name="Email"
               required="required"
               placeholder="Visitor's email"
               onChange={handleAddVisitorFormChange}
               value={addVisitorFormData.Email}
-            />
+            /> */}
             <input type="password" name='Password' required='required' placeholder='Enter password' onChange={handleAddVisitorFormChange} value={addVisitorFormData.Password} />
             <input type="text" name='Time_In' required='required' placeholder='Time in' onChange={handleAddVisitorFormChange} value={addVisitorFormData.Time_In} />
             <input type="text" name='Time_Out' required='required' placeholder='Time out' onChange={handleAddVisitorFormChange} value={addVisitorFormData.Time_Out} />
-            <input
+            {/* <input
               type="tel"
               name="Phone_Number"
               required="required"
               placeholder="Phone number of visitor"
               onChange={handleAddVisitorFormChange}
               value={addVisitorFormData.Phone_Number}
-            />
-            <input type="text" name='Company' required='required' placeholder="Visitor's company" onChange={handleAddVisitorFormChange} value={addVisitorFormData.Company} />
-            <input
+            /> */}
+            {/* <input type="text" name='Company' required='required' placeholder="Visitor's company" onChange={handleAddVisitorFormChange} value={addVisitorFormData.Company} /> */}
+            {/* <input
               type="text"
               name="Position"
               required="required"
               placeholder="Position of visitor"
               onChange={handleAddVisitorFormChange}
               value={addVisitorFormData.Position}
-            />
+            /> */}
             <input type="text" name='Full_Name' required='required' placeholder="Host" onChange={handleAddVisitorFormChange} value={addVisitorFormData.Full_Name} />
             <button type="submit" className="add_btn">
               Add

@@ -26,7 +26,7 @@ const Admin = () => {
 
   const toast = useToast();
 
-  let navigate = useNavigate();
+  const navigate = useNavigate();
 
   const handleInputChange = e => {
     const value = e.target.value;
@@ -62,7 +62,6 @@ const Admin = () => {
           },
         }
       );
-      console.log(data);
 
       if (data === 'Logged in') {
         toast({
@@ -85,9 +84,6 @@ const Admin = () => {
       });
     }
   };
-
-  console.log(userEmail);
-  console.log(password);
 
   return (
     <Center h="100vh" bg="blackAlpha.400">
