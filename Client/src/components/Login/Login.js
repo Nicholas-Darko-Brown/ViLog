@@ -14,7 +14,7 @@ const Login = () => {
     const handleClick = () => setShow(!show);
 
     const fetchEmployeesData = async () => {
-      const { data } = await axios.get('/adminPage/employeeList');
+      const { data } = await axios.get('https://viilogg.herokuapp.com/adminPage/employeeList');
       setEmployee(data);
     };
   
@@ -25,7 +25,7 @@ const Login = () => {
     // Get check in time
     const timestamp = new Date(Date.now()).toISOString();
   
-    const url = '/visitorLogin';
+    const url = 'https://viilogg.herokuapp.com/visitorLogin';
     const [data, setData] = useState({
       email: '',
       password: '',

@@ -10,15 +10,14 @@ import {
   useToast,
 } from '@chakra-ui/react';
 import { BiHide, BiShow } from 'react-icons/bi';
+
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
-// Dashboard Login
-const Dashboard = () => {
+// Admin login
+const Admin = () => {
   const [show, setShow] = useState(false);
   const handleClick = () => setShow(!show);
-
-  let navigate = useNavigate();
 
   const [state, setState] = useState({
     email: '',
@@ -26,6 +25,8 @@ const Dashboard = () => {
   });
 
   const toast = useToast();
+
+  const navigate = useNavigate();
 
   const handleInputChange = e => {
     const value = e.target.value;
@@ -47,13 +48,13 @@ const Dashboard = () => {
         duration: 3000,
         isClosable: true,
         position: 'top',
-      })
+      });
       return;
-    } 
+    }
 
     try {
       const { data } = await axios.post(
-        '/dashboard',
+        'https://viilogg.herokuapp.com/admin',
         { userEmail, password },
         {
           headers: {
@@ -61,7 +62,6 @@ const Dashboard = () => {
           },
         }
       );
-      console.log(data);
 
       if (data === 'Logged in') {
         toast({
@@ -71,7 +71,7 @@ const Dashboard = () => {
           isClosable: true,
           position: 'top',
         });
-        navigate('/dashboardPage');
+        navigate('/adminPage');
       }
     } catch (err) {
       toast({
@@ -105,8 +105,6 @@ const Dashboard = () => {
           placeholder="Enter your email"
           mt={4}
           onChange={handleInputChange}
-          autoComplete="off"
-          required
         />
         <InputGroup size="md">
           <Input
@@ -117,7 +115,6 @@ const Dashboard = () => {
             mt={4}
             mb={8}
             onChange={handleInputChange}
-            required
           />
           <InputRightElement
             width="3rem"
@@ -129,7 +126,7 @@ const Dashboard = () => {
           </InputRightElement>
         </InputGroup>
         <Center>
-        <Button bg="#e77449" color="white" size="md" onClick={handleLogin}>
+          <Button bg="#e77449" color="white" size="md" onClick={handleLogin}>
             Submit
           </Button>
         </Center>
@@ -138,4 +135,4 @@ const Dashboard = () => {
   );
 };
 
-export default Dashboard;
+export default Admin;

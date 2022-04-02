@@ -24,7 +24,7 @@ const Forms = () => {
   const toast = useToast()
 
   const fetchEmployeesData = async () => {
-    const { data } = await axios.get('/adminPage/employeeList');
+    const { data } = await axios.get('https://viilogg.herokuapp.com/adminPage/employeeList');
     setEmployee(data);
   };
 
@@ -35,7 +35,7 @@ const Forms = () => {
   // Get check in time
   const timestamp = new Date(Date.now()).toISOString();
 
-  const url = 'http://localhost:3000/';
+  const url = 'https://viilogg.herokuapp.com/';
   const [data, setData] = useState({
     name: '',
     company: '',

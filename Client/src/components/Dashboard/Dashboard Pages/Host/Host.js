@@ -14,7 +14,7 @@ const Host = () => {
   }, []);
 
   const fetchVisitors = async () => {
-    const { data } = await axios.get('/adminPage/visitorsLog');
+    const { data } = await axios.get('https://viilogg.herokuapp.com/adminPage/visitorsLog');
     setVisitors(data);
     console.log(data)
   };
