@@ -16,9 +16,7 @@ dotenv.config({path:'../.env'});
 const app = express();
 const port = process.env.PORT || 5000;
 console.log(process.env.PORT);
-app.use(cors({
-    origin: "https://vilog.netlify.app/",
-}));
+app.use(cors());
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
 app.use(express.json());
