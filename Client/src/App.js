@@ -2,7 +2,7 @@ import {
   ChakraProvider,
   Box
 } from '@chakra-ui/react';
-import BootsrapCarousel from './components/Carousel.js/BootstrapCarousel';
+import BootsrapCarousel from './components/Carousel/BootstrapCarousel';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import Dashboard from './components/Dashboard/Dashboard';
 import DashboardPage from './components/Dashboard/DashboardPage';

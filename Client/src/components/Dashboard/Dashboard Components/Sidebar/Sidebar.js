@@ -1,6 +1,6 @@
 import React from 'react'
 import './Sidebar.css'
-import { Home,BarChart, AccountCircle, Save, ExitToApp, VerifiedUser, ArrowBack } from '@material-ui/icons';
+import { Home,BarChart, AccountCircle, Save, VerifiedUser, ArrowBack } from '@material-ui/icons';
 import { useNavigate } from 'react-router-dom';
 
 // Sidebar of Dashboard
@@ -54,10 +54,6 @@ const Sidebar = () => {
                     }}>
                         <Save className='sidebar_icon'/>
                         Reports
-                    </li>
-                    <li className="sidebar_list_item">
-                        <ExitToApp className='sidebar_icon'/>
-                        Export
                     </li>
                 </ul>
             </div>

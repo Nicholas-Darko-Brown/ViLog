@@ -43,8 +43,8 @@ const Host = () => {
                   <tr>
                     <td className="visitor_column">
                       <div className="visitor_name">{visitor.Full_name}</div>
-                      <div className="visitor_company">{visitor.Company}</div>
-                      <div className="visitor_position">
+                      {/* <div className="visitor_company">{visitor.Company}</div> */}
+                      {/* <div className="visitor_position">
                         {visitor.Position}
                       </div>
                       <div className="visitor_phone">
@@ -52,7 +52,7 @@ const Host = () => {
                       </div>
                       <div className="visitor_email">
                         {visitor.Email}
-                      </div>
+                      </div> */}
                     </td>
                     <td>{visitor.Full_Name}</td>
                     <td>{visitor.Time_In}</td>

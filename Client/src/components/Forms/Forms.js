@@ -106,7 +106,7 @@ const Forms = () => {
   };
 
   return (
-    <Box display="flex" justifyContent="center" alignItems='center' height="95vh">
+    <Box display="flex" justifyContent="center" alignItems='center' height="95vh" className='sign_up_container'>
       <FormControl
         isRequired
         w="30%"

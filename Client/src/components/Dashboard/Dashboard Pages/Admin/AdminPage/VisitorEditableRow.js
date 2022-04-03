@@ -51,7 +51,7 @@ const VisitorEditableRow = ({
           onChange={handleVisitorEditFormChange}
         />{' '}
       </td>
-      <td>
+      {/* <td>
         {' '}
         <input
           type="tel"
@@ -61,7 +61,7 @@ const VisitorEditableRow = ({
           value={visitorEditFormData.Phone_Number}
           onChange={handleVisitorEditFormChange}
         />{' '}
-      </td>
+      </td> */}
       {/* <td>
         {' '}
         <input

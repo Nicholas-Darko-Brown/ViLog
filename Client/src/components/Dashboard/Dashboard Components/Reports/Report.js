@@ -66,6 +66,7 @@ const Report = () => {
           >
             Generate Employee Report
           </button>
+          <button className='btn btn-success'><a href='mailto:someone@example.com'>Share through Email</a> </button>
 
           <ReportsComponent reports={reports} />
         </div>
