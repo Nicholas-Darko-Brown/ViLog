@@ -18,7 +18,7 @@ const VisitorEditableRow = ({
           onChange={handleVisitorEditFormChange}
         />{' '}
       </td>
-      <td>
+      {/* <td>
         {' '}
         <input
           type="email"
@@ -30,7 +30,7 @@ const VisitorEditableRow = ({
         />{' '}
       </td>
       <td> <input type="password" required="required" placeholder='Enter password...' name='Password' value={visitorEditFormData.Password}
-          onChange={handleVisitorEditFormChange}/> </td>
+          onChange={handleVisitorEditFormChange}/> </td> */}
       <td>
         {' '}
         <input
@@ -53,7 +53,7 @@ const VisitorEditableRow = ({
           onChange={handleVisitorEditFormChange}
         />{' '}
       </td>
-      <td>
+      {/* <td>
         {' '}
         <input
           type="tel"
@@ -85,7 +85,7 @@ const VisitorEditableRow = ({
           value={visitorEditFormData.Position}
           onChange={handleVisitorEditFormChange}
         />{' '}
-      </td>
+      </td> */}
       <td>
         {' '}
         <input

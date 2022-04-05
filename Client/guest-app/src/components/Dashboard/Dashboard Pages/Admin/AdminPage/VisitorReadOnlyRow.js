@@ -4,13 +4,13 @@ const VisitorReadOnlyRow = ({ visitor, handleVisitorEditClick, handleVisitorDele
   return (
     <tr>
       <td>{visitor.Full_name}</td>
-      <td>{visitor.Email}</td>
-      <td>{visitor.Password}</td>
+      {/* <td>{visitor.Email}</td>
+      <td>{visitor.Password}</td> */}
       <td>{visitor.Time_In}</td>
       <td>{visitor.Time_Out}</td>
-      <td>{visitor.Phone_Number}</td>
+      {/* <td>{visitor.Phone_Number}</td>
       <td>{visitor.Company}</td>
-      <td>{visitor.Position}</td>
+      <td>{visitor.Position}</td> */}
       <td>{visitor.Full_Name}</td>
       <td>
           <button className='edit_btn' type='button' onClick={(e) => handleVisitorEditClick(e, visitor)}>Edit</button>

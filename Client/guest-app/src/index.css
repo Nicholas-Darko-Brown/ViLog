@@ -4,6 +4,18 @@
   font-family: 'Lato', sans-serif;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
+a {
+  text-decoration: none;
+}
+
+a:hover {
+  color: white;
+}
+
 span.carousel-control-next-icon {
   background-color: #e77449;
   border-radius: 5px;
@@ -17,4 +29,27 @@ span.carousel-control-prev-icon {
 div.carousel-indicators {
     background-color: #e77449;
     opacity: 0.8;
+}
+
+.homepage_container {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('./assets/photo1.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+
+.logout_btn:hover {
+  opacity: 0.8;
+}
+
+.logout_container {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.9)), url('./assets/photo2.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+
+.btn-primary, .btn-success {
+  margin-left: 15px;
+  margin-top: 15px;
 }

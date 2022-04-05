@@ -99,14 +99,10 @@ const Forms = () => {
         position: 'top',
       });
     }
-
-    
-
-    
   };
 
   return (
-    <Box display="flex" justifyContent="center" height="100%">
+    <Box display="flex" justifyContent="center" alignItems='center' height="95vh" className='sign_up_container'>
       <FormControl
         isRequired
         w="30%"
@@ -205,9 +201,7 @@ const Forms = () => {
             employee.map(name => {
               return <option value={name.Id}>{name.Full_Name}</option>;
             })
-          ) : (
-            <option value="yvonne smith">Yvonne Smith</option>
-          )}
+          ) : null}
 
           {/*  */}
         </Select>
@@ -222,11 +216,10 @@ const Forms = () => {
           Sign Up
         </Button>
 
-        <Text textAlign="center" m={5}>
-          Already signed up? <span > <button style={{ fontWeight: 900, textDecoration: "underline", color: "blue" }} onClick={() => {
+        <Text textAlign="center" mt={5}>
+          Already signed up? <span> <button onClick={() => {
             navigate("/visitorLogin")
-          }}>Login</button> </span> at
-          the next slide
+          }} style={{color: 'blue', fontWeight: 900, textDecoration: 'underline'}}>Login</button> </span> here
         </Text>
       </FormControl>
     </Box>

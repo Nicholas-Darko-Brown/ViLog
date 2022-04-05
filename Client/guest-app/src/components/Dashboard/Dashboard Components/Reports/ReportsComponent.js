@@ -23,9 +23,6 @@ const ReportsComponent = ({ reports }) => {
                 <td>{report.Email}</td>
                 <td>{report.Position}</td>
                 <td>{report.Phone_Number}</td>
-                {/* <td>
-                  <Link to={`/ticket/${report.id}`}>See comments</Link>
-                </td> */}
               </tr>
             ))}
           </tbody>

@@ -9,7 +9,6 @@ const LargeWidget = () => {
   const fetchVisitors = async () => {
     const { data } = await axios.get('/adminPage/visitorsLog');
     setVisitors(data);
-    console.log(data);
   };
 
   useEffect(() => {

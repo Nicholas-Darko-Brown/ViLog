@@ -2,15 +2,12 @@ import { Box, Button, FormControl, Input, InputGroup, InputRightElement, Select,
 import axios from 'axios';
 import React, { useState, useEffect } from 'react'
 import { BiHide, BiShow } from 'react-icons/bi';
-import { toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
-// import { useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
-toast.configure()
 const Login = () => {
     const [employee, setEmployee] = useState([]);
     const [show, setShow] = useState(false);
-    // const [visitor, setVisitor] = useState([])
     const handleClick = () => setShow(!show);
 
     const fetchEmployeesData = async () => {
@@ -18,7 +15,7 @@ const Login = () => {
       setEmployee(data);
     };
   
-    // const navigate = useNavigate()
+    const navigate = useNavigate()
   
     useEffect(() => {
       fetchEmployeesData();
@@ -49,17 +46,14 @@ const Login = () => {
       const newData = Object.assign(data, {timestamp: timestamp})
       console.log(newData)
   
-      axios.post(url, newData).then(function (response) {
-        console.log(response)
-      })
+      axios.post(url, newData)
 
-      // navigate('/signedIn')
+      navigate('/signedIn')
     };
 
 
-
   return (
-    <Box display="flex" justifyContent="center" height="100%" mt={20}>
+    <Box display="flex" justifyContent="center" alignItems='center' height="100vh">
     <FormControl
       isRequired
       w="30%"
@@ -131,9 +125,7 @@ const Login = () => {
           employee.map(name => {
             return <option value={name.Id}>{name.Full_Name}</option>;
           })
-        ) : (
-          <option value="yvonne smith">Yvonne Smith</option>
-        )}
+        ) : null}
 
         {/*  */}
       </Select>
@@ -147,6 +139,10 @@ const Login = () => {
       >
         Login
       </Button>
+
+      <Text textAlign='center' mt={3}>Don't have an account? <button onClick={() => {
+        navigate("/signUp")
+      }} style={{fontWeight: 900, color: 'blue', textDecoration: 'underline'}}>Sign up</button> here</Text>
     </FormControl>
   </Box>
   )

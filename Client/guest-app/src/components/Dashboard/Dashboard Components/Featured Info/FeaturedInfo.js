@@ -9,7 +9,6 @@ const FeaturedInfo = () => {
   const fetchChart = async () => {
     const { data } = await axios.get('/dashboardPage/graph');
     setCharts(data);
-    console.log(data);
   };
 
   useEffect(() => {

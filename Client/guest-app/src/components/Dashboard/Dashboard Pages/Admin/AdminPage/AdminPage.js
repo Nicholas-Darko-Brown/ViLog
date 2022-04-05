@@ -7,7 +7,6 @@ import VisitorReadOnlyRow from './VisitorReadOnlyRow';
 import EmployeeReadOnlyRow from './EmployeeReadOnlyRow';
 import VisitorEditableRow from './VisitorEditableRow';
 import EmployeeEditableRow from './EmployeeEditableRow';
-import QRCode from '../../../../QRCode/QRCode';
 
 const AdminPage = () => {
   const [visitors, setVisitors] = useState([]);
@@ -322,13 +321,13 @@ const AdminPage = () => {
               <thead>
                 <tr>
                   <th>Visitor Name</th>
-                  <th>Email</th>
-                  <th>Password</th>
+                  {/* <th>Email</th>
+                  <th>Password</th> */}
                 <th>Time In</th>
                 <th>Time Out</th>
-                  <th>Phone</th>
+                  {/* <th>Phone</th>
                   <th>Company</th>
-                  <th>Position</th>
+                  <th>Position</th> */}
                   <th>Host</th>
                   <th>Actions</th>
                 </tr>
@@ -361,7 +360,7 @@ const AdminPage = () => {
               onChange={handleAddVisitorFormChange}
               value={addVisitorFormData.Full_name}
             />
-            <input
+            {/* <input
               type="email"
               name="Email"
               required="required"
@@ -369,10 +368,10 @@ const AdminPage = () => {
               onChange={handleAddVisitorFormChange}
               value={addVisitorFormData.Email}
             />
-            <input type="password" name='Password' required='required' placeholder='Enter password' onChange={handleAddVisitorFormChange} value={addVisitorFormData.Password} />
+            <input type="password" name='Password' required='required' placeholder='Enter password' onChange={handleAddVisitorFormChange} value={addVisitorFormData.Password} /> */}
             <input type="text" name='Time_In' required='required' placeholder='Time in' onChange={handleAddVisitorFormChange} value={addVisitorFormData.Time_In} />
             <input type="text" name='Time_Out' required='required' placeholder='Time out' onChange={handleAddVisitorFormChange} value={addVisitorFormData.Time_Out} />
-            <input
+            {/* <input
               type="tel"
               name="Phone_Number"
               required="required"
@@ -388,7 +387,7 @@ const AdminPage = () => {
               placeholder="Position of visitor"
               onChange={handleAddVisitorFormChange}
               value={addVisitorFormData.Position}
-            />
+            /> */}
             <input type="text" name='Full_Name' required='required' placeholder="Host" onChange={handleAddVisitorFormChange} value={addVisitorFormData.Full_Name} />
             <button type="submit" className="add_btn">
               Add
@@ -472,7 +471,6 @@ const AdminPage = () => {
               Add
             </button>
           </form>
-          <QRCode />
         </div>
       </div>
     </div>

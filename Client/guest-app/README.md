@@ -1,10 +1,10 @@
 # ViLog
 
-<!-- - [Live Project](https://url-shortening-amalitech.netlify.app/) -->
+- [Live Project](https://vilog.netlify.app/)
 
 ####  The challenge was to build an automated monitoring system for AmaliTech that would monitor visitors to AmaliTech premises, and provide accurate and reliable reports to AmaliTech Management.
 
-![ViLog](./Screenshot.png)
+![ViLog](./screenshot.png)
 
 #### Guest/Visitors are be able to:
 - Login and Logout

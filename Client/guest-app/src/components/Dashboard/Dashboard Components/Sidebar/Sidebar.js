@@ -1,12 +1,11 @@
 import React from 'react'
 import './Sidebar.css'
-import { Home,BarChart, AccountCircle, Save, ExitToApp, VerifiedUser, ArrowBack } from '@material-ui/icons';
+import { Home,BarChart, AccountCircle, Save, VerifiedUser, ArrowBack, CropFree } from '@material-ui/icons';
 import { useNavigate } from 'react-router-dom';
 
 // Sidebar of Dashboard
 const Sidebar = () => {
-    const navigate = useNavigate()
-
+  const navigate = useNavigate()
 
   return (
     <div className='sidebar_container'>
@@ -56,9 +55,11 @@ const Sidebar = () => {
                         <Save className='sidebar_icon'/>
                         Reports
                     </li>
-                    <li className="sidebar_list_item">
-                        <ExitToApp className='sidebar_icon'/>
-                        Export
+                    <li className="sidebar_list_item" onClick={() => {
+                        navigate('/qrcode')
+                    }}>
+                        <CropFree className='sidebar_icon'/>
+                        QRCode
                     </li>
                 </ul>
             </div>
