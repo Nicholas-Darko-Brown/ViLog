@@ -4,7 +4,7 @@
 
 ####  The challenge was to build an automated monitoring system for AmaliTech that would monitor visitors to AmaliTech premises, and provide accurate and reliable reports to AmaliTech Management.
 
-![ViLog](./screenshot.png)
+![ViLog](./Screenshot.png)
 
 #### Guest/Visitors are be able to:
 - Login and Logout
