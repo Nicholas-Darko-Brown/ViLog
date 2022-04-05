@@ -1,6 +1,6 @@
 const tables = {
     employees: {
-        name: "heroku_0ce75785aa78e7b.employees", 
+        name: "vilog_db.employees", 
         colums: {
             idCol1: "Id",
             fullNameCol1: "Full_Name",
@@ -12,7 +12,7 @@ const tables = {
     },
 
     visitors: {
-        name: "heroku_0ce75785aa78e7b.visitors",
+        name: "vilog_db.visitors",
         colums: {
             idCol: "Id",
             fullNameCol: "Full_name",
@@ -31,7 +31,7 @@ const tables = {
     },
 
     administrators: {
-        name: "heroku_0ce75785aa78e7b.administrators",
+        name: "vilog_db.administrators",
         colums: {
             emailCol2: "Email",
             passwordCol2: "Password"

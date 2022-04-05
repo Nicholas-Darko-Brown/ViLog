@@ -11,8 +11,6 @@ const moment = require("moment");
 const nodemailer = require("nodemailer");
 const bcrypt = require('bcryptjs');
 const saltRounds = 10;
-const adminPage = require("./routes/adminPage");
-
 
 
 dotenv.config({path:'../.env'});

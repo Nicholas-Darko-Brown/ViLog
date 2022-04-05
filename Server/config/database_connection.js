@@ -2,12 +2,11 @@ const mysql = require("mysql");
 
 const db = mysql.createPool({
     connectionLimit: 10,
-    host: 'us-cdbr-east-05.cleardb.net',
-    user: 'bcab69a91a46bf',
-    password: '808e9084',
-    database: 'heroku_0ce75785aa78e7b',
-    multipleStatements: true,
-    ssl: true
+    host: '34.121.5.11',
+    user: 'root',
+    password: '1234',
+    database: 'vilog_db',
+    multipleStatements: true
 });
 
 module.exports = db;

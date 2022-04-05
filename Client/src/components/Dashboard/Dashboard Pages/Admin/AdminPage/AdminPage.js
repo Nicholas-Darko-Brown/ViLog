@@ -59,7 +59,7 @@ const AdminPage = () => {
 
   //fetching data from endpoint
   const fetchVisitorsData = async () => {
-    const { data } = await axios.get('https://viilogg.herokuapp.com/adminPage/visitorsLog');
+    const { data } = await axios.get('/adminPage/visitorsLog');
     setVisitors(data);
     console.log(data);
     const myJSON = JSON.stringify(data)
@@ -71,7 +71,7 @@ const AdminPage = () => {
   }, []);
 
   const fetchEmployeesData = async () => {
-    const { data } = await axios.get('https://viilogg.herokuapp.com/adminPage/employeeList');
+    const { data } = await axios.get('/adminPage/employeeList');
     setEmployees(data);
     console.log(data)
   };
@@ -159,7 +159,7 @@ const AdminPage = () => {
       Full_Name: '',
     });
 
-    axios.post(`https://viilogg.herokuapp.com/`, newVisitor)
+    axios.post(`/`, newVisitor)
   };
 
   const handleAddEmployeeFormSubmit = e => {
@@ -184,11 +184,7 @@ const AdminPage = () => {
       Position: '',
     });
 
-<<<<<<< HEAD:Client/guest-app/src/components/Dashboard/Dashboard Pages/Admin/AdminPage/AdminPage.js
     axios.post(`/adminPage/addEmployee`, newEmployee)
-=======
-    axios.post(`https://viilogg.herokuapp.com/adminPage/addEmployee`, newEmployee)
->>>>>>> 34b3db99c3754038545bb92bec3424c6ff332cff:Client/src/components/Dashboard/Dashboard Pages/Admin/AdminPage/AdminPage.js
   };
 
   const handleVisitorEditFormSubmit = (e) => {
@@ -214,7 +210,7 @@ const AdminPage = () => {
     setVisitors(newVisitors)
     setEditVisitorId(null)
 
-    axios.put(`https://viilogg.herokuapp.com/updateVisit/${editVisitorId}`, editedVisitor)
+    axios.put(`/updateVisit/${editVisitorId}`, editedVisitor)
   }
 
   const handleEmployeeEditFormSubmit = (e) => {
@@ -238,11 +234,7 @@ const AdminPage = () => {
     setEmployees(newEmployees)
     setEditEmployeeId(null)
 
-<<<<<<< HEAD:Client/guest-app/src/components/Dashboard/Dashboard Pages/Admin/AdminPage/AdminPage.js
     axios.put(`/adminPage/updateEmployee/${editEmployeeId}`, editedEmployee)
-=======
-    axios.put(`https://viilogg.herokuapp.com/adminPage/updateEmployee/${editEmployeeId}`, editedEmployee)
->>>>>>> 34b3db99c3754038545bb92bec3424c6ff332cff:Client/src/components/Dashboard/Dashboard Pages/Admin/AdminPage/AdminPage.js
   }
 
   //edit click
@@ -299,7 +291,7 @@ const AdminPage = () => {
 
     setVisitors(newVisitors)
 
-    axios.delete(`https://viilogg.herokuapp.com/deleteVisit/${visitorId}`)
+    axios.delete(`/deleteVisit/${visitorId}`)
   }
 
   const handleEmployeeDeleteClick = (employeeId) => {
@@ -313,7 +305,7 @@ const AdminPage = () => {
 
     setEmployees(newEmployees)
 
-    axios.delete(`https://viilogg.herokuapp.com/adminPage/deleteEmployee/${employeeId}`)
+    axios.delete(`/adminPage/deleteEmployee/${employeeId}`)
   }
 
 
@@ -328,7 +320,6 @@ const AdminPage = () => {
             <table>
               <thead>
                 <tr>
-<<<<<<< HEAD:Client/guest-app/src/components/Dashboard/Dashboard Pages/Admin/AdminPage/AdminPage.js
                   <th>Visitor Name</th>
                   {/* <th>Email</th>
                   <th>Password</th> */}
@@ -336,15 +327,6 @@ const AdminPage = () => {
                 <th>Time Out</th>
                   {/* <th>Phone</th>
                   <th>Company</th>
-=======
-                  <th>Visitor</th>
-                  {/* <th>Email</th> */}
-                  <th>Password</th>
-                <th>Time In</th>
-                <th>Time Out</th>
-                  {/* <th>Phone</th> */}
-                  {/* <th>Company</th>
->>>>>>> 34b3db99c3754038545bb92bec3424c6ff332cff:Client/src/components/Dashboard/Dashboard Pages/Admin/AdminPage/AdminPage.js
                   <th>Position</th> */}
                   <th>Host</th>
                   <th>Actions</th>
@@ -385,13 +367,8 @@ const AdminPage = () => {
               placeholder="Visitor's email"
               onChange={handleAddVisitorFormChange}
               value={addVisitorFormData.Email}
-<<<<<<< HEAD:Client/guest-app/src/components/Dashboard/Dashboard Pages/Admin/AdminPage/AdminPage.js
             />
             <input type="password" name='Password' required='required' placeholder='Enter password' onChange={handleAddVisitorFormChange} value={addVisitorFormData.Password} /> */}
-=======
-            /> */}
-            <input type="password" name='Password' required='required' placeholder='Enter password' onChange={handleAddVisitorFormChange} value={addVisitorFormData.Password} />
->>>>>>> 34b3db99c3754038545bb92bec3424c6ff332cff:Client/src/components/Dashboard/Dashboard Pages/Admin/AdminPage/AdminPage.js
             <input type="text" name='Time_In' required='required' placeholder='Time in' onChange={handleAddVisitorFormChange} value={addVisitorFormData.Time_In} />
             <input type="text" name='Time_Out' required='required' placeholder='Time out' onChange={handleAddVisitorFormChange} value={addVisitorFormData.Time_Out} />
             {/* <input
@@ -401,9 +378,9 @@ const AdminPage = () => {
               placeholder="Phone number of visitor"
               onChange={handleAddVisitorFormChange}
               value={addVisitorFormData.Phone_Number}
-            /> */}
-            {/* <input type="text" name='Company' required='required' placeholder="Visitor's company" onChange={handleAddVisitorFormChange} value={addVisitorFormData.Company} /> */}
-            {/* <input
+            />
+            <input type="text" name='Company' required='required' placeholder="Visitor's company" onChange={handleAddVisitorFormChange} value={addVisitorFormData.Company} />
+            <input
               type="text"
               name="Position"
               required="required"
