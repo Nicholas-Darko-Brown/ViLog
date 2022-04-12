@@ -1,6 +1,7 @@
 # ViLog
 
-- [Live Project (NB:Faced difficulties hosting Backend to Heroku. Only Frontend is available for now.)](https://url-shortening-amalitech.netlify.app/)
+- [Live Project](https://url-shortening-amalitech.netlify.app/)
+##### NB:Faced difficulties hosting Backend to Heroku. Only Frontend is available for now.
 
 ####  The challenge was to build an automated monitoring system for AmaliTech that would monitor visitors to AmaliTech premises, and provide accurate and reliable reports to AmaliTech Management.
 
@@ -63,4 +64,4 @@ BACKEND:: In the Terminal;
 
 
 #### Future additions
-1. Implementation of QR Code for fast check-ins
+1. Addition of extra security features like signature and selfie for easy identification.
