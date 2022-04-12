@@ -1,7 +1,7 @@
 # ViLog
 
-- [Live Project](https://url-shortening-amalitech.netlify.app/)
-##### NB:Faced difficulties hosting Backend to Heroku. Only Frontend is available for now.
+- [Live Project](https://vilog.netlify.app/)
+- NB:Faced difficulties hosting Backend to Heroku. Only Frontend is available for now.
 
 ####  The challenge was to build an automated monitoring system for AmaliTech that would monitor visitors to AmaliTech premises, and provide accurate and reliable reports to AmaliTech Management.
 
