@@ -29,7 +29,7 @@
 This project was built using these technologies:
 - JavaScript
 - CSS
-- Styled Components(Chakra UI, Material UI, Bootstrap)
+- React UI Libraries (Chakra UI, Material UI, Bootstrap)
 - Flexbox
 - Git
 - Markdown
