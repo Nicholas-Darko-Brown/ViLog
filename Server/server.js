@@ -150,6 +150,7 @@ app.post("/", (req, res) => {
     const DAY = moment(timestamp,"YYYY/MM/DD").date();
     const MONTH = moment(timestamp,"YYYY/MM/DD").format("MMMM");
     const YEAR = moment(timestamp,"YYYY/MM/DD").format("YYYY");
+
     // const salt = bcrypt.genSaltSync(saltRounds);
     // const hash = bcrypt.hashSync(password, salt);
     const insertVisitorQuery = `${insertInto} ${visitorsTable} (${fullNameCol}, ${companyCol}, ${phoneNumberCol}, ${emailCol}, ${hostCol}, ${positionCol}, ${signIn}, ${day}, ${month}, ${year}, ${passwordCol}) ${values} (?,?,?,?,?,?,?,?,?,?,?)`;
@@ -167,7 +168,9 @@ app.post("/", (req, res) => {
         if(err){
             console.log(err);
         }else{
+
             console.log(result[0]);            
+
 
             const mailOptions = {
                 from: 'vilogtext@gmail.com',
@@ -183,7 +186,6 @@ app.post("/", (req, res) => {
                     console.log(`Email sent: ${info.response}`);
                 }
             });
-            
         }
     });
 
@@ -252,13 +254,12 @@ app.post("/visitorLogin", (req, res)=>{
                         });
                        }
                    });
-
-                   
                }else{
                    console.log("Wrong password");
                }
             }
         });
+
     }else{
         console.log("Invalid username");
     }
@@ -345,6 +346,7 @@ app.put("/updateVisit/:id", (req, res) =>{
     const {id} = req.params;
     const {Full_name, Email, Time_In, Time_Out, Phone_Number, Company, Position, Full_Name} = req.body;
     const updateVisitorQuery = `${update} ${visitorsTable} ${set} ${fullNameCol} = ?, ${emailCol} = ?, ${signIn} = ?, ${signOut} = ?, ${phoneNumberCol} = ?, ${companyCol} = ?, ${positionCol} = ? ${where} ${idCol} = ?`;
+
     db.query(updateVisitorQuery, [Full_name, Email, Time_In, Time_Out, Phone_Number, Company, Position, id], (err, result) =>{
         if(err){
             console.log(err);
